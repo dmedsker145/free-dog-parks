@@ -49,9 +49,10 @@ h1 {
     background: white;
     white-space: nowrap;
     font-weight: 600;
+    cursor: pointer;
 }
 
-.filter.free {
+.filter.active {
     background: #217a32;
     color: white;
     border-color: #217a32;
@@ -121,11 +122,11 @@ h1 {
     </div>
 
     <div class="filters">
-        <div class="filter free">FREE</div>
-        <div class="filter">OFF-LEASH</div>
-        <div class="filter">LIGHTED</div>
-        <div class="filter">SMALL/LARGE</div>
-        <div class="filter">RV/VAN</div>
+        <div class="filter active" data-filter="free">FREE</div>
+        <div class="filter" data-filter="offleash">OFF-LEASH</div>
+        <div class="filter" data-filter="lighted">LIGHTED</div>
+        <div class="filter" data-filter="separated">SMALL/LARGE</div>
+        <div class="filter" data-filter="rv">RV/VAN</div>
     </div>
 </header>
 
@@ -151,62 +152,114 @@ L.tileLayer(
     }
 ).addTo(map);
 
-
 const parks = [
-
 {
     name: "Pawster Park Pooch Playground",
     lat: 41.03874,
     lng: -85.16335,
-    status: "🔴 FEE REQUIRED",
+    status: "fee",
+    statusLabel: "🔴 FEE REQUIRED",
+    offleash: true,
+    lighted: false,
+    separated: false,
+    rv: false,
     info: "Pooch Pass required • Off-leash • Fenced",
     location: "Fort Wayne, Indiana"
 },
-
 {
     name: "Camp Canine",
     lat: 41.11290,
     lng: -85.11760,
-    status: "🔴 FEE REQUIRED",
+    status: "fee",
+    statusLabel: "🔴 FEE REQUIRED",
+    offleash: true,
+    lighted: false,
+    separated: false,
+    rv: false,
     info: "Off-leash • Fenced • Drinking fountains",
     location: "Fort Wayne, Indiana"
 },
-
 {
     name: "Thomas Park Dog Park",
     lat: 41.37156,
     lng: -85.05313,
-    status: "🟡 NEEDS VERIFICATION",
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+    offleash: true,
+    lighted: false,
+    separated: true,
+    rv: false,
     info: "Off-leash • Fenced • Separate small & large dog areas",
     location: "Auburn, Indiana"
 }
-
 ];
 
+let activeFilters = {
+    free: true,
+    offleash: false,
+    lighted: false,
+    separated: false,
+    rv: false
+};
 
-parks.forEach(function(park) {
+let markers = [];
 
-    const directions =
-        "https://www.google.com/maps/search/?api=1&query=" +
-        encodeURIComponent(park.name + " " + park.location);
+function parkMatchesFilters(park) {
+    if (activeFilters.free && park.status !== "free") return false;
+    if (activeFilters.offleash && !park.offleash) return false;
+    if (activeFilters.lighted && !park.lighted) return false;
+    if (activeFilters.separated && !park.separated) return false;
+    if (activeFilters.rv && !park.rv) return false;
+    return true;
+}
 
-    const popup = `
-        <div class="park-name">${park.name}</div>
-        <p class="status">${park.status}</p>
-        <p>${park.info}</p>
-        <p>${park.location}</p>
+function renderMarkers() {
+    markers.forEach(marker => map.removeLayer(marker));
+    markers = [];
 
-        <a class="directions"
-        href="${directions}"
-        target="_blank">
-        DIRECTIONS
-        </a>
-    `;
+    parks.forEach(function(park) {
 
-    L.marker([park.lat, park.lng])
-        .addTo(map)
-        .bindPopup(popup);
+        if (!parkMatchesFilters(park)) return;
+
+        const directions =
+            "https://www.google.com/maps/search/?api=1&query=" +
+            encodeURIComponent(park.name + " " + park.location);
+
+        const popup = `
+            <div class="park-name">${park.name}</div>
+            <p class="status">${park.statusLabel}</p>
+            <p>${park.info}</p>
+            <p>${park.location}</p>
+
+            <a class="directions"
+            href="${directions}"
+            target="_blank">
+            DIRECTIONS
+            </a>
+        `;
+
+        const marker = L.marker([park.lat, park.lng])
+            .addTo(map)
+            .bindPopup(popup);
+
+        markers.push(marker);
+    });
+}
+
+document.querySelectorAll(".filter").forEach(function(button) {
+    button.addEventListener("click", function() {
+
+        const filterName = button.dataset.filter;
+
+        activeFilters[filterName] = !activeFilters[filterName];
+
+        button.classList.toggle("active");
+
+        renderMarkers();
+    });
 });
+
+renderMarkers();
 
 </script>
 
