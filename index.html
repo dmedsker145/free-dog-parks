@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Dog Parks</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f7;
+}
+
+header {
+    background: white;
+    padding: 14px 18px 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+h1 {
+    margin: 0;
+    color: #217a32;
+    font-size: 25px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+}
+
+.filter {
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    padding: 7px 13px;
+    background: white;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.filter.free {
+    background: #217a32;
+    color: white;
+    border-color: #217a32;
+}
+
+#map {
+    height: calc(100vh - 120px);
+    width: 100%;
+}
+
+.legend {
+    position: absolute;
+    right: 15px;
+    top: 140px;
+    z-index: 1000;
+    background: white;
+    padding: 10px 13px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.18);
+    font-size: 13px;
+}
+
+.legend div {
+    margin: 4px 0;
+}
+
+.dot {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+.green { background: #218a3a; }
+.yellow { background: #e2a520; }
+.red { background: #cf3f3f; }
+
+.park-name {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.directions {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #217a32;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐾 FREE DOG PARKS</h1>
+    <div class="subtitle">
+        V1 Prototype • Northeastern Indiana
+    </div>
+
+    <div class="filters">
+        <div class="filter free">FREE</div>
+        <div class="filter">OFF-LEASH</div>
+        <div class="filter">LIGHTED</div>
+        <div class="filter">SMALL/LARGE</div>
+        <div class="filter">RV/VAN</div>
+    </div>
+</header>
+
+<div id="map"></div>
+
+<div class="legend">
+    <div><span class="dot green"></span>Confirmed Free</div>
+    <div><span class="dot yellow"></span>Needs Verification</div>
+    <div><span class="dot red"></span>Fee Required</div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+const map = L.map('map').setView([41.18, -85.12], 9);
+
+L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+    }
+).addTo(map);
+
+
+const parks = [
+
+{
+    name: "Pawster Park Pooch Playground",
+    lat: 41.03874,
+    lng: -85.16335,
+    status: "🔴 FEE REQUIRED",
+    info: "Pooch Pass required • Off-leash • Fenced",
+    location: "Fort Wayne, Indiana"
+},
+
+{
+    name: "Camp Canine",
+    lat: 41.11290,
+    lng: -85.11760,
+    status: "🔴 FEE REQUIRED",
+    info: "Off-leash • Fenced • Drinking fountains",
+    location: "Fort Wayne, Indiana"
+},
+
+{
+    name: "Thomas Park Dog Park",
+    lat: 41.37156,
+    lng: -85.05313,
+    status: "🟡 NEEDS VERIFICATION",
+    info: "Off-leash • Fenced • Separate small & large dog areas",
+    location: "Auburn, Indiana"
+}
+
+];
+
+
+parks.forEach(function(park) {
+
+    const directions =
+        "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(park.name + " " + park.location);
+
+    const popup = `
+        <div class="park-name">${park.name}</div>
+        <p class="status">${park.status}</p>
+        <p>${park.info}</p>
+        <p>${park.location}</p>
+
+        <a class="directions"
+        href="${directions}"
+        target="_blank">
+        DIRECTIONS
+        </a>
+    `;
+
+    L.marker([park.lat, park.lng])
+        .addTo(map)
+        .bindPopup(popup);
+});
+
+</script>
+
+</body>
+</html>
