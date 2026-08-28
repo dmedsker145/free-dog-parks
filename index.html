@@ -190,6 +190,42 @@ h1 {
     cursor: pointer;
 }
     
+.legend-paw {
+    display: inline-flex;
+    width: 26px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.green-paw {
+    background: #218a3a;
+}
+
+.yellow-paw {
+    background: #e2a520;
+}
+
+.red-paw {
+    background: #cf3f3f;
+}
+
+.legend-you {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #2b7de9;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(43,125,233,.35);
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
 </style>
 </head>
 
@@ -243,9 +279,10 @@ h1 {
 <div id="map"></div>
 
 <div class="legend">
-    <div><span class="dot green"></span>Confirmed Free</div>
-    <div><span class="dot yellow"></span>Needs Verification</div>
-    <div><span class="dot red"></span>Fee Required</div>
+    <div><span class="legend-paw green-paw">🐾</span> Confirmed Free</div>
+    <div><span class="legend-paw yellow-paw">🐾</span> Needs Verification</div>
+    <div><span class="legend-paw red-paw">🐾</span> Fee Required</div>
+    <div><span class="legend-you"></span> You Are Here</div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
