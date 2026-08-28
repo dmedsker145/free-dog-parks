@@ -438,7 +438,30 @@ function parkMatchesFilters(park) {
     if (activeFilters.rv && !park.rv) return false;
     return true;
 }
+let activeRouteCoordinates = null;
 
+function parkIsNearRoute(park) {
+
+    if (!activeRouteCoordinates) return true;
+
+    const parkPoint = L.latLng(park.lat, park.lng);
+    let closestDistance = Infinity;
+
+    activeRouteCoordinates.forEach(coord => {
+
+        const routePoint = L.latLng(coord[0], coord[1]);
+        const distance = parkPoint.distanceTo(routePoint);
+
+        if (distance < closestDistance) {
+            closestDistance = distance;
+        }
+
+    });
+
+    const milesFromRoute = closestDistance / 1609.344;
+
+     return milesFromRoute <= routeMiles;
+}
 function renderMarkers() {
     markers.forEach(marker => map.removeLayer(marker));
     markers = [];
@@ -446,6 +469,7 @@ function renderMarkers() {
     parks.forEach(function(park) {
 
         if (!parkMatchesFilters(park)) return;
+        if (!parkIsNearRoute(park)) return;
 
         const directions =
             "https://www.google.com/maps/search/?api=1&query=" +
