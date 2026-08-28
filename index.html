@@ -506,8 +506,10 @@ document.getElementById("destinationInput")
         }
     });
 
+let routeLine = null;
+
 document.getElementById("findRouteBtn")
-    .addEventListener("click", function() {
+    .addEventListener("click", async function() {
 
         const from = document.getElementById("routeFrom").value.trim();
         const to = document.getElementById("routeTo").value.trim();
@@ -517,12 +519,63 @@ document.getElementById("findRouteBtn")
             return;
         }
 
-        alert(
-            "Route request received!\n\n" +
-            "From: " + from +
-            "\nTo: " + to +
-            "\nDistance from route: " + routeMiles + " miles"
-        );
+        try {
+
+            const geocodePlace = async (place) => {
+                const response = await fetch(
+                    "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" +
+                    encodeURIComponent(place)
+                );
+
+                const results = await response.json();
+
+                if (results.length === 0) {
+                    throw new Error("Location not found: " + place);
+                }
+
+                return {
+                    lat: parseFloat(results[0].lat),
+                    lng: parseFloat(results[0].lon)
+                };
+            };
+
+            const start = await geocodePlace(from);
+            const end = await geocodePlace(to);
+
+            const routeResponse = await fetch(
+                `https://router.project-osrm.org/route/v1/driving/${start.lng},${start.lat};${end.lng},${end.lat}?overview=full&geometries=geojson`
+            );
+
+            const routeData = await routeResponse.json();
+
+            if (!routeData.routes || routeData.routes.length === 0) {
+                throw new Error("No driving route found.");
+            }
+
+            const coordinates =
+                routeData.routes[0].geometry.coordinates.map(coord => [
+                    coord[1],
+                    coord[0]
+                ]);
+
+            if (routeLine) {
+                map.removeLayer(routeLine);
+            }
+
+            routeLine = L.polyline(coordinates, {
+                weight: 5,
+                opacity: 0.8
+            }).addTo(map);
+
+            map.fitBounds(routeLine.getBounds(), {
+                padding: [30, 30]
+            });
+
+        } catch (error) {
+            alert("I couldn't create that route. Please check the locations and try again.");
+            console.error(error);
+        }
+
     });
 
 async function searchDestination() {
