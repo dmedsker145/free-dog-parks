@@ -149,6 +149,35 @@ h1 {
     <button id="destinationBtn">SEARCH</button>
 </div>
 
+<div class="search-row">
+    <input id="destinationInput" type="text" placeholder="Search city or destination">
+    <button id="destinationBtn">SEARCH</button>
+</div>
+
+<div class="route-box">
+
+    <div class="route-row">
+        <input id="routeFrom" type="text" placeholder="From">
+    </div>
+
+    <div class="route-row">
+        <input id="routeTo" type="text" placeholder="To">
+    </div>
+
+    <div class="route-distance">
+        <button data-miles="1">1 MI</button>
+        <button data-miles="5" class="active">5 MI</button>
+        <button data-miles="10">10 MI</button>
+    </div>
+
+    <button class="route-button" id="findRouteBtn">
+        FIND PARKS ALONG ROUTE
+    </button>
+
+</div>
+
+<div class="filters">
+
     <div class="filters">
         <div class="filter" id="nearMeBtn">NEAR ME</div>
         <div class="filter active" data-filter="free">FREE</div>
