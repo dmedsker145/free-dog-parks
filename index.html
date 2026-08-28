@@ -271,6 +271,14 @@ function renderMarkers() {
 
         markers.push(marker);
     });
+    
+    if (markers.length > 0) {
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds(), {
+        padding: [40, 40],
+        maxZoom: 11
+    });
+}
 }
 
 document.querySelectorAll(".filter").forEach(function(button) {
