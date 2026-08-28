@@ -303,9 +303,12 @@ function renderMarkers() {
             </a>
         `;
 
-        const marker = L.marker([park.lat, park.lng])
-            .addTo(map)
-            .bindPopup(popup);
+        const marker = L.marker(
+    [park.lat, park.lng],
+    { icon: createParkIcon(park.status) }
+)
+    .addTo(map)
+    .bindPopup(popup);
 
         markers.push(marker);
     });
