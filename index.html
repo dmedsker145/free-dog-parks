@@ -388,6 +388,10 @@ document.querySelectorAll(".route-distance button").forEach(button => {
 
         routeMiles = Number(this.dataset.miles);
 
+        if (activeRouteCoordinates) {
+    renderMarkers();
+}
+
     });
 });
 
