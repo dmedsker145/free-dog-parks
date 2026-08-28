@@ -464,6 +464,8 @@ function parkIsNearRoute(park) {
 
     const milesFromRoute = closestDistance / 1609.344;
 
+    console.log(park.name, milesFromRoute);
+
      return milesFromRoute <= routeMiles;
 }
 function renderMarkers() {
