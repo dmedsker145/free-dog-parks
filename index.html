@@ -498,7 +498,7 @@ function renderMarkers() {
         markers.push(marker);
     });
     
-    if (markers.length > 0) {
+    if (markers.length > 0 && !activeRouteCoordinates) {
     const group = L.featureGroup(markers);
     map.fitBounds(group.getBounds(), {
         padding: [40, 40],
