@@ -376,6 +376,21 @@ let activeFilters = {
     rv: false
 };
 
+let routeMiles = 5;
+
+document.querySelectorAll(".route-distance button").forEach(button => {
+    button.addEventListener("click", function() {
+
+        document.querySelectorAll(".route-distance button")
+            .forEach(btn => btn.classList.remove("active"));
+
+        this.classList.add("active");
+
+        routeMiles = Number(this.dataset.miles);
+
+    });
+});
+
 function createParkIcon(status) {
 
     let color;
