@@ -58,6 +58,29 @@ h1 {
     border-color: #217a32;
 }
 
+.search-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.search-row input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.search-row button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    background: #217a32;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
 #map {
     height: calc(100vh - 120px);
     width: 100%;
@@ -120,6 +143,11 @@ h1 {
     <div class="subtitle">
         V1 Prototype • Northeastern Indiana
     </div>
+
+    <div class="search-row">
+    <input id="destinationInput" type="text" placeholder="Search city or destination">
+    <button id="destinationBtn">SEARCH</button>
+</div>
 
     <div class="filters">
         <div class="filter" id="nearMeBtn">NEAR ME</div>
@@ -334,6 +362,55 @@ document.querySelectorAll(".filter").forEach(function(button) {
         renderMarkers();
     });
 });
+
+document.getElementById("destinationBtn")
+    .addEventListener("click", searchDestination);
+
+document.getElementById("destinationInput")
+    .addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            searchDestination();
+        }
+    });
+
+async function searchDestination() {
+
+    const query =
+        document.getElementById("destinationInput").value.trim();
+
+    if (!query) {
+        alert("Enter a city or destination.");
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" +
+            encodeURIComponent(query)
+        );
+
+        const results = await response.json();
+
+        if (results.length === 0) {
+            alert("I couldn't find that destination.");
+            return;
+        }
+
+        const lat = parseFloat(results[0].lat);
+        const lng = parseFloat(results[0].lon);
+
+        map.setView([lat, lng], 11);
+
+        L.popup()
+            .setLatLng([lat, lng])
+            .setContent("<b>" + results[0].display_name + "</b>")
+            .openOn(map);
+
+    } catch (error) {
+        alert("Destination search isn't available right now.");
+    }
+}
 
 renderMarkers();
     document.getElementById("nearMeBtn").addEventListener("click", function() {
