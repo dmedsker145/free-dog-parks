@@ -599,6 +599,8 @@ document.getElementById("findRouteBtn")
                 opacity: 0.8
             }).addTo(map);
 
+            renderMarkers();
+
             map.fitBounds(routeLine.getBounds(), {
                 padding: [30, 30]
             });
