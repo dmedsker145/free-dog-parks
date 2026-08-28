@@ -592,8 +592,7 @@ document.getElementById("findRouteBtn")
             }).addTo(map);
 
             map.fitBounds(routeLine.getBounds(), {
-                paddingTopLeft: [40, 40]
-                paddingBottomRight: [40, 100]
+                padding: [30, 30]
             });
 
         } catch (error) {
