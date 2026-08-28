@@ -506,6 +506,25 @@ document.getElementById("destinationInput")
         }
     });
 
+document.getElementById("findRouteBtn")
+    .addEventListener("click", function() {
+
+        const from = document.getElementById("routeFrom").value.trim();
+        const to = document.getElementById("routeTo").value.trim();
+
+        if (!from || !to) {
+            alert("Please enter both a starting point and destination.");
+            return;
+        }
+
+        alert(
+            "Route request received!\n\n" +
+            "From: " + from +
+            "\nTo: " + to +
+            "\nDistance from route: " + routeMiles + " miles"
+        );
+    });
+
 async function searchDestination() {
 
     const query =
