@@ -332,6 +332,7 @@ const parks = [
         water: "Unknown",
         wasteBags: "Unknown",
         parking: "Unknown",
+        hours: "7:00 AM - 8:00 PM",
         info: "FREE • Off-leash dog park",
         location: "Avilla, Indiana"
     },
@@ -518,6 +519,7 @@ function renderMarkers() {
     <p>Water: ${park.water || "Unknown"}</p>
     <p>Waste Bags: ${park.wasteBags || "Unknown"}</p>
     <p>Parking: ${park.parking || "Unknown"}</p>
+    <p>Hours: ${park.hours || "Unknown"}</p>
 
     <a class="directions"
        href="${directions}"
