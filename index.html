@@ -504,43 +504,27 @@ function renderMarkers() {
             "https://www.google.com/maps/search/?api=1&query=" +
             encodeURIComponent(park.name + " " + park.location);
 
-        let popup;
+        let popup = `
+    <div class="park-name">${park.name}</div>
+    <p class="status">${park.statusLabel}</p>
+    <p><strong>📍 ${park.location}</strong></p>
 
-if (park.name === "Crump's Canine Corral") {
+    <p>${park.offleash ? "✓ Off-leash" : "Leash rules: Unknown"}</p>
+    <p>${park.fenced ? "✓ Fenced" : "Fencing: Unknown"}</p>
+    <p>Small/Large: ${
+        park.separated === true ? "Separate areas" : 
+        park.separated === false ? "No separate areas" : "Unknown"
+    }</p>
+    <p>Water: ${park.water || "Unknown"}</p>
+    <p>Waste Bags: ${park.wasteBags || "Unknown"}</p>
+    <p>Parking: ${park.parking || "Unknown"}</p>
 
-    popup = `
-        <div class="park-name">${park.name}</div>
-        <p class="status">${park.statusLabel}</p>
-        <p><strong>📍 ${park.location}</strong></p>
-
-        <p>✓ Off-leash</p>
-        <p>✓ Fenced</p>
-        <p>Small/Large: Unknown</p>
-        <p>Water: Unknown</p>
-        <p>Parking: Unknown</p>
-
-        <a class="directions"
-           href="${directions}"
-           target="_blank">
-           DIRECTIONS
-        </a>
-    `;
-
-} else {
-
-    popup = `
-        <div class="park-name">${park.name}</div>
-        <p class="status">${park.statusLabel}</p>
-        <p>${park.info}</p>
-        <p>${park.location}</p>
-
-        <a class="directions"
-           href="${directions}"
-           target="_blank">
-           DIRECTIONS
-        </a>
-    `;
-}
+    <a class="directions"
+       href="${directions}"
+       target="_blank">
+       DIRECTIONS
+    </a>
+`;
 
         const marker = L.marker(
     [park.lat, park.lng],
