@@ -301,71 +301,94 @@ L.tileLayer(
 
 const parks = [
     {
-    name: "Buth Field Dog Park",
-    lat: 43.1608,
-    lng: -85.7076,
-    status: "free",
-    statusLabel: "🟢 CONFIRMED FREE",
-    offleash: true,
-    lighted: false,
-    separated: true,
-    rv: false,
-    info: "Off-leash • Fully fenced • Separate small & large dog areas • Waste station • Seasonal water",
-    location: "Sparta, Michigan"
-},
+        name: "Buth Field Dog Park",
+        lat: 43.1608,
+        lng: -85.7076,
+        status: "free",
+        statusLabel: "🟢 CONFIRMED FREE",
+        offleash: true,
+        fenced: true,
+        lighted: false,
+        separated: true,
+        rv: false,
+        water: "Seasonal water",
+        wasteBags: true,
+        parking: "Parking available behind nearby businesses",
+        info: "Off-leash • Fully fenced • Separate small & large dog areas • Waste station • Seasonal water",
+        location: "Sparta, Michigan"
+    },
 
-{
-    name: "Crump's Canine Corral",
-    lat: 41.3658,
-    lng: -85.2386,
-    status: "free",
-    statusLabel: "🟢 CONFIRMED FREE",
-    offleash: true,
-    lighted: false,
-    separated: false,
-    rv: false,
-    info: "FREE • Off-leash dog park",
-    location: "Avilla, Indiana"
-},
-{
-    name: "Pawster Park Pooch Playground",
-    lat: 41.03874,
-    lng: -85.16335,
-    status: "fee",
-    statusLabel: "🔴 FEE REQUIRED",
-    offleash: true,
-    lighted: false,
-    separated: false,
-    rv: false,
-    info: "Pooch Pass required • Off-leash • Fenced",
-    location: "Fort Wayne, Indiana"
-},
-{
-    name: "Camp Canine",
-    lat: 41.11290,
-    lng: -85.11760,
-    status: "fee",
-    statusLabel: "🔴 FEE REQUIRED",
-    offleash: true,
-    lighted: false,
-    separated: false,
-    rv: false,
-    info: "Off-leash • Fenced • Drinking fountains",
-    location: "Fort Wayne, Indiana"
-},
-{
-    name: "Thomas Park Dog Park",
-    lat: 41.37156,
-    lng: -85.05313,
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-    offleash: true,
-    lighted: false,
-    separated: true,
-    rv: false,
-    info: "Off-leash • Fenced • Separate small & large dog areas",
-    location: "Auburn, Indiana"
-}
+    {
+        name: "Crump's Canine Corral",
+        lat: 41.3658,
+        lng: -85.2386,
+        status: "free",
+        statusLabel: "🟢 CONFIRMED FREE",
+        offleash: true,
+        fenced: true,
+        lighted: false,
+        separated: "unknown",
+        rv: false,
+        water: "Unknown",
+        wasteBags: "unknown",
+        parking: "Unknown",
+        info: "FREE • Off-leash dog park",
+        location: "Avilla, Indiana"
+    },
+
+    {
+        name: "Pawster Park Pooch Playground",
+        lat: 41.03874,
+        lng: -85.16335,
+        status: "fee",
+        statusLabel: "🔴 FEE REQUIRED",
+        offleash: true,
+        fenced: true,
+        lighted: false,
+        separated: false,
+        rv: false,
+        water: "Unknown",
+        wasteBags: false,
+        parking: "Unknown",
+        info: "Pooch Pass required • Off-leash • Fenced",
+        location: "Fort Wayne, Indiana"
+    },
+
+    {
+        name: "Camp Canine",
+        lat: 41.11290,
+        lng: -85.11760,
+        status: "fee",
+        statusLabel: "🔴 FEE REQUIRED",
+        offleash: true,
+        fenced: true,
+        lighted: false,
+        separated: false,
+        rv: false,
+        water: "Drinking fountains",
+        wasteBags: "unknown",
+        parking: "Unknown",
+        info: "Off-leash • Fenced • Drinking fountains",
+        location: "Fort Wayne, Indiana"
+    },
+
+    {
+        name: "Thomas Park Dog Park",
+        lat: 41.37156,
+        lng: -85.05313,
+        status: "unknown",
+        statusLabel: "🟡 NEEDS VERIFICATION",
+        offleash: true,
+        fenced: true,
+        lighted: false,
+        separated: true,
+        rv: false,
+        water: "Unknown",
+        wasteBags: "unknown",
+        parking: "Grass/gravel parking",
+        info: "Off-leash • Fenced • Separate small & large dog areas",
+        location: "Auburn, Indiana"
+    }
 ];
 
 let activeFilters = {
