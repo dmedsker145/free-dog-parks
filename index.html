@@ -525,6 +525,8 @@ function renderMarkers() {
     <p>Waste Bags: ${park.wasteBags || "Unknown"}</p>
     <p>Parking: ${park.parking || "Unknown"}</p>
     <p>Hours: ${park.hours || "Unknown"}</p>
+    ${park.accessNote ? `<p><strong>Access:</strong> ${park.accessNote}</p>` : ""}
+    ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
 
     <a class="directions"
        href="${directions}"
