@@ -315,6 +315,18 @@ L.tileLayer(
     }
 ).addTo(map);
 
+const toggleControls = document.getElementById("toggleControls");
+
+toggleControls.addEventListener("click", () => {
+    const header = document.querySelector("header");
+    header.classList.toggle("controls-hidden");
+
+    const hidden = header.classList.contains("controls-hidden");
+    toggleControls.textContent = hidden ? "SHOW CONTROLS" : "HIDE CONTROLS";
+
+    setTimeout(() => map.invalidateSize(), 100);
+});
+
 const parks = [
     {
         name: "Buth Field Dog Park",
