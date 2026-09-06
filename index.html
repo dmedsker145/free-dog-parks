@@ -594,7 +594,17 @@ function renderMarkers() {
     </a>
     
     <a class="report-update"
-   href="mailto:?subject=Dog Park Update: ${encodeURIComponent(park.name)}"
+href="mailto:?subject=${encodeURIComponent(`Dog Park Update: ${park.name}`)}&body=${encodeURIComponent(`What changed?
+
+Fee/free status:
+Hours:
+Water:
+Waste bags:
+Parking/RV access:
+Lighting:
+Small/Large separation:
+Other notes:`)}"
+
    target="_blank">
    REPORT AN UPDATE
     </a>
