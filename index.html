@@ -308,9 +308,13 @@ const parks = [
         statusLabel: "🟢 CONFIRMED FREE",
         offleash: true,
         fenced: true,
-        lighted: false,
+        lighted: null,
         separated: true,
-        rv: false,
+        rv: true,
+            parkingVanClassB: "Verified",
+            parkingClassC: "Likely suitable",
+            parkingClassA: "Unknown",
+            parkingPullBehind: "May be difficult",
         water: "Seasonal dog drinking fountain",
         wasteBags: "Waste station available",
         parking: "Free parking behind 476 E Division",
@@ -524,9 +528,13 @@ function renderMarkers() {
     <p>Water: ${park.water || "Unknown"}</p>
     <p>Waste Bags: ${park.wasteBags || "Unknown"}</p>
     <p>Parking: ${park.parking || "Unknown"}</p>
+        ${park.parkingVanClassB ? `<p>🚐 Van/Class B: ${park.parkingVanClassB}</p>` : ""}
+        ${park.parkingClassC ? `<p>🚍 Class C: ${park.parkingClassC}</p>` : ""}
+        ${park.parkingClassA ? `<p>🚌 Class A: ${park.parkingClassA}</p>` : ""}
+        ${park.parkingPullBehind ? `<p>🛻 Pull-behind: ${park.parkingPullBehind}</p>` : ""}
     <p>Hours: ${park.hours || "Unknown"}</p>
-    ${park.accessNote ? `<p><strong>Access:</strong> ${park.accessNote}</p>` : ""}
-    ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
+        ${park.accessNote ? `<p><strong>Access:</strong> ${park.accessNote}</p>` : ""}
+        ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
 
     <a class="directions"
        href="${directions}"
