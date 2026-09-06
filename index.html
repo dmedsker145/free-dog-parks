@@ -287,6 +287,14 @@ h1 {
         <div class="filter" data-filter="rv">RV/VAN</div>
     </div>
 
+    <div id="rvTypeFilters" class="rv-type-filters" style="display:none;">
+    <button data-rvtype="parkingVanClassB">VAN/CLASS B</button>
+    <button data-rvtype="parkingClassC">CLASS C</button>
+    <button data-rvtype="parkingClassA">CLASS A</button>
+    <button data-rvtype="parkingPullBehind">PULL-BEHIND</button>
+    <button data-rvtype="parkingSemi">SEMI</button>
+</div>
+
 </header>
     
     <button id="toggleControls" class="toggle-controls">HIDE CONTROLS</button>
@@ -599,8 +607,12 @@ document.querySelectorAll(".filter").forEach(function(button) {
         const filterName = button.dataset.filter;
 
         activeFilters[filterName] = !activeFilters[filterName];
-
         button.classList.toggle("active");
+        
+if (filterName === "rv") {
+    const rvTypeFilters = document.getElementById("rvTypeFilters");
+    rvTypeFilters.style.display = activeFilters.rv ? "flex" : "none";
+}
 
         renderMarkers();
     });
