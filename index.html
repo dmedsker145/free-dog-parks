@@ -134,6 +134,18 @@ h1 {
     font-weight: bold;
 }
 
+.report-update {
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 8px;
+    padding: 8px 12px;
+    border: 1px solid #217a32;
+    color: #217a32;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
 .route-box {
     margin-top: 10px;
     padding: 12px;
@@ -579,6 +591,12 @@ function renderMarkers() {
        href="${directions}"
        target="_blank">
        DIRECTIONS
+    </a>
+    
+    <a class="report-update"
+   href="mailto:?subject=Dog Park Update: ${encodeURIComponent(park.name)}"
+   target="_blank">
+   REPORT AN UPDATE
     </a>
 `;
 
