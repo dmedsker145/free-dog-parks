@@ -226,6 +226,20 @@ h1 {
     vertical-align: middle;
 }
 
+.controls-hidden .search-row,
+.controls-hidden .route-box,
+.controls-hidden .filters {
+    display: none;
+}
+
+.toggle-controls {
+    float: right;
+    margin: 6px 12px 6px 0;
+    padding: 6px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+    
 </style>
 </head>
 
@@ -274,6 +288,8 @@ h1 {
         <div class="filter" data-filter="separated">SMALL/LARGE</div>
         <div class="filter" data-filter="rv">RV/VAN</div>
     </div>
+
+    <button id="toggleControls" class="toggle-controls">HIDE CONTROLS</button>
 </header>
 
 <div id="map"></div>
