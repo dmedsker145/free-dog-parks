@@ -884,6 +884,17 @@ renderMarkers();
 
             const userLat = position.coords.latitude;
             const userLng = position.coords.longitude;
+            
+            // Leave route mode when using NEAR ME
+            activeRouteCoordinates = null;
+            
+            if (routeLine) {
+                map.removeLayer(routeLine);
+                routeLine = null;
+            }
+            
+            // Redraw all parks using the current filters
+            renderMarkers();
 
             if (userMarker) {
                 map.removeLayer(userMarker);
