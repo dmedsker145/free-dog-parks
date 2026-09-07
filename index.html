@@ -374,6 +374,8 @@ const parks = [
         parking: "Free parking behind 476 E Division",
         info: "Off-leash • Fully fenced • Separate small & large dog areas • Waste station • Seasonal water",
         location: "Sparta, Michigan"
+        lastVerified: "September 2026",
+        source: "Village of Sparta"
     },
 
     {
@@ -600,6 +602,9 @@ function renderMarkers() {
         ${park.parkingClassA ? `<p>🚌 Class A: ${park.parkingClassA}</p>` : ""}
         ${park.parkingPullBehind ? `<p>🛻 Pull-behind: ${park.parkingPullBehind}</p>` : ""}
     <p>Hours: ${park.hours || "Unknown"}</p>
+    <p>Last Verified: ${park.lastVerified || "Not yet verified"}</p>
+    <p>Source: ${park.source || "Source pending"}</p>
+    
         ${park.accessNote ? `<p><strong>Access:</strong> ${park.accessNote}</p>` : ""}
         ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
 
