@@ -375,7 +375,8 @@ const parks = [
         info: "Off-leash • Fully fenced • Separate small & large dog areas • Waste station • Seasonal water",
         location: "Sparta, Michigan",
         lastVerified: "September 2026",
-        source: "Village of Sparta"
+        source: "Village of Sparta",
+        sourceUrl: "https://spartami.org/parks-playgrounds.php"
     },
 
     {
@@ -615,7 +616,11 @@ function renderMarkers() {
         ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
     
     <p>Last Verified: ${park.lastVerified || "Not yet verified"}</p>
-    <p>Source: ${park.source || "Source pending"}</p>
+    <p>Source: ${
+    park.sourceUrl
+        ? `<a href="${park.sourceUrl}" target="_blank" rel="noopener noreferrer">${park.source || "Official source"}</a>`
+        : (park.source || "Source pending")
+}</p>
     
     <a class="directions"
        href="${directions}"
