@@ -603,6 +603,7 @@ function renderMarkers() {
         park.separated === true ? "Separate areas" : 
         park.separated === false ? "No separate areas" : "Unknown"
     }</p>
+    
     <p>Water: ${park.water || "Unknown"}</p>
     <p>Waste Bags: ${park.wasteBags || "Unknown"}</p>
     <p>Parking: ${park.parking || "Unknown"}</p>
@@ -621,6 +622,10 @@ function renderMarkers() {
         ? `<a href="${park.sourceUrl}" target="_blank" rel="noopener noreferrer">${park.source || "Official source"}</a>`
         : (park.source || "Source pending")
 }</p>
+
+<p class="source-note">
+    Check official source for current park rules, restrictions & closures.
+</p>
     
     <a class="directions"
        href="${directions}"
