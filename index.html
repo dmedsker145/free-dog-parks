@@ -466,9 +466,18 @@ function parkIsNearRoute(park) {
 
      return milesFromRoute <= routeMiles;
 }
+
 function renderMarkers() {
     markers.forEach(marker => map.removeLayer(marker));
     markers = [];
+
+    // Three-state display:
+    // true = Yes, false = No, null/undefined = Unknown
+    function threeState(value, yesText, noText, unknownText) {
+        if (value === true) return `✓ ${yesText}`;
+        if (value === false) return `✕ ${noText}`;
+        return `? ${unknownText}`;
+    }
 
     parks.forEach(function(park) {
 
@@ -479,51 +488,180 @@ function renderMarkers() {
             "https://www.google.com/maps/search/?api=1&query=" +
             encodeURIComponent(park.name + " " + park.location);
 
+        const offLeashText = threeState(
+            park.offleash,
+            "Off-leash",
+            "Not off-leash",
+            "Leash rules unknown"
+        );
+
+        const fencedText = threeState(
+            park.fenced,
+            "Fenced",
+            "Not fenced",
+            "Fencing unknown"
+        );
+
+        const lightedText = threeState(
+            park.lighted,
+            "Lighted",
+            "Not lighted",
+            "Lighting unknown"
+        );
+
+        const separatedText = threeState(
+            park.separated,
+            "Separate small/large areas",
+            "No separate small/large areas",
+            "Small/large separation unknown"
+        );
+
+        const rvLines = [
+            park.parkingVanClassB
+                ? `🚐 <strong>Van/Class B:</strong> ${park.parkingVanClassB}`
+                : "",
+            park.parkingClassC
+                ? `🚍 <strong>Class C:</strong> ${park.parkingClassC}`
+                : "",
+            park.parkingClassA
+                ? `🚌 <strong>Class A:</strong> ${park.parkingClassA}`
+                : "",
+            park.parkingPullBehind
+                ? `🛻 <strong>Pull-behind:</strong> ${park.parkingPullBehind}`
+                : "",
+            park.parkingSemi
+                ? `🚛 <strong>Semi:</strong> ${park.parkingSemi}`
+                : ""
+        ].filter(Boolean);
+
+        const rvSection = rvLines.length
+            ? `
+                <div style="
+                    margin-top: 8px;
+                    padding: 8px 10px;
+                    background: #f4f6f4;
+                    border-radius: 8px;
+                    line-height: 1.6;
+                ">
+                    ${rvLines.join("<br>")}
+                </div>
+              `
+            : "";
+
         let popup = `
-    <div class="park-name">${park.name}</div>
-    <p class="status">${park.statusLabel}</p>
-    <p>Type: ${park.parkType || "Unknown"}</p>
-    <p><strong>📍 ${park.location}</strong></p>
+            <div style="min-width: 245px; max-width: 310px;">
 
-    <p>${park.offleash ? "✓ Off-leash" : "Leash rules: Unknown"}</p>
-    <p>${park.fenced ? "✓ Fenced" : "Fencing: Unknown"}</p>
-    <p>Small/Large: ${
-        park.separated === true ? "Separate areas" : 
-        park.separated === false ? "No separate areas" : "Unknown"
-    }</p>
-    
-    <p>Water: ${park.water || "Unknown"}</p>
-    <p>Waste Bags: ${park.wasteBags || "Unknown"}</p>
-    <p>Parking: ${park.parking || "Unknown"}</p>
-        ${park.parkingVanClassB ? `<p>🚐 Van/Class B: ${park.parkingVanClassB}</p>` : ""}
-        ${park.parkingClassC ? `<p>🚍 Class C: ${park.parkingClassC}</p>` : ""}
-        ${park.parkingClassA ? `<p>🚌 Class A: ${park.parkingClassA}</p>` : ""}
-        ${park.parkingPullBehind ? `<p>🛻 Pull-behind: ${park.parkingPullBehind}</p>` : ""}
-    <p>Hours: ${park.hours || "Unknown"}</p>
+                <div class="park-name" style="
+                    font-size: 18px;
+                    line-height: 1.2;
+                    margin-bottom: 5px;
+                ">
+                    ${park.name}
+                </div>
 
-        ${park.accessNote ? `<p><strong>Access:</strong> ${park.accessNote}</p>` : ""}
-        ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
-    
-    <p>Last Verified: ${park.lastVerified || "Not yet verified"}</p>
-    <p>Verification: ${park.verificationMethod || "Unknown"}</p>
-    <p>Source: ${
-    park.sourceUrl
-        ? `<a href="${park.sourceUrl}" target="_blank" rel="noopener noreferrer">${park.source || "Official source"}</a>`
-        : (park.source || "Source pending")
-}</p>
+                <div class="status" style="margin-bottom: 4px;">
+                    ${park.statusLabel}
+                </div>
 
-<p class="source-note">
-    Check official source for current park rules, restrictions & closures.
-</p>
-    
-    <a class="directions"
-       href="${directions}"
-       target="_blank">
-       DIRECTIONS
-    </a>
-    
-    <a class="report-update"
-href="mailto:updates@freedogparks.com?subject=${encodeURIComponent(`Dog Park Update: ${park.name}`)}&body=${encodeURIComponent(`What changed?
+                <div style="
+                    color: #666;
+                    font-size: 13px;
+                    margin-bottom: 8px;
+                ">
+                    ${park.parkType || "Unknown"}<br>
+                    📍 ${park.location || "Location unknown"}
+                </div>
+
+                <hr style="
+                    border: 0;
+                    border-top: 1px solid #ddd;
+                    margin: 8px 0;
+                ">
+
+                <div style="line-height: 1.65;">
+                    ${offLeashText}<br>
+                    ${fencedText}<br>
+                    ${lightedText}<br>
+                    ${separatedText}
+                </div>
+
+                <div style="
+                    margin-top: 9px;
+                    line-height: 1.6;
+                ">
+                    💧 <strong>Water:</strong> ${park.water || "Unknown"}<br>
+                    🗑️ <strong>Waste Bags:</strong> ${park.wasteBags || "Unknown"}<br>
+                    🅿️ <strong>Parking:</strong> ${park.parking || "Unknown"}
+                </div>
+
+                ${rvSection}
+
+                <div style="
+                    margin-top: 9px;
+                    line-height: 1.6;
+                ">
+                    🕒 <strong>Hours:</strong> ${park.hours || "Unknown"}
+                    ${
+                        park.accessNote
+                            ? `<br><strong>Access:</strong> ${park.accessNote}`
+                            : ""
+                    }
+                    ${
+                        park.seasonalClosure
+                            ? `<br>⚠️ <strong>Seasonal Closure:</strong> ${park.seasonalClosure}`
+                            : ""
+                    }
+                </div>
+
+                <hr style="
+                    border: 0;
+                    border-top: 1px solid #ddd;
+                    margin: 9px 0;
+                ">
+
+                <div style="
+                    color: #666;
+                    font-size: 12px;
+                    line-height: 1.5;
+                ">
+                    <strong>Last Verified:</strong>
+                    ${park.lastVerified || "Not yet verified"}<br>
+
+                    <strong>Verification:</strong>
+                    ${park.verificationMethod || "Unknown"}<br>
+
+                    <strong>Source:</strong>
+                    ${
+                        park.sourceUrl
+                            ? `<a href="${park.sourceUrl}"
+                                  target="_blank"
+                                  rel="noopener noreferrer">
+                                  ${park.source || "Official source"}
+                               </a>`
+                            : (park.source || "Source pending")
+                    }
+
+                    <div style="
+                        margin-top: 5px;
+                        font-style: italic;
+                    ">
+                        Check official source for current park rules,
+                        restrictions & closures.
+                    </div>
+                </div>
+
+                <div style="margin-top: 9px;">
+                    <a class="directions"
+                       href="${directions}"
+                       target="_blank">
+                       DIRECTIONS
+                    </a>
+
+                    <a class="report-update"
+                       href="mailto:updates@freedogparks.com?subject=${encodeURIComponent(
+                           `Dog Park Update: ${park.name}`
+                       )}&body=${encodeURIComponent(
+                           `What changed?
 
 Fee/free status:
 Hours:
@@ -532,30 +670,34 @@ Waste bags:
 Parking/RV access:
 Lighting:
 Small/Large separation:
-Other notes:`)}"
+Other notes:`
+                       )}"
+                       target="_blank">
+                       REPORT AN UPDATE
+                    </a>
+                </div>
 
-   target="_blank">
-   REPORT AN UPDATE
-    </a>
-`;
+            </div>
+        `;
 
         const marker = L.marker(
-    [park.lat, park.lng],
-    { icon: createParkIcon(park.status) }
-)
-    .addTo(map)
-    .bindPopup(popup);
+            [park.lat, park.lng],
+            { icon: createParkIcon(park.status) }
+        )
+        .addTo(map)
+        .bindPopup(popup);
 
         markers.push(marker);
     });
-    
+
     if (markers.length > 0 && !activeRouteCoordinates) {
-    const group = L.featureGroup(markers);
-    map.fitBounds(group.getBounds(), {
-        padding: [40, 40],
-        maxZoom: 11
-    });
-}
+        const group = L.featureGroup(markers);
+
+        map.fitBounds(group.getBounds(), {
+            padding: [40, 40],
+            maxZoom: 11
+        });
+    }
 }
 
 document.querySelectorAll(".filter").forEach(function(button) {
