@@ -610,12 +610,13 @@ function renderMarkers() {
         ${park.parkingClassA ? `<p>🚌 Class A: ${park.parkingClassA}</p>` : ""}
         ${park.parkingPullBehind ? `<p>🛻 Pull-behind: ${park.parkingPullBehind}</p>` : ""}
     <p>Hours: ${park.hours || "Unknown"}</p>
+
+        ${park.accessNote ? `<p><strong>Access:</strong> ${park.accessNote}</p>` : ""}
+        ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
+    
     <p>Last Verified: ${park.lastVerified || "Not yet verified"}</p>
     <p>Source: ${park.source || "Source pending"}</p>
     
-        ${park.accessNote ? `<p><strong>Access:</strong> ${park.accessNote}</p>` : ""}
-        ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
-
     <a class="directions"
        href="${directions}"
        target="_blank">
