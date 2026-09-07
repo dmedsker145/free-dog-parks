@@ -356,6 +356,7 @@ toggleControls.addEventListener("click", () => {
 const parks = [
     {
         name: "Buth Field Dog Park",
+        parkType: "Public Dog Park",
         lat: 43.1608,
         lng: -85.7076,
         status: "free",
@@ -381,6 +382,7 @@ const parks = [
 
     {
         name: "Crump's Canine Corral",
+        parkType: "Public Dog Park",
         lat: 41.3658,
         lng: -85.2386,
         status: "free",
@@ -402,7 +404,82 @@ const parks = [
     },
 
     {
+        name: "Churubusco Dog Park",
+        parkType: "Public Dog Park",
+        lat: 41.2319,
+        lng: -85.3186,
+        status: "unknown",
+        statusLabel: "🟡 NEEDS VERIFICATION",
+        offleash: true,
+        fenced: true,
+        lighted: null,
+        separated: null,
+        rv: null,
+        water: "Unknown",
+        wasteBags: "Waste receptacles available",
+        parking: "Parking available at Churubusco Community Park",
+        hours: "7:00 AM - 11:00 PM",
+        info: "Public leash-free dog park • Maximum 2 dogs per handler • Tennis balls only",
+        location: "605 John Krieger Dr, Churubusco, Indiana",
+        lastVerified: "September 2026",
+        source: "Town of Churubusco",
+        sourceUrl: "https://townofchurubusco.com/2021/10/08/notice-public-hearing-ordinance-2021-15-ordinance-establishing-rules-leash-free-dog-parks-within-town-churubusco/"
+    },
+
+    {
+        name: "Rudy's Dog Park",
+        parkType: "Membership Dog Park",
+        lat: 41.2794,
+        lng: -85.8236,
+        status: "fee",
+        statusLabel: "🔴 FEE REQUIRED",
+        offleash: true,
+        fenced: true,
+        lighted: null,
+        separated: true,
+        rv: null,
+        water: "Unknown",
+        wasteBags: "Unknown",
+        parking: "Parking area available",
+        hours: "Dawn to dusk",
+        info: "Membership required • Key-fob access • Separate small-dog and all-size areas",
+        location: "E County Road 300 N & N County Road 100 E, Warsaw, Indiana",
+        lastVerified: "September 2026",
+        source: "Rudy's Dog Park",
+        sourceUrl: "https://www.rudysdogpark.org/about.html"
+    },
+
+    {
+        name: "Love's Travel Stop #633 Dog Park",
+        parkType: "Travel Stop Dog Park",
+        lat: 41.362295,
+        lng: -86.349031,
+        status: "free",
+        statusLabel: "🟢 CONFIRMED FREE",
+        offleash: true,
+        fenced: true,
+        lighted: null,
+        separated: null,
+        rv: true,
+        parkingVanClassB: "Verified",
+        parkingClassC: "Verified",
+        parkingClassA: "Verified",
+        parkingPullBehind: "Verified",
+        parkingSemi: "Verified",
+        water: "Unknown",
+        wasteBags: "Unknown",
+        parking: "Truck and RV-accessible travel stop parking",
+        hours: "24 hours",
+        info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+        location: "2952 Gary Drive, Plymouth, Indiana",
+        lastVerified: "September 2026",
+        source: "Love's Travel Stops",
+        sourceUrl: "https://www.loves.com/locations/in/plymouth/loves-travel-stop-plymouth-633"
+    },    
+
+    {
         name: "Pawster Park Pooch Playground",
+        parkType: "Membership Dog Park",
         lat: 41.03874,
         lng: -85.16335,
         status: "fee",
@@ -425,6 +502,7 @@ const parks = [
 
     {
         name: "Camp Canine",
+        parkType: "Membership Dog Park",
         lat: 41.11290,
         lng: -85.11760,
         status: "fee",
@@ -453,6 +531,7 @@ const parks = [
 
     {
         name: "Thomas Park Dog Park",
+        parkType: "Public Dog Park",
         lat: 41.37156,
         lng: -85.05313,
         status: "unknown",
