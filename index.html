@@ -1104,6 +1104,7 @@ function renderMarkers() {
         ${park.seasonalClosure ? `<p><strong>⚠️ Seasonal Closure:</strong> ${park.seasonalClosure}</p>` : ""}
     
     <p>Last Verified: ${park.lastVerified || "Not yet verified"}</p>
+    <p>Verification: ${park.verificationMethod || "Unknown"}</p>
     <p>Source: ${
     park.sourceUrl
         ? `<a href="${park.sourceUrl}" target="_blank" rel="noopener noreferrer">${park.source || "Official source"}</a>`
