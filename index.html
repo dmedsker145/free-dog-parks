@@ -524,6 +524,15 @@ function parkMatchesFilters(park) {
     if (activeFilters.lighted && !park.lighted) return false;
     if (activeFilters.separated && !park.separated) return false;
     if (activeFilters.rv && !park.rv) return false;
+    
+    if (activeFilters.rv && activeRVType) {
+    const rvSuitability = park[activeRVType];
+
+    if (
+        rvSuitability !== "Verified" &&
+        rvSuitability !== "Likely suitable"
+    ) return false;
+}
     return true;
 }
 let activeRouteCoordinates = null;
@@ -640,7 +649,36 @@ document.querySelectorAll(".filter").forEach(function(button) {
 if (filterName === "rv") {
     const rvTypeFilters = document.getElementById("rvTypeFilters");
     rvTypeFilters.style.display = activeFilters.rv ? "flex" : "none";
+
+    if (!activeFilters.rv) {
+    activeRVType = null;
+
+    document.querySelectorAll("#rvTypeFilters button")
+        .forEach(btn => btn.classList.remove("active"));
+    }
 }
+
+        renderMarkers();
+    });
+});
+
+let activeRVType = null;
+
+document.querySelectorAll("#rvTypeFilters button").forEach(function(button) {
+    button.addEventListener("click", function() {
+
+        const rvType = button.dataset.rvtype;
+
+        if (activeRVType === rvType) {
+            activeRVType = null;
+            button.classList.remove("active");
+        } else {
+            document.querySelectorAll("#rvTypeFilters button")
+                .forEach(btn => btn.classList.remove("active"));
+
+            activeRVType = rvType;
+            button.classList.add("active");
+        }
 
         renderMarkers();
     });
