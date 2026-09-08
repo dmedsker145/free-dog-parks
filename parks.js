@@ -597,7 +597,7 @@ const parks = [
         verificationMethod: "Official source",
         source: "City of Auburn Parks & Recreation",
         sourceUrl: "https://www.ci.auburn.in.us/Facilities/Facility/Details/Thomas-Park-5"
-    }
+    },
     
     {
         name: "Love's Travel Stop #729 Dog Park",
