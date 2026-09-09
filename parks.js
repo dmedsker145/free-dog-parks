@@ -785,6 +785,504 @@ const parks = [
     verificationMethod: "Official source + field verified",
     source: "Love's Travel Stops",
     sourceUrl: "https://www.loves.com/locations/600"
+},
+
+{
+    name: "Love's Travel Stop #336 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 42.280206,
+    lng: -84.930730,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "Truck-accessible travel stop parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "18720 Partello Rd, Marshall, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/marshall/loves-travel-stop-marshall-336"
+},
+
+{
+    name: "Love's Travel Stop #878 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 42.374803,
+    lng: -85.659821,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "RV-friendly and truck parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "7900 Adobe Road, Alamo, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/alamo/loves-travel-stop-alamo-878"
+},
+
+{
+    name: "Love's Travel Stop #785 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 42.785290,
+    lng: -84.668084,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "RV-friendly and truck parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "7300 West Grand River Ave, Grand Ledge, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/grand-ledge/loves-travel-stop-grand-ledge-785"
+},
+
+{
+    name: "Love's Travel Stop #743 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 43.348709,
+    lng: -83.861776,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "RV-friendly and truck parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "6560 Dixie Highway, Bridgeport, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/bridgeport/loves-travel-stop-bridgeport-743"
+},
+
+{
+    name: "Love's Travel Stop #742 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 42.782791,
+    lng: -86.023202,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "Truck-accessible travel stop parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "9790 Adams St, Holland, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/holland/loves-travel-stop-holland-742"
+},
+
+{
+    name: "Love's Travel Stop #757 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 42.076541,
+    lng: -83.667902,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "RV-friendly and truck parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "14137 Plank Road, Milan, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/milan/loves-travel-stop-milan-757"
+},
+
+{
+    name: "Love's Travel Stop #745 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 42.865257,
+    lng: -82.558108,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "RV-friendly and truck parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "1336 Wadhams Road, St. Clair, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/st.-clair/loves-travel-stop-st.-clair-745"
+},
+
+{
+    name: "South Westnedge Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.1938,
+    lng: -85.6329,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Water available",
+    wasteBags: "Waste stations available",
+    parking: "Parking available at South Westnedge Park",
+
+    hours: "Seasonal hours; 7:00 AM opening",
+
+    seasonalClosure: null,
+    accessNote: "Free to anyone age 16 or older; dogs must be at least 4 months old",
+
+    info: "FREE • Off-leash • Two fenced areas • Small-dog area under 25 lb • Water • Waste stations",
+
+    location: "9010 South Westnedge Avenue, Portage, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Portage",
+    sourceUrl: "https://www.portagemi.gov/Facilities/Facility/Details/-26"
+},
+
+{
+    name: "Heritage Park Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 41.9507,
+    lng: -84.9868,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Mutt Mitt dispensers and waste containers available",
+    parking: "Parking available",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Off-leash dog park • Separate small & large dog areas • Waste bag dispensers",
+
+    location: "1776 Heritage Park Drive, Coldwater, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Coldwater",
+    sourceUrl: "https://www.coldwater.org/Facilities/Facility/Details/Heritage-Park-1"
+},
+
+{
+    name: "Lawrence McKinley / Vet's Park Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.4197,
+    lng: -83.9206,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: null,
+    fenced: null,
+    lighted: true,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Unknown",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Unknown",
+
+    hours: "Sunrise to sunset",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "City dog park • Lighted facility",
+
+    location: "930 S 20th Street, Saginaw, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Saginaw",
+    sourceUrl: "https://www.saginaw-mi.com/DocumentCenter/View/475/City-of-Saginaw-Parks-and-Recreation-Plan-PDF?bidId="
+},
+
+    {
+    name: "Bay County Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.5755,
+    lng: -83.8738,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Accessible drinking fountain for people and dogs",
+    wasteBags: "Unknown",
+    parking: "Bay County Fairgrounds parking",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Public off-leash dog park",
+
+    info: "Off-leash • Fenced • Separate small-dog area • Agility equipment • Drinking fountain",
+
+    location: "800 Livingston Street, Bay City, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Bay County",
+    sourceUrl: "https://www.baycountymi.gov/Recreation/"
+},
+
+{
+    name: "Cass City Bark Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.5987,
+    lng: -83.1665,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Dog bowl fountain outside dog park",
+    wasteBags: "Waste receptacles available",
+    parking: "Municipal Park parking",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Fenced dog park • Separate large & small dog areas • Agility equipment • Water station",
+
+    location: "Scott McCullough Drive, Cass City, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Village of Cass City",
+    sourceUrl: "https://www.casscity.org/index.php/?id=4&option=com_sppagebuilder&view=page"
+},
+
+{
+    name: "Caseville Township Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.9417,
+    lng: -83.2738,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Unknown",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Water fountain reported",
+    wasteBags: "Waste bags reported",
+    parking: "Unknown",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Fenced off-leash dog park • Water and waste bags reported",
+
+    location: "N Caseville Road, Caseville, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + secondary amenity verification",
+    source: "Caseville Township / BringFido",
+    sourceUrl: "https://www.bringfido.com/attraction/37194"
 }
     
 ];
