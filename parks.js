@@ -713,5 +713,78 @@ const parks = [
         verificationMethod: "Official source + field verified",
         source: "Love's Travel Stops",
         sourceUrl: "https://www.loves.com/locations/in/leavenworth/loves-travel-stop-leavenworth-839"
-    }
+    },
+
+{
+    name: "Love's Travel Stop #254 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 39.615839,
+    lng: -86.478508,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "Truck-accessible travel stop parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "2299 Koger St, Mooresville, Indiana",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/in/mooresville/loves-travel-stop-mooresville-254"
+},
+
+{
+    name: "Love's Travel Stop #600 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 39.992515,
+    lng: -85.844343,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "Truck-accessible travel stop parking",
+    hours: "24 hours",
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+    location: "9000 Interpark Dr, Pendleton, Indiana",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/600"
+}
+    
 ];
