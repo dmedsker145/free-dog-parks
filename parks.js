@@ -1406,6 +1406,126 @@ const parks = [
     verificationMethod: "Official source + secondary amenity verification",
     source: "Caseville Township / BringFido",
     sourceUrl: "https://www.bringfido.com/attraction/37194"
+},
+
+{
+    name: "Chippewa Landing Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.48251,
+    lng: -83.38813,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Parking available at Chippewa Landing Park",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Dog park at Chippewa Landing Park • Fenced off-leash use reported",
+
+    location: "Chippewa Landing Park, Caro, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + secondary amenity verification",
+    source: "City of Caro / DogPack",
+    sourceUrl: "https://www.carocity.net/sites/g/files/vyhlif6776/f/pages/final_draft_five-yearparksandrecmasterplan.pdf"
+},
+
+{
+    name: "Fort Gratiot PetSafe Canine Commons",
+    parkType: "Public Dog Park",
+
+    lat: 43.04686,
+    lng: -82.47592,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Drinking fountain with self-draining dog bowl",
+    wasteBags: "Dog waste bags and trash receptacles available",
+    parking: "Parking available",
+    hours: "Dawn to dusk",
+
+    seasonalClosure: null,
+    accessNote: "Free public dog park • Open year round • Temporary maintenance closures possible",
+
+    info: "FREE • Two-acre dog park • Two fenced areas • Separate small/medium and medium/large areas • Water • Waste bags",
+
+    location: "4788 Parker Road, Fort Gratiot, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Fort Gratiot Charter Township",
+    sourceUrl: "https://www.fortgratiot.us/services/township-parks/fort-gratiot-petsafe-canine-commons-dog-park/"
+},
+
+{
+    name: "Love's Travel Stop #701 Dog Park",
+    parkType: "Travel Stop Dog Park",
+
+    lat: 42.98945,
+    lng: -82.92941,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Unknown",
+    wasteBags: "Waste bags and receptacles available",
+    parking: "RV-friendly parking • 105 truck spaces",
+    hours: "24 hours",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Love's Travel Stop • Fully fenced off-leash dog park • Open 24/7",
+
+    location: "3191 Capac Rd, Capac, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + field verified",
+    source: "Love's Travel Stops",
+    sourceUrl: "https://www.loves.com/locations/mi/capac/loves-travel-stop-capac-701"
 }
     
 ];
