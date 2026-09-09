@@ -427,7 +427,11 @@ function parkMatchesFilters(park) {
     if (activeFilters.offleash && !park.offleash) return false;
     if (activeFilters.lighted && !park.lighted) return false;
     if (activeFilters.separated && !park.separated) return false;
-    if (activeFilters.travelstop && park.parkType !== "Travel Stop Dog Park") return false;
+    if (activeFilters.travelstop) {
+    if (park.parkType !== "Travel Stop Dog Park") return false;
+} else {
+    if (park.parkType === "Travel Stop Dog Park") return false;
+}
     if (activeFilters.rv && !park.rv) return false;
     
     if (activeFilters.rv && activeRVType) {
