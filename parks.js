@@ -880,6 +880,332 @@ const parks = [
     sourceUrl: "https://www.bringfido.com/attraction/29205"
 },
 
+{
+    name: "South Westnedge Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.1938,
+    lng: -85.6329,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Water available",
+    wasteBags: "Waste stations available",
+    parking: "Parking available at South Westnedge Park",
+
+    hours: "Seasonal hours; 7:00 AM opening",
+
+    seasonalClosure: null,
+    accessNote: "Free to anyone age 16 or older; dogs must be at least 4 months old",
+
+    info: "FREE • Off-leash • Two fenced areas • Small-dog area under 25 lb • Water • Waste stations",
+
+    location: "9010 South Westnedge Avenue, Portage, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Portage",
+    sourceUrl: "https://www.portagemi.gov/Facilities/Facility/Details/-26"
+},
+
+    {
+    name: "Heritage Park Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 41.9507,
+    lng: -84.9868,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Mutt Mitt dispensers and waste containers available",
+    parking: "Parking available",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Off-leash dog park • Separate small & large dog areas • Waste bag dispensers",
+
+    location: "1776 Heritage Park Drive, Coldwater, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Coldwater",
+    sourceUrl: "https://www.coldwater.org/Facilities/Facility/Details/Heritage-Park-1"
+},
+
+{
+    name: "Lawrence McKinley / Vet's Park Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.4197,
+    lng: -83.9206,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: null,
+    fenced: null,
+    lighted: true,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Unknown",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Unknown",
+
+    hours: "Sunrise to sunset",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "City dog park • Lighted facility",
+
+    location: "930 S 20th Street, Saginaw, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Saginaw",
+    sourceUrl: "https://www.saginaw-mi.com/DocumentCenter/View/475/City-of-Saginaw-Parks-and-Recreation-Plan-PDF?bidId="
+},
+    
+{
+    name: "Bay County Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.5755,
+    lng: -83.8738,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Accessible drinking fountain for people and dogs",
+    wasteBags: "Unknown",
+    parking: "Bay County Fairgrounds parking",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Public off-leash dog park",
+
+    info: "Off-leash • Fenced • Separate small-dog area • Agility equipment • Drinking fountain",
+
+    location: "800 Livingston Street, Bay City, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Bay County",
+    sourceUrl: "https://www.baycountymi.gov/Recreation/"
+},
+
+{
+    name: "Cass City Bark Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.5987,
+    lng: -83.1665,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Dog bowl fountain outside dog park",
+    wasteBags: "Waste receptacles available",
+    parking: "Municipal Park parking",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Fenced dog park • Separate large & small dog areas • Agility equipment • Water station",
+
+    location: "Scott McCullough Drive, Cass City, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Village of Cass City",
+    sourceUrl: "https://www.casscity.org/index.php/?id=4&option=com_sppagebuilder&view=page"
+},
+
+{
+    name: "Caseville Township Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.9417,
+    lng: -83.2738,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Unknown",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Water fountain reported",
+    wasteBags: "Waste bags reported",
+    parking: "Unknown",
+
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Fenced off-leash dog park • Water and waste bags reported",
+
+    location: "N Caseville Road, Caseville, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + secondary amenity verification",
+    source: "Caseville Township / BringFido",
+    sourceUrl: "https://www.bringfido.com/attraction/37194"
+},
+
+{
+    name: "Chippewa Landing Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.48251,
+    lng: -83.38813,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Parking available at Chippewa Landing Park",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: null,
+
+    info: "Dog park at Chippewa Landing Park • Fenced off-leash use reported",
+
+    location: "Chippewa Landing Park, Caro, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + secondary amenity verification",
+    source: "City of Caro / DogPack",
+    sourceUrl: "https://www.carocity.net/sites/g/files/vyhlif6776/f/pages/final_draft_five-yearparksandrecmasterplan.pdf"
+},
+
+{
+    name: "Fort Gratiot PetSafe Canine Commons",
+    parkType: "Public Dog Park",
+
+    lat: 43.04686,
+    lng: -82.47592,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Drinking fountain with self-draining dog bowl",
+    wasteBags: "Dog waste bags and trash receptacles available",
+    parking: "Parking available",
+    hours: "Dawn to dusk",
+
+    seasonalClosure: null,
+    accessNote: "Free public dog park • Open year round • Temporary maintenance closures possible",
+
+    info: "FREE • Two-acre dog park • Two fenced areas • Separate small/medium and medium/large areas • Water • Waste bags",
+
+    location: "4788 Parker Road, Fort Gratiot, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Fort Gratiot Charter Township",
+    sourceUrl: "https://www.fortgratiot.us/services/township-parks/fort-gratiot-petsafe-canine-commons-dog-park/"
+},
+
 // --------------------------------- TRAVEL STOPS -----------------------------------
 
 {
@@ -1132,332 +1458,6 @@ const parks = [
     verificationMethod: "Official source + field verified",
     source: "Love's Travel Stops",
     sourceUrl: "https://www.loves.com/locations/mi/st.-clair/loves-travel-stop-st.-clair-745"
-},
-
-{
-    name: "South Westnedge Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 42.1938,
-    lng: -85.6329,
-
-    status: "free",
-    statusLabel: "🟢 CONFIRMED FREE",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: true,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Water available",
-    wasteBags: "Waste stations available",
-    parking: "Parking available at South Westnedge Park",
-
-    hours: "Seasonal hours; 7:00 AM opening",
-
-    seasonalClosure: null,
-    accessNote: "Free to anyone age 16 or older; dogs must be at least 4 months old",
-
-    info: "FREE • Off-leash • Two fenced areas • Small-dog area under 25 lb • Water • Waste stations",
-
-    location: "9010 South Westnedge Avenue, Portage, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source",
-    source: "City of Portage",
-    sourceUrl: "https://www.portagemi.gov/Facilities/Facility/Details/-26"
-},
-
-{
-    name: "Heritage Park Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 41.9507,
-    lng: -84.9868,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: true,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Unknown",
-    wasteBags: "Mutt Mitt dispensers and waste containers available",
-    parking: "Parking available",
-
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: null,
-
-    info: "Off-leash dog park • Separate small & large dog areas • Waste bag dispensers",
-
-    location: "1776 Heritage Park Drive, Coldwater, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source",
-    source: "City of Coldwater",
-    sourceUrl: "https://www.coldwater.org/Facilities/Facility/Details/Heritage-Park-1"
-},
-
-{
-    name: "Lawrence McKinley / Vet's Park Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 43.4197,
-    lng: -83.9206,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: null,
-    fenced: null,
-    lighted: true,
-    separated: null,
-
-    rv: null,
-    parkingVanClassB: "Unknown",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Unknown",
-    wasteBags: "Unknown",
-    parking: "Unknown",
-
-    hours: "Sunrise to sunset",
-
-    seasonalClosure: null,
-    accessNote: null,
-
-    info: "City dog park • Lighted facility",
-
-    location: "930 S 20th Street, Saginaw, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source",
-    source: "City of Saginaw",
-    sourceUrl: "https://www.saginaw-mi.com/DocumentCenter/View/475/City-of-Saginaw-Parks-and-Recreation-Plan-PDF?bidId="
-},
-
-    {
-    name: "Bay County Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 43.5755,
-    lng: -83.8738,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: true,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Accessible drinking fountain for people and dogs",
-    wasteBags: "Unknown",
-    parking: "Bay County Fairgrounds parking",
-
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: "Public off-leash dog park",
-
-    info: "Off-leash • Fenced • Separate small-dog area • Agility equipment • Drinking fountain",
-
-    location: "800 Livingston Street, Bay City, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source",
-    source: "Bay County",
-    sourceUrl: "https://www.baycountymi.gov/Recreation/"
-},
-
-{
-    name: "Cass City Bark Park",
-    parkType: "Public Dog Park",
-
-    lat: 43.5987,
-    lng: -83.1665,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: true,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Dog bowl fountain outside dog park",
-    wasteBags: "Waste receptacles available",
-    parking: "Municipal Park parking",
-
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: null,
-
-    info: "Fenced dog park • Separate large & small dog areas • Agility equipment • Water station",
-
-    location: "Scott McCullough Drive, Cass City, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source",
-    source: "Village of Cass City",
-    sourceUrl: "https://www.casscity.org/index.php/?id=4&option=com_sppagebuilder&view=page"
-},
-
-{
-    name: "Caseville Township Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 43.9417,
-    lng: -83.2738,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: null,
-
-    rv: null,
-    parkingVanClassB: "Unknown",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Water fountain reported",
-    wasteBags: "Waste bags reported",
-    parking: "Unknown",
-
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: null,
-
-    info: "Fenced off-leash dog park • Water and waste bags reported",
-
-    location: "N Caseville Road, Caseville, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source + secondary amenity verification",
-    source: "Caseville Township / BringFido",
-    sourceUrl: "https://www.bringfido.com/attraction/37194"
-},
-
-{
-    name: "Chippewa Landing Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 43.48251,
-    lng: -83.38813,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: null,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Unknown",
-    wasteBags: "Unknown",
-    parking: "Parking available at Chippewa Landing Park",
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: null,
-
-    info: "Dog park at Chippewa Landing Park • Fenced off-leash use reported",
-
-    location: "Chippewa Landing Park, Caro, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source + secondary amenity verification",
-    source: "City of Caro / DogPack",
-    sourceUrl: "https://www.carocity.net/sites/g/files/vyhlif6776/f/pages/final_draft_five-yearparksandrecmasterplan.pdf"
-},
-
-{
-    name: "Fort Gratiot PetSafe Canine Commons",
-    parkType: "Public Dog Park",
-
-    lat: 43.04686,
-    lng: -82.47592,
-
-    status: "free",
-    statusLabel: "🟢 CONFIRMED FREE",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: true,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Drinking fountain with self-draining dog bowl",
-    wasteBags: "Dog waste bags and trash receptacles available",
-    parking: "Parking available",
-    hours: "Dawn to dusk",
-
-    seasonalClosure: null,
-    accessNote: "Free public dog park • Open year round • Temporary maintenance closures possible",
-
-    info: "FREE • Two-acre dog park • Two fenced areas • Separate small/medium and medium/large areas • Water • Waste bags",
-
-    location: "4788 Parker Road, Fort Gratiot, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source",
-    source: "Fort Gratiot Charter Township",
-    sourceUrl: "https://www.fortgratiot.us/services/township-parks/fort-gratiot-petsafe-canine-commons-dog-park/"
 },
 
 {
