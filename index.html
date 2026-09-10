@@ -364,6 +364,20 @@ h1 {
     }
 }
 
+.rv-type-filters {
+    margin-top: 8px;
+}
+
+.rv-type-filters select {
+    padding: 8px 34px 8px 12px;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+    
 </style>
 </head>
 
@@ -439,14 +453,15 @@ h1 {
         <div class="filter" data-filter="rv">RV/VAN</div>
     </div>
 
-</div>
-
-    <div id="rvTypeFilters" class="rv-type-filters" style="display:none;">
-    <button data-rvtype="parkingVanClassB">VAN/CLASS B</button>
-    <button data-rvtype="parkingClassC">CLASS C</button>
-    <button data-rvtype="parkingClassA">CLASS A</button>
-    <button data-rvtype="parkingPullBehind">PULL-BEHIND</button>
-    <button data-rvtype="parkingSemi">SEMI</button>
+<div id="rvTypeFilters" class="rv-type-filters" style="display:none;">
+    <select id="rvTypeSelect">
+        <option value="">Any RV Type</option>
+        <option value="parkingVanClassB">Van / Class B</option>
+        <option value="parkingClassC">Class C</option>
+        <option value="parkingClassA">Class A</option>
+        <option value="parkingPullBehind">Pull-Behind</option>
+        <option value="parkingSemi">Semi</option>
+    </select>
 </div>
 
 </header>
@@ -848,13 +863,13 @@ document.querySelectorAll(".filter").forEach(function(button) {
         
 if (filterName === "rv") {
     const rvTypeFilters = document.getElementById("rvTypeFilters");
-    rvTypeFilters.style.display = activeFilters.rv ? "flex" : "none";
+    const rvTypeSelect = document.getElementById("rvTypeSelect");
+
+    rvTypeFilters.style.display = activeFilters.rv ? "block" : "none";
 
     if (!activeFilters.rv) {
-    activeRVType = null;
-
-    document.querySelectorAll("#rvTypeFilters button")
-        .forEach(btn => btn.classList.remove("active"));
+        activeRVType = null;
+        rvTypeSelect.value = "";
     }
 }
 
@@ -864,25 +879,13 @@ if (filterName === "rv") {
 
 let activeRVType = null;
 
-document.querySelectorAll("#rvTypeFilters button").forEach(function(button) {
-    button.addEventListener("click", function() {
+document.getElementById("rvTypeSelect")
+    .addEventListener("change", function() {
 
-        const rvType = button.dataset.rvtype;
-
-        if (activeRVType === rvType) {
-            activeRVType = null;
-            button.classList.remove("active");
-        } else {
-            document.querySelectorAll("#rvTypeFilters button")
-                .forEach(btn => btn.classList.remove("active"));
-
-            activeRVType = rvType;
-            button.classList.add("active");
-        }
+        activeRVType = this.value || null;
 
         renderMarkers();
     });
-});
 
 document.getElementById("destinationBtn")
     .addEventListener("click", searchDestination);
