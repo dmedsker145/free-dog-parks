@@ -1032,8 +1032,8 @@ async function searchDestination() {
     }
 }
 
-renderMarkers();
-    if (navigator.geolocation) {
+if (navigator.geolocation) {
+
     navigator.geolocation.getCurrentPosition(
         function(position) {
 
@@ -1066,19 +1066,30 @@ renderMarkers();
             )
             .addTo(map)
             .bindPopup("<b>You are here</b>");
-            
+
+            renderMarkers();
+
             map.setView([userLat, userLng], 9);
         },
+
         function(error) {
+
             console.log("Startup location unavailable:", error);
+
+            renderMarkers();
         },
-        
+
         {
             enableHighAccuracy: false,
             timeout: 20000,
             maximumAge: 300000
         }
     );
+
+} else {
+
+    renderMarkers();
+    }
 }
     
     document.getElementById("nearMeBtn").addEventListener("click", function() {
