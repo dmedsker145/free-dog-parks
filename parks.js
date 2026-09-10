@@ -1483,6 +1483,86 @@ const parks = [
     verificationMethod: "Official-location evidence + secondary amenity verification",
     source: "East China Dog Park / BringFido",
     sourceUrl: "https://www.bringfido.com/attraction/29205"
+},
+
+{
+    name: "Algonac Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.6219,
+    lng: -82.5327,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: null,
+    fenced: null,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Parking available at Lions Field",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Dog park located within Lions Field",
+
+    info: "Public dog park at Lions Field",
+
+    location: "Lions Field, Michigan Street near Dixie Boulevard, Algonac, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Algonac",
+    sourceUrl: "https://www.cityofalgonac.org/Parks"
+},
+
+{
+    name: "East China Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.7697,
+    lng: -82.4938,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Seasonal water fountain and bottle filling station",
+    wasteBags: "Waste bags reported",
+    parking: "Free parking reported",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Water is turned off during winter months",
+
+    info: "Off-leash • Fully fenced • Seasonal water • Seating",
+
+    location: "5111 Recor Rd, East China, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official-location evidence + secondary amenity verification",
+    source: "St. Clair County / BringFido",
+    sourceUrl: "https://www.bringfido.com/attraction/29205"
 }
     
 ];
