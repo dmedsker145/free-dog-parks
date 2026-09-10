@@ -1,4 +1,9 @@
 const parks = [
+// ================================================================================================================
+// INDIANA
+// ================================================================================================================
+
+// ---------------------------- PUBLIC / COMMUNITY -----------------------------
     {
         name: "Buth Field Dog Park",
         parkType: "Public Dog Park",
@@ -97,6 +102,87 @@ const parks = [
         source: "Rudy's Dog Park",
         sourceUrl: "https://www.rudysdogpark.org/about.html"
     },
+
+    {
+        name: "Pawster Park Pooch Playground",
+        parkType: "Membership Dog Park",
+        lat: 41.03874,
+        lng: -85.16335,
+        status: "fee",
+        statusLabel: "🔴 FEE REQUIRED",
+        offleash: true,
+        fenced: true,
+        lighted: null,
+        separated: false,
+        rv: null,
+        water: "Unknown",
+        wasteBags: "Not provided",
+        parking: "Unknown",
+        hours: "6:00 AM - 10:00 PM daily",
+        info: "Pooch Pass required • Off-leash • Fenced",
+        location: "Fort Wayne, Indiana",
+        lastVerified: "September 2026",
+        verificationMethod: "Official source",
+        source: "Fort Wayne Parks & Recreation",
+        sourceUrl: "https://www.cityoffortwayne.in.gov/DocumentCenter/View/2129"
+    },
+
+    {
+        name: "Camp Canine",
+        parkType: "Membership Dog Park",
+        lat: 41.11290,
+        lng: -85.11760,
+        status: "fee",
+        statusLabel: "🔴 FEE REQUIRED",
+        offleash: true,
+        fenced: true,
+        lighted: null,
+        separated: true,
+        rv: true,
+        parkingVanClassB: "Verified",
+        parkingClassC: "Verified",
+        parkingClassA: "Verified",
+        parkingPullBehind: "Verified",
+        parkingSemi: "Verified",
+        water: "Dog/human drinking fountains",
+        wasteBags: "Bring your own; waste container available",
+        parking: "Parking available",
+        hours: "6:00 AM - 10:00 PM daily",
+        seasonalClosure: "Johnny Appleseed Festival - 3rd full weekend in September",
+        accessNote: "Free for campground guests; Pooch Pass required otherwise",
+        info: "Off-leash • Fenced • Separate areas • Drinking fountains",
+        location: "Fort Wayne, Indiana",
+        lastVerified: "September 2026",
+        verificationMethod: "Official source + field verified",
+        source: "Fort Wayne Parks & Recreation",
+        sourceUrl: "https://www.cityoffortwayne.in.gov/Facilities/Facility/Details/Camp-Canine-24"
+    },
+
+    {
+        name: "Thomas Park Dog Park",
+        parkType: "Public Dog Park",
+        lat: 41.37156,
+        lng: -85.05313,
+        status: "unknown",
+        statusLabel: "🟡 NEEDS VERIFICATION",
+        offleash: true,
+        fenced: true,
+        lighted: null,
+        separated: true,
+        rv: null,
+        water: "Unknown",
+        wasteBags: "unknown",
+        parking: "Grass/gravel parking",
+        hours: "9:00 AM -9:00 PM daily",
+        info: "Off-leash • Fenced • Separate small & large dog areas",
+        location: "Auburn, Indiana",
+        lastVerified: "September 2026",
+        verificationMethod: "Official source",
+        source: "City of Auburn Parks & Recreation",
+        sourceUrl: "https://www.ci.auburn.in.us/Facilities/Facility/Details/Thomas-Park-5"
+    },
+
+// --------------------------------- INDIANA TRAVEL STOPS -----------------------------------
 
     {
         name: "Love's Travel Stop #633 Dog Park",
@@ -520,84 +606,173 @@ const parks = [
         sourceUrl: "https://www.loves.com/locations/in/memphis/loves-travel-stop-memphis-355"
     },
 
-    {
-        name: "Pawster Park Pooch Playground",
-        parkType: "Membership Dog Park",
-        lat: 41.03874,
-        lng: -85.16335,
-        status: "fee",
-        statusLabel: "🔴 FEE REQUIRED",
-        offleash: true,
-        fenced: true,
-        lighted: null,
-        separated: false,
-        rv: null,
-        water: "Unknown",
-        wasteBags: "Not provided",
-        parking: "Unknown",
-        hours: "6:00 AM - 10:00 PM daily",
-        info: "Pooch Pass required • Off-leash • Fenced",
-        location: "Fort Wayne, Indiana",
-        lastVerified: "September 2026",
-        verificationMethod: "Official source",
-        source: "Fort Wayne Parks & Recreation",
-        sourceUrl: "https://www.cityoffortwayne.in.gov/DocumentCenter/View/2129"
-    },
+// ================================================================================================================
+// MICHIGAN
+// ================================================================================================================
 
-    {
-        name: "Camp Canine",
-        parkType: "Membership Dog Park",
-        lat: 41.11290,
-        lng: -85.11760,
-        status: "fee",
-        statusLabel: "🔴 FEE REQUIRED",
-        offleash: true,
-        fenced: true,
-        lighted: null,
-        separated: true,
-        rv: true,
-        parkingVanClassB: "Verified",
-        parkingClassC: "Verified",
-        parkingClassA: "Verified",
-        parkingPullBehind: "Verified",
-        parkingSemi: "Verified",
-        water: "Dog/human drinking fountains",
-        wasteBags: "Bring your own; waste container available",
-        parking: "Parking available",
-        hours: "6:00 AM - 10:00 PM daily",
-        seasonalClosure: "Johnny Appleseed Festival - 3rd full weekend in September",
-        accessNote: "Free for campground guests; Pooch Pass required otherwise",
-        info: "Off-leash • Fenced • Separate areas • Drinking fountains",
-        location: "Fort Wayne, Indiana",
-        lastVerified: "September 2026",
-        verificationMethod: "Official source + field verified",
-        source: "Fort Wayne Parks & Recreation",
-        sourceUrl: "https://www.cityoffortwayne.in.gov/Facilities/Facility/Details/Camp-Canine-24"
-    },
+// ---------------------------- PUBLIC / COMMUNITY -----------------------------
 
-    {
-        name: "Thomas Park Dog Park",
-        parkType: "Public Dog Park",
-        lat: 41.37156,
-        lng: -85.05313,
-        status: "unknown",
-        statusLabel: "🟡 NEEDS VERIFICATION",
-        offleash: true,
-        fenced: true,
-        lighted: null,
-        separated: true,
-        rv: null,
-        water: "Unknown",
-        wasteBags: "unknown",
-        parking: "Grass/gravel parking",
-        hours: "9:00 AM -9:00 PM daily",
-        info: "Off-leash • Fenced • Separate small & large dog areas",
-        location: "Auburn, Indiana",
-        lastVerified: "September 2026",
-        verificationMethod: "Official source",
-        source: "City of Auburn Parks & Recreation",
-        sourceUrl: "https://www.ci.auburn.in.us/Facilities/Facility/Details/Thomas-Park-5"
-    },
+{
+    name: "Algonac Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.6219,
+    lng: -82.5327,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: null,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Parking available at Lions Field",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Dog park located within Lions Field",
+
+    info: "Public dog park at Lions Field • Off-leash use reported",
+
+    location: "Lions Field, Michigan Street near Dixie Boulevard, Algonac, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source + secondary amenity verification",
+    source: "City of Algonac",
+    sourceUrl: "https://www.cityofalgonac.org/Parks"
+},
+
+{
+    name: "East China Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.7697,
+    lng: -82.4938,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Seasonal water fountain and bottle filling station",
+    wasteBags: "Waste bags reported",
+    parking: "Free parking reported",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Water is turned off during winter months",
+
+    info: "Off-leash • Fully fenced • Seasonal water • Benches",
+
+    location: "5111 Recor Rd, East China, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official-location evidence + secondary amenity verification",
+    source: "East China Dog Park / BringFido",
+    sourceUrl: "https://www.bringfido.com/attraction/29205"
+},
+
+{
+    name: "Algonac Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.6219,
+    lng: -82.5327,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: null,
+    fenced: null,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Parking available at Lions Field",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Dog park located within Lions Field",
+
+    info: "Public dog park at Lions Field",
+
+    location: "Lions Field, Michigan Street near Dixie Boulevard, Algonac, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Algonac",
+    sourceUrl: "https://www.cityofalgonac.org/Parks"
+},
+
+{
+    name: "East China Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.7697,
+    lng: -82.4938,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Seasonal water fountain and bottle filling station",
+    wasteBags: "Waste bags reported",
+    parking: "Free parking reported",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Water is turned off during winter months",
+
+    info: "Off-leash • Fully fenced • Seasonal water • Seating",
+
+    location: "5111 Recor Rd, East China, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official-location evidence + secondary amenity verification",
+    source: "St. Clair County / BringFido",
+    sourceUrl: "https://www.bringfido.com/attraction/29205"
+},
+
+// --------------------------------- TRAVEL STOPS -----------------------------------
     
     {
         name: "Love's Travel Stop #729 Dog Park",
@@ -1403,166 +1578,6 @@ const parks = [
     verificationMethod: "Official source + field verified",
     source: "Love's Travel Stops",
     sourceUrl: "https://www.loves.com/locations/mi/capac/loves-travel-stop-capac-701"
-},
-
-{
-    name: "Algonac Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 42.6219,
-    lng: -82.5327,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: null,
-    lighted: null,
-    separated: null,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Unknown",
-    wasteBags: "Unknown",
-    parking: "Parking available at Lions Field",
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: "Dog park located within Lions Field",
-
-    info: "Public dog park at Lions Field • Off-leash use reported",
-
-    location: "Lions Field, Michigan Street near Dixie Boulevard, Algonac, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source + secondary amenity verification",
-    source: "City of Algonac",
-    sourceUrl: "https://www.cityofalgonac.org/Parks"
-},
-
-{
-    name: "East China Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 42.7697,
-    lng: -82.4938,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: null,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Seasonal water fountain and bottle filling station",
-    wasteBags: "Waste bags reported",
-    parking: "Free parking reported",
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: "Water is turned off during winter months",
-
-    info: "Off-leash • Fully fenced • Seasonal water • Benches",
-
-    location: "5111 Recor Rd, East China, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official-location evidence + secondary amenity verification",
-    source: "East China Dog Park / BringFido",
-    sourceUrl: "https://www.bringfido.com/attraction/29205"
-},
-
-{
-    name: "Algonac Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 42.6219,
-    lng: -82.5327,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: null,
-    fenced: null,
-    lighted: null,
-    separated: null,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Unknown",
-    wasteBags: "Unknown",
-    parking: "Parking available at Lions Field",
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: "Dog park located within Lions Field",
-
-    info: "Public dog park at Lions Field",
-
-    location: "Lions Field, Michigan Street near Dixie Boulevard, Algonac, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official source",
-    source: "City of Algonac",
-    sourceUrl: "https://www.cityofalgonac.org/Parks"
-},
-
-{
-    name: "East China Dog Park",
-    parkType: "Public Dog Park",
-
-    lat: 42.7697,
-    lng: -82.4938,
-
-    status: "unknown",
-    statusLabel: "🟡 NEEDS VERIFICATION",
-
-    offleash: true,
-    fenced: true,
-    lighted: null,
-    separated: null,
-
-    rv: null,
-    parkingVanClassB: "Likely suitable",
-    parkingClassC: "Unknown",
-    parkingClassA: "Unknown",
-    parkingPullBehind: "Unknown",
-    parkingSemi: "Unknown",
-
-    water: "Seasonal water fountain and bottle filling station",
-    wasteBags: "Waste bags reported",
-    parking: "Free parking reported",
-    hours: "Unknown",
-
-    seasonalClosure: null,
-    accessNote: "Water is turned off during winter months",
-
-    info: "Off-leash • Fully fenced • Seasonal water • Seating",
-
-    location: "5111 Recor Rd, East China, Michigan",
-
-    lastVerified: "September 2026",
-    verificationMethod: "Official-location evidence + secondary amenity verification",
-    source: "St. Clair County / BringFido",
-    sourceUrl: "https://www.bringfido.com/attraction/29205"
 }
     
 ];
