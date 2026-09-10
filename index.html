@@ -1126,7 +1126,13 @@ renderMarkers();
     iconAnchor: [11, 11]
 });
 
-userMarker = L.marker([userLat, userLng], { icon: userIcon })
+userMarker = L.marker(
+    [userLat, userLng],
+    {
+        icon: userIcon,
+        zIndexOffset: 1000
+    }
+)
     .addTo(map)
     .bindPopup("<b>You are here</b>")
     .openPopup();
