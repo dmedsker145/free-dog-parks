@@ -258,6 +258,30 @@ h1 {
     border-radius: 16px;
     cursor: pointer;
 }
+
+/* Keep search and route controls compact on wider screens */
+.search-row {
+    max-width: 520px;
+}
+
+.route-box {
+    max-width: 520px;
+}
+
+.search-row input {
+    min-width: 0;
+}
+
+.route-row input {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .search-row,
+    .route-box {
+        max-width: 100%;
+    }
+}
     
 </style>
 </head>
