@@ -1113,10 +1113,10 @@ const parks = [
 
     hours: "Unknown",
 
-    seasonalClosure: null,
-    accessNote: null,
+    seasonalClosure: "TEMPORARILY CLOSED — construction",
+    accessNote: "Caseville Township currently reports the Dog Park closed due to construction. Check official source before visiting.",
 
-    info: "Fenced off-leash dog park • Water and waste bags reported",
+   info: "⚠️ TEMPORARILY CLOSED • Construction • Fenced off-leash dog park • Water and waste bags reported",
 
     location: "N Caseville Road, Caseville, Michigan",
 
