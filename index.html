@@ -850,6 +850,12 @@ Other notes:`
         markers.push(marker);
     });
 
+    const parkCount = document.getElementById("parkCount");
+    const count = markers.length;
+
+    parkCount.textContent =
+        count === 1 ? "1 park shown" : `${count} parks shown`;
+
     if (markers.length > 0 && !activeRouteCoordinates) {
         const group = L.featureGroup(markers);
 
