@@ -88,14 +88,32 @@ h1 {
 
 .legend {
     position: absolute;
-    right: 15px;
-    top: 140px;
-    z-index: 1000;
-    background: white;
-    padding: 10px 13px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.18);
+    right: 22px;
+    top: 82px;
+    background: #f7f9f7;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
     font-size: 13px;
+    min-width: 220px;
+}
+
+.legend-note {
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px solid #ddd;
+    color: #666;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+    .legend {
+        position: static;
+        margin-top: 10px;
+        width: 100%;
+    }
 }
 
 .legend div {
@@ -330,6 +348,13 @@ h1 {
 
 </div>
 
+<div class="legend">
+    <div><span class="legend-paw green-paw">🐾</span> Confirmed Free</div>
+    <div><span class="legend-paw yellow-paw">🐾</span> Needs Verification</div>
+    <div><span class="legend-paw red-paw">🐾</span> Fee Required</div>
+    <div><span class="legend-you"></span> You Are Here</div>
+</div>
+
     <div class="filters">
         <div class="filter" id="nearMeBtn">NEAR ME</div>
         <div class="filter active" data-filter="free">FREE</div>
@@ -353,13 +378,6 @@ h1 {
     <button id="toggleControls" class="toggle-controls">HIDE CONTROLS</button>
 
 <div id="map"></div>
-
-<div class="legend">
-    <div><span class="legend-paw green-paw">🐾</span> Confirmed Free</div>
-    <div><span class="legend-paw yellow-paw">🐾</span> Needs Verification</div>
-    <div><span class="legend-paw red-paw">🐾</span> Fee Required</div>
-    <div><span class="legend-you"></span> You Are Here</div>
-</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="parks.js?v=20260908-2"></script>
