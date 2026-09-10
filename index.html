@@ -1072,9 +1072,11 @@ renderMarkers();
         function(error) {
             console.log("Startup location unavailable:", error);
         },
+        
         {
-            enableHighAccuracy: true,
-            timeout: 10000
+            enableHighAccuracy: false,
+            timeout: 20000,
+            maximumAge: 300000
         }
     );
 }
