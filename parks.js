@@ -1206,7 +1206,327 @@ const parks = [
     sourceUrl: "https://www.fortgratiot.us/services/township-parks/fort-gratiot-petsafe-canine-commons-dog-park/"
 },
 
-// --------------------------------- TRAVEL STOPS -----------------------------------
+{
+    name: "Northern Tail Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.76832,
+    lng: -84.47889,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Dog waste stations available",
+    parking: "Parking available at recreation complex",
+    hours: "6:00 AM - 10:00 PM",
+
+    seasonalClosure: null,
+    accessNote: "Free admission • Small-dog area for dogs under 22 lb",
+
+    info: "FREE • 2.5 acres • Off-leash • 6-foot fenced • Double-gated • Separate small-dog area • Waste stations",
+
+    location: "6400 Abbot Road, East Lansing, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of East Lansing",
+    sourceUrl: "https://www.cityofeastlansing.com/m/NewsFlash/Home/Detail/2500"
+},
+
+{
+    name: "Thompson Road Regional Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.8637,
+    lng: -83.7016,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Drinking water available",
+    wasteBags: "Waste stations reported",
+    parking: "Unpaved parking area",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Free to the public",
+
+    info: "FREE • Off-leash • Fenced • Separate dog areas • Drinking water • Community-supported dog park",
+
+    location: "1325 W Thompson Road, Fenton Township, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Fenton Charter Township",
+    sourceUrl: "https://www.fentontownship.org/community-dept/park/thompson-road-regional-dog-park"
+},
+
+{
+    name: "Grand Ravines Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.94306,
+    lng: -85.88180,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Dog drinking fountains available spring through fall",
+    wasteBags: "Unknown",
+    parking: "Parking available at Grand Ravines South",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Free to the public",
+
+    info: "FREE • Off-leash • Fenced trails • Dog drinking fountains • Dog wash station • Shade structures",
+
+    location: "Grand Ravines South, Fillmore Street, Jenison, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Ottawa County Parks & Recreation",
+    sourceUrl: "https://miottawa.org/parks/grand-ravines-dog-park/"
+},
+
+{
+    name: "Hastings Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.65088,
+    lng: -85.29913,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Dog drinking fountain",
+    wasteBags: "Waste removal tools and trash receptacles available",
+    parking: "Gravel parking lot",
+    hours: "Dawn to dusk",
+
+    seasonalClosure: null,
+    accessNote: "Free and open to the public",
+
+    info: "FREE • Off-leash • Separate fenced large & small dog areas • Water • Agility equipment • Benches",
+
+    location: "825 W Apple Street, Hastings, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Hastings",
+    sourceUrl: "https://www.hastingsmi.gov/wp-content/uploads/2024-2028-Park-and-Recreation-Master-Plan.pdf"
+},
+
+{
+    name: "Betty's Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 42.25090,
+    lng: -84.41231,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Street/park parking available",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Free and open to residents and visitors",
+
+    info: "FREE • Fully fenced • Secure gate system • Separate big & small dog areas • Walking paths • Shade",
+
+    location: "400 N Blackstone Street, Jackson, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Jackson",
+    sourceUrl: "https://www.cityofjackson.org/Facilities/Facility/Details/Bettys-Dog-Park-8"
+},
+
+{
+    name: "Wahlfield Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.0997,
+    lng: -85.6894,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Drinking fountain and dog wash station",
+    wasteBags: "Waste receptacles available",
+    parking: "Dedicated parking available",
+    hours: "7:00 AM - sunset",
+
+    seasonalClosure: null,
+    accessNote: "Opened July 2026 • Dogs must be spayed or neutered • Maximum two dogs per handler",
+
+    info: "FREE • 10 acres • Fully enclosed • 1-acre small-dog area • Swimming pond • Dog beach • Jumping dock • Dog wash",
+
+    location: "7117 M-37, Comstock Park, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Kent County Parks",
+    sourceUrl: "https://www.kentcountymi.gov/Facilities/Facility/Details/-91"
+},
+
+{
+    name: "Midland Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.61124,
+    lng: -84.25434,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Seasonal water source",
+    wasteBags: "Waste bags provided",
+    parking: "Gravel parking area near dog park",
+    hours: "8:00 AM - dusk",
+
+    seasonalClosure: null,
+    accessNote: "Water available during warm-weather months",
+
+    info: "4 acres • Fenced • Off-leash • Separate small-dog area • Seasonal water • Agility equipment • Waste bags",
+
+    location: "Chippewassee Park, Midland, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "City of Midland",
+    sourceUrl: "https://mi-midland.civicplus.com/253/Midland-Dog-Park"
+},
+
+{
+    name: "Davison Area Dog Park",
+    parkType: "Public Dog Park",
+
+    lat: 43.0234,
+    lng: -83.5260,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: null,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Fire hydrant watering stations",
+    wasteBags: "Unknown",
+    parking: "Parking available at dog park",
+    hours: "Dawn to dusk",
+
+    seasonalClosure: null,
+    accessNote: "Open year-round • Restrooms are seasonal",
+
+    info: "Three-acre off-leash dog park • Small-dog and all-dog areas • Watering stations • Pavilions",
+
+    location: "1285 N Gale Road, Davison, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Davison Township",
+    sourceUrl: "https://davisontwp-mi.gov/parks-rec-2/"
+},
+
+// --------------------------------- MICHIGAN TRAVEL STOPS -----------------------------------
 
 {
     name: "Love's Travel Stop #336 Dog Park",
