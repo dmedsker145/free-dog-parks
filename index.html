@@ -857,9 +857,16 @@ Other notes:`
         count === 1 ? "1 park shown" : `${count} parks shown`;
 
     if (markers.length > 0 && !activeRouteCoordinates) {
-        const group = L.featureGroup(markers);
 
-        map.fitBounds(group.getBounds(), {
+        const bounds = L.latLngBounds(
+            markers.map(marker => marker.getLatLng())
+        );
+
+        if (userMarker) {
+            bounds.extend(userMarker.getLatLng());
+        }
+
+        map.fitBounds(bounds, {
             padding: [40, 40],
             maxZoom: 11
         });
@@ -1052,7 +1059,10 @@ renderMarkers();
 
             userMarker = L.marker(
                 [userLat, userLng],
-                { icon: userIcon }
+                {
+                    icon: userIcon,
+                    zIndexOffset: 1000
+                }
             )
             .addTo(map)
             .bindPopup("<b>You are here</b>");
