@@ -88,31 +88,31 @@ h1 {
 
 .legend {
     position: absolute;
-    right: 22px;
+    left: 570px;
     top: 82px;
+    width: 300px;
     background: #f7f9f7;
-    padding: 12px 16px;
+    padding: 14px 18px;
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,.08);
     font-size: 13px;
-    min-width: 220px;
 }
 
 .legend-note {
-    margin-top: 10px;
-    padding-top: 9px;
+    margin-top: 12px;
+    padding-top: 10px;
     border-top: 1px solid #ddd;
     color: #666;
     font-size: 11px;
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 950px) {
     .legend {
         position: static;
-        margin-top: 10px;
         width: 100%;
+        margin-top: 10px;
     }
 }
 
@@ -353,8 +353,14 @@ h1 {
     <div><span class="legend-paw yellow-paw">🐾</span> Needs Verification</div>
     <div><span class="legend-paw red-paw">🐾</span> Fee Required</div>
     <div><span class="legend-you"></span> You Are Here</div>
-</div>
 
+    <div class="legend-note">
+        <strong>Free parks are our focus.</strong><br>
+        Check official source for current park rules,
+        restrictions &amp; closures.
+    </div>
+</div>
+    
     <div class="filters">
         <div class="filter" id="nearMeBtn">NEAR ME</div>
         <div class="filter active" data-filter="free">FREE</div>
