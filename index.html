@@ -265,7 +265,7 @@ h1 {
 
 .controls-hidden .search-row,
 .controls-hidden .route-box,
-.controls-hidden .filters {
+.controls-hidden .filter-section {
     display: none;
 }
 
@@ -307,7 +307,63 @@ h1 {
     color: #555;
     margin-bottom: 4px;
 }
-    
+
+/* Desktop filter layout */
+.filter-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.mobile-filter-actions {
+    display: contents;
+}
+
+.mobile-filter-toggle {
+    display: none;
+}
+
+.filter-section .filters {
+    margin-top: 0;
+}
+
+/* Mobile filter controls */
+@media (max-width: 700px) {
+
+    .filter-section {
+        display: block;
+    }
+
+    .mobile-filter-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .mobile-filter-toggle {
+        display: inline-block;
+        border: 1px solid #bbb;
+        border-radius: 20px;
+        padding: 7px 13px;
+        background: white;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .filter-section .filters {
+        display: none;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        margin-top: 8px;
+    }
+
+    .filter-section .filters.mobile-open {
+        display: flex;
+    }
+}
+
 </style>
 </head>
 
@@ -361,8 +417,16 @@ h1 {
     </div>
 </div>
     
-    <div class="filters">
+  <div class="filter-section">
+
+    <div class="mobile-filter-actions">
         <div class="filter" id="nearMeBtn">NEAR ME</div>
+        <button id="mobileFilterToggle" class="mobile-filter-toggle">
+            FILTERS ▾
+        </button>
+    </div>
+
+    <div class="filters" id="filterOptions">
         <div class="filter active" data-filter="free">FREE</div>
         <div class="filter" data-filter="offleash">OFF-LEASH</div>
         <div class="filter" data-filter="lighted">LIGHTED</div>
@@ -370,6 +434,8 @@ h1 {
         <div class="filter" data-filter="travelstop">TRAVEL STOP</div>
         <div class="filter" data-filter="rv">RV/VAN</div>
     </div>
+
+</div>
 
     <div id="rvTypeFilters" class="rv-type-filters" style="display:none;">
     <button data-rvtype="parkingVanClassB">VAN/CLASS B</button>
@@ -410,6 +476,17 @@ toggleControls.addEventListener("click", () => {
     toggleControls.textContent = hidden ? "SHOW CONTROLS" : "HIDE CONTROLS";
 
     setTimeout(() => map.invalidateSize(), 100);
+});
+
+const mobileFilterToggle = document.getElementById("mobileFilterToggle");
+const filterOptions = document.getElementById("filterOptions");
+
+mobileFilterToggle.addEventListener("click", function() {
+
+    const isOpen = filterOptions.classList.toggle("mobile-open");
+
+    mobileFilterToggle.textContent =
+        isOpen ? "FILTERS ▴" : "FILTERS ▾";
 });
 
 let activeFilters = {
