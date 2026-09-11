@@ -281,11 +281,22 @@ h1 {
 }
 
 .toggle-controls {
-    float: right;
-    margin: 6px 12px 6px 0;
+    position: absolute;
+    top: 16px;
+    left: 58px;
+    z-index: 1000;
+
+    margin: 0;
     padding: 6px 12px;
+
+    background: rgba(255,255,255,.94);
+    border: 1px solid #999;
     border-radius: 16px;
+
+    font-weight: 600;
     cursor: pointer;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
 }
 
 /* Keep search and route controls compact on wider screens */
@@ -541,12 +552,14 @@ h1 {
 </div>
 
 </header>
-    
-    <button id="toggleControls" class="toggle-controls">HIDE CONTROLS</button>
 
 <div class="map-wrap">
 
     <div id="map"></div>
+
+    <button id="toggleControls" class="toggle-controls">
+        HIDE CONTROLS
+    </button>
 
     <div class="legend">
         <div><span class="legend-paw green-paw">🐾</span> Confirmed Free</div>
