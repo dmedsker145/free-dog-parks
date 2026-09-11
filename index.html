@@ -113,14 +113,47 @@ h1 {
     line-height: 1.45;
 }
 
+.mobile-key-toggle {
+    display: none;
+}
+    
 @media (max-width: 700px) {
-    .legend {
+
+    .mobile-key-toggle {
+        display: block;
+        position: absolute;
         top: 10px;
+        right: 10px;
+        z-index: 1001;
+
+        padding: 6px 12px;
+        background: rgba(255,255,255,.94);
+        border: 1px solid #999;
+        border-radius: 16px;
+
+        font-weight: 700;
+        cursor: pointer;
+
+        box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+
+    .legend {
+        display: none;
+        top: 48px;
         right: 10px;
         width: 190px;
         padding: 8px 10px;
         font-size: 11px;
     }
+
+    .legend.mobile-key-open {
+        display: block;
+    }
+
+    .legend-note {
+        font-size: 10px;
+    }
+}
 
     .legend-note {
         font-size: 10px;
@@ -591,7 +624,11 @@ h1 {
         HIDE CONTROLS
     </button>
 
-    <div class="legend">
+    <button id="mobileKeyToggle" class="mobile-key-toggle">
+        KEY
+    </button>
+    
+    <div class="legend" id="mapLegend">
         <div><span class="legend-paw green-paw">🐾</span> Confirmed Free</div>
         <div><span class="legend-paw yellow-paw">🐾</span> Needs Verification</div>
         <div><span class="legend-paw red-paw">🐾</span> Fee Required</div>
@@ -1332,6 +1369,17 @@ userMarker = L.marker(
     );
 });
 
+const mobileKeyToggle = document.getElementById("mobileKeyToggle");
+const mapLegend = document.getElementById("mapLegend");
+
+mobileKeyToggle.addEventListener("click", function() {
+
+    const isOpen = mapLegend.classList.toggle("mobile-key-open");
+
+    mobileKeyToggle.textContent =
+        isOpen ? "CLOSE KEY" : "KEY";
+});
+    
 </script>
 
 </body>
