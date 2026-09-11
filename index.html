@@ -383,6 +383,75 @@ h1 {
     color: #777;
     margin-bottom: 6px;
 }
+
+/* Compact desktop header */
+@media (min-width: 701px) {
+
+    header {
+        padding: 9px 18px 8px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .subtitle {
+        margin-top: 1px;
+    }
+
+    .search-row {
+        margin-top: 5px;
+    }
+
+    .search-row input,
+    .search-row button {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .route-box {
+        margin-top: 6px;
+        padding: 8px;
+    }
+
+    .route-row {
+        margin-top: 5px;
+    }
+
+    .route-row input {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .route-distance {
+        margin-top: 6px;
+    }
+
+    .route-distance button {
+        padding: 6px;
+    }
+
+    .route-button {
+        margin-top: 6px;
+        padding: 8px;
+    }
+
+    .filter-heading-row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    .filter-heading-row .route-heading,
+    .filter-heading-row .park-count {
+        margin-bottom: 0;
+    }
+
+    .filter-section {
+        margin-top: 6px;
+    }
+}
     
 </style>
 </head>
@@ -439,8 +508,10 @@ h1 {
     </div>
 </div>
 
-<div class="route-heading">FILTER PARKS</div>
-<div id="parkCount" class="park-count">0 parks shown</div>
+<div class="filter-heading-row">
+    <div class="route-heading">FILTER PARKS</div>
+    <div id="parkCount" class="park-count">0 parks shown</div>
+</div>
     
     <div class="filter-section">
 
