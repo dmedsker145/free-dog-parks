@@ -86,17 +86,22 @@ h1 {
     width: 100%;
 }
 
+.map-wrap {
+    position: relative;
+}
+
 .legend {
     position: absolute;
-    left: 570px;
-    top: 82px;
-    width: 300px;
-    background: #f7f9f7;
-    padding: 14px 18px;
+    top: 16px;
+    right: 16px;
+    width: 250px;
+    background: rgba(247, 249, 247, 0.94);
+    padding: 10px 12px;
     border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    font-size: 13px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    font-size: 12px;
+    z-index: 1000;
 }
 
 .legend-note {
@@ -108,11 +113,17 @@ h1 {
     line-height: 1.45;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 700px) {
     .legend {
-        position: static;
-        width: 100%;
-        margin-top: 10px;
+        top: 10px;
+        right: 10px;
+        width: 190px;
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .legend-note {
+        font-size: 10px;
     }
 }
 
