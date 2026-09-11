@@ -495,19 +495,6 @@ h1 {
 
 </div>
 
-<div class="legend">
-    <div><span class="legend-paw green-paw">🐾</span> Confirmed Free</div>
-    <div><span class="legend-paw yellow-paw">🐾</span> Needs Verification</div>
-    <div><span class="legend-paw red-paw">🐾</span> Fee Required</div>
-    <div><span class="legend-you"></span> You Are Here</div>
-
-    <div class="legend-note">
-        <strong>Free parks are our focus.</strong><br>
-        Check official source for current park rules,
-        restrictions &amp; closures.
-    </div>
-</div>
-
 <div class="filter-heading-row">
     <div class="route-heading">FILTER PARKS</div>
     <div id="parkCount" class="park-count">0 parks shown</div>
@@ -546,7 +533,24 @@ h1 {
     
     <button id="toggleControls" class="toggle-controls">HIDE CONTROLS</button>
 
-<div id="map"></div>
+<div class="map-wrap">
+
+    <div id="map"></div>
+
+    <div class="legend">
+        <div><span class="legend-paw green-paw">🐾</span> Confirmed Free</div>
+        <div><span class="legend-paw yellow-paw">🐾</span> Needs Verification</div>
+        <div><span class="legend-paw red-paw">🐾</span> Fee Required</div>
+        <div><span class="legend-you"></span> You Are Here</div>
+
+        <div class="legend-note">
+            <strong>Free parks are our focus.</strong><br>
+            Check official source for current park rules,
+            restrictions &amp; closures.
+        </div>
+    </div>
+
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="parks.js?v=20260908-2"></script>
