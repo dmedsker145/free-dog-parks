@@ -354,6 +354,10 @@ h1 {
 /* Mobile filter controls */
 @media (max-width: 700px) {
 
+    .desktop-control-grid {
+    display: block;
+}
+
     .filter-section {
         display: block;
     }
@@ -408,6 +412,24 @@ h1 {
 
 /* Compact desktop header */
 @media (min-width: 701px) {
+
+.desktop-control-grid {
+        display: grid;
+        grid-template-columns: minmax(360px, 440px) minmax(440px, 520px);
+        gap: 18px;
+        align-items: start;
+        margin-top: 6px;
+    }
+
+    .desktop-control-grid .search-row,
+    .desktop-control-grid .route-box {
+        max-width: none;
+        width: 100%;
+    }
+
+    .desktop-control-grid .route-box {
+        margin-top: 0;
+    }
 
     header {
         padding: 9px 18px 8px;
@@ -486,7 +508,8 @@ h1 {
         Find free dog parks along your route.
     </div>
 
-<div class="route-heading">FIND A DESTINATION</div>
+    <div class="desktop-control-grid">
+    <div class="route-heading">FIND A DESTINATION</div>
 
     <div class="search-row">
     <input id="destinationInput" type="text" placeholder="Search city or destination">
@@ -514,6 +537,8 @@ h1 {
     <button class="route-button" id="findRouteBtn">
         FIND PARKS ALONG ROUTE
     </button>
+
+</div>
 
 </div>
 
