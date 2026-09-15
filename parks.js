@@ -1526,6 +1526,86 @@ const parks = [
     sourceUrl: "https://davisontwp-mi.gov/parks-rec-2/"
 },
 
+{
+    name: "Arise Community Dog Park",
+    parkType: "Community Dog Park",
+
+    lat: 42.4564,
+    lng: -83.9447,
+
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+
+    rv: null,
+    parkingVanClassB: "Likely suitable",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Dog pool available",
+    wasteBags: "Unknown",
+    parking: "Parking available in church parking lot",
+    hours: "Daylight to dusk Monday-Saturday • Noon to dusk Sunday",
+
+    seasonalClosure: null,
+    accessNote: "No charge to use the park",
+
+    info: "Free community off-leash dog park • Fenced • Separate small-dog area • Community dog toys • Dog pool",
+
+    location: "11211 Dexter-Pinckney Road, Pinckney, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Arise Church",
+    sourceUrl: "https://www.arisechurch.org/dog-park"
+},
+
+{
+    name: "Brighton Township Veterans Park Dog Run",
+    parkType: "Public Dog Park",
+
+    lat: 42.5239,
+    lng: -83.7526,
+
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+
+    rv: null,
+    parkingVanClassB: "Unknown",
+    parkingClassC: "Unknown",
+    parkingClassA: "Unknown",
+    parkingPullBehind: "Unknown",
+    parkingSemi: "Unknown",
+
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Parking available at Veterans Park",
+    hours: "Unknown",
+
+    seasonalClosure: null,
+    accessNote: "Dog park reopened August 20, 2026 following park improvements",
+
+    info: "Public dog run at Brighton Township Veterans Park • Fee/free status needs field verification",
+
+    location: "5330 S Old US 23, Brighton, Michigan",
+
+    lastVerified: "September 2026",
+    verificationMethod: "Official source",
+    source: "Brighton Township",
+    sourceUrl: "https://www.brightontwp.com/294/Veterans-Park"
+},
+
 // --------------------------------- MICHIGAN TRAVEL STOPS -----------------------------------
 
 {
