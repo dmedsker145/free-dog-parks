@@ -1723,6 +1723,102 @@ const parks = [
     sourceUrl: "https://www.howellrecreation.org/countryside-veterinary-dog-park-1"
 },
 
+{
+    name: "Field of Dreams Dog Park - Buchanan",
+    parkType: "Public Dog Park",
+    lat: 41.8224557,
+    lng: -86.3644178,
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+    offleash: true,
+    fenced: null,
+    lighted: null,
+    separated: null,
+    rv: null,
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Unknown",
+    hours: "Unknown",
+    accessNote: "City-owned, volunteer-run dog park. Fee/free status needs confirmation. Approximate street-address pin; verify entrance on arrival.",
+    location: "400 McCoy Creek Drive, Buchanan, Michigan",
+    lastVerified: "September 15, 2026",
+    verificationMethod: "City source and opening coverage; approximate address geocoding; no field verification",
+    source: "City of Buchanan",
+    sourceUrl: "https://www.cityofbuchanan.com/public-services/page/field-dreams-dog-park"
+},
+
+{
+    name: "Sturgis Bark Park (Old Depot)",
+    parkType: "Public Dog Park",
+    lat: 41.804549,
+    lng: -85.420412,
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+    rv: null,
+    water: "Watering stations listed by city; seasonal availability unverified",
+    wasteBags: "Unknown",
+    parking: "Parking available; RV fit unverified",
+    hours: "Dawn to dusk",
+    accessNote: "Separate large- and small-dog areas. Fee/free status needs confirmation. Pin uses city-listed street address.",
+    location: "200 W Main Street, Sturgis, Michigan",
+    lastVerified: "September 15, 2026",
+    verificationMethod: "Official source and park rules; address geocoded; no field verification",
+    source: "City of Sturgis",
+    sourceUrl: "https://www.sturgismi.gov/Facilities/Facility/Details/Bark-Park-1"
+},
+
+{
+    name: "Vassar Dog Park",
+    parkType: "Public Dog Park",
+    lat: 43.3665625,
+    lng: -83.5843125,
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: null,
+    rv: null,
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Unknown",
+    hours: "Unknown",
+    accessNote: "City confirms park on Water Street. Free grand-opening event does not establish current admission policy; confirm fee/free status.",
+    location: "Water Street, Vassar, Michigan",
+    lastVerified: "September 15, 2026",
+    verificationMethod: "City opening announcement; amenities and map location from DogPack; no field verification",
+    source: "City of Vassar / DogPack",
+    sourceUrl: "https://www.cityofvassar.org/Calendar.aspx?EID=666"
+},
+
+{
+    name: "Marlette Community Park Dog Park",
+    parkType: "Public Dog Park",
+    lat: 43.3302595,
+    lng: -83.0741575,
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+    offleash: null,
+    fenced: null,
+    lighted: null,
+    separated: null,
+    rv: null,
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "Unknown",
+    hours: "Unknown",
+    accessNote: "Opened September 2025. Fee/free status, enclosure details and hours need confirmation. Pin marks community park grounds, not a verified dog-park entrance.",
+    location: "Marlette Community Park, Chard Street, Marlette, Michigan",
+    lastVerified: "September 15, 2026",
+    verificationMethod: "Park operator opening announcement; community-park location from OpenStreetMap; no field verification",
+    source: "Marlette Park + Pool",
+    sourceUrl: "https://www.facebook.com/marletteparkandpool/posts/another-wonderful-morning-in-our-beautiful-park-to-celebrate-the-grand-opening-o/1109980881259118/"
+},
+
 // --------------------------------- MICHIGAN TRAVEL STOPS -----------------------------------
 
 {
@@ -2015,6 +2111,61 @@ const parks = [
     verificationMethod: "Official source + field verified",
     source: "Love's Travel Stops",
     sourceUrl: "https://www.loves.com/locations/mi/capac/loves-travel-stop-capac-701"
+},
+
+// ================================================================================================================
+// OHIO
+// ================================================================================================================
+
+// ---------------------------- PUBLIC / COMMUNITY -----------------------------
+
+{
+    name: "Middlegrounds Metropark Off-Leash Area",
+    parkType: "Public Dog Park",
+    lat: 41.6401483,
+    lng: -83.5373685,
+    status: "free",
+    statusLabel: "🟢 CONFIRMED FREE",
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+    rv: null,
+    water: "Unknown",
+    wasteBags: "Unknown",
+    parking: "RV suitability unverified",
+    hours: "Check posted park hours",
+    seasonalClosure: "Closed when wet; check Metroparks notices after rain",
+    accessNote: "No fee or membership required. Dogs must be licensed, vaccinated, spayed/neutered and at least four months old. Pin uses park street address.",
+    location: "111 Ottawa Street, Toledo, Ohio",
+    lastVerified: "September 15, 2026",
+    verificationMethod: "Official source; address geocoded; no field verification",
+    source: "Metroparks Toledo",
+    sourceUrl: "https://metroparkstoledo.com/features-and-rentals/off-leash-dog-area/"
+},
+
+{
+    name: "K-9 Field of Dreams Dog Park",
+    parkType: "Public Dog Park",
+    lat: 41.0348057,
+    lng: -83.5835187,
+    status: "unknown",
+    statusLabel: "🟡 NEEDS VERIFICATION",
+    offleash: true,
+    fenced: true,
+    lighted: null,
+    separated: true,
+    rv: null,
+    water: "Water listed in official brochure; seasonal availability unverified",
+    wasteBags: "Unknown",
+    parking: "Parking and restrooms nearby; RV fit unverified",
+    hours: "Sunrise to sunset, every day",
+    accessNote: "Small-dog area for dogs 30 lb and under. Fee/free status needs confirmation. Approximate park-address pin; follow signs to Meadows Activity Area.",
+    location: "Riverbend Recreation Area, 16618 Township Road 208, Findlay, Ohio",
+    lastVerified: "September 15, 2026",
+    verificationMethod: "Official source; approximate address geocoding; no field verification",
+    source: "Hancock Park District",
+    sourceUrl: "https://hancockparks.com/k-9-field-of-dreams-dog-park/"
 }
     
 ];
