@@ -562,9 +562,25 @@ header { position: relative; }
     .destination-box, .route-box, .search-row input { min-width: 0; }
 }
 @media (min-width: 1100px) {
-    .site-brand { min-height: 0; padding-right: 250px; }
-    .desktop-control-grid { margin-right: 250px; }
-    .header-art { top: 12px; width: 230px; }
+    header {
+        --banner-width: min(36vw, 520px);
+    }
+
+    .site-brand {
+        min-height: 0;
+        padding-right: calc(var(--banner-width) + 24px);
+    }
+
+    .desktop-control-grid {
+        margin-right: calc(var(--banner-width) + 24px);
+    }
+
+    .header-art {
+        top: 30px;
+        right: 18px;
+        width: var(--banner-width);
+        height: auto;
+    }
 }
 
 </style>
