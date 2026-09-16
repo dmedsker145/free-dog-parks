@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Dog Parks</title>
+<title>Free Dog Parks — BETA</title>
 
 <link rel="stylesheet"
 href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -530,16 +530,54 @@ h1 {
     }
 }
     
+
+/* Beta identity and responsive road-trip illustration */
+header { position: relative; }
+.site-brand { padding-right: 90px; min-height: 64px; }
+.site-brand h1 { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.beta-badge {
+    display: inline-block;
+    padding: 4px 9px;
+    border: 1px solid #d8b34f;
+    border-radius: 6px;
+    background: #fff1bc;
+    color: #654600;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+.header-art {
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    width: 76px;
+    height: auto;
+    pointer-events: none;
+}
+@media (min-width: 701px) {
+    .desktop-control-grid {
+        grid-template-columns: minmax(0, 440px) minmax(0, 520px);
+    }
+    .destination-box, .route-box, .search-row input { min-width: 0; }
+}
+@media (min-width: 1100px) {
+    .site-brand { min-height: 0; padding-right: 250px; }
+    .desktop-control-grid { margin-right: 250px; }
+    .header-art { top: 12px; width: 230px; }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>🐾 FREE DOG PARKS</h1>
-    <div class="subtitle">
-        Find free dog parks along your route.
+    <div class="site-brand">
+        <h1>🐾 FREE DOG PARKS <span class="beta-badge">BETA</span></h1>
+        <div class="subtitle">Find free dog parks along your route.</div>
     </div>
+    <img class="header-art" src="header-dog-road.svg" width="300" height="240" alt="" aria-hidden="true">
 
     <div class="desktop-control-grid">
         
@@ -1380,3 +1418,4 @@ mobileKeyToggle.addEventListener("click", function() {
 
 </body>
 </html>
+
