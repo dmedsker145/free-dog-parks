@@ -2409,3 +2409,24 @@ const parks = [
     });
   }
 })();
+
+// Love's dog-park fees: traveler-reported update
+for (const park of parks) {
+  if (!/love['’]?s/i.test(park.name) || park.status !== "unknown") continue;
+
+  park.status = "free";
+  park.statusLabel = "🟢 FREE - REPORTED BY TRAVELER";
+  park.feeVerificationMethod =
+    "Traveler reports no dog-park charge at Love's locations known to her; individual locations not fee-verified.";
+  park.feeLastUpdated = "September 28, 2026";
+
+  park.accessNote = (park.accessNote || "")
+    .replace(
+      " Fee not confirmed; this entry is hidden when Free is selected.",
+      ""
+    )
+    .replace(
+      " Dog-park fee is not explicitly stated in the operator listing; turn Free off to show this entry.",
+      ""
+    );
+}
