@@ -2321,9 +2321,7 @@ const parks = [
     verificationMethod: "Official source; no field verification",
     source: "Love's Travel Stops",
     sourceUrl: "https://www.loves.com/locations/oh/perrysburg/loves-travel-stop-perrysburg-456"
-}
-    
-];
+},
 
 // ================================================================================================================
 // WISCONSIN
