@@ -873,7 +873,7 @@ function parkIsNearRoute(park) {
      return milesFromRoute <= routeMiles;
 }
 
-function renderMarkers() {
+function renderMarkers(fitMap = true) {
     markers.forEach(marker => map.removeLayer(marker));
     markers = [];
 
@@ -1102,7 +1102,7 @@ Other notes:`
     parkCount.textContent =
         count === 1 ? "1 park shown" : `${count} parks shown`;
 
-    if (markers.length > 0 && !activeRouteCoordinates) {
+    if (fitMap && markers.length > 0 && !activeRouteCoordinates) {
 
         const bounds = L.latLngBounds(
             markers.map(marker => marker.getLatLng())
@@ -1311,7 +1311,7 @@ if (navigator.geolocation) {
             .addTo(map)
             .bindPopup("<b>You are here</b>");
 
-            renderMarkers();
+            renderMarkers(false);
 
             map.setView([userLat, userLng], 12);
         },
