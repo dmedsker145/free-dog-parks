@@ -2373,6 +2373,8 @@ const parks = [
 {
     name: "Superior Dog Park",
     parkType: "Public Dog Park",
+    lat: 46.68076,
+    lng: -92.14915,
 
     status: "free",
     statusLabel: "🟢 FIELD VERIFIED FREE",
@@ -2409,6 +2411,7 @@ const parks = [
     fieldTestTrip: "Western Adventure 2026",
     fieldTestPriority: "COMPLETED",
     fieldVerified: true
+    coordinateSource: "Mapped location; Google Maps directions field verified accurate October 1, 2026",
 },
 
 // Western Adventure - section 1 of 2: checklist parks
