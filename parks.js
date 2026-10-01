@@ -2414,6 +2414,8 @@ const parks = [
     coordinateSource: "Mapped location; Google Maps directions field verified accurate October 1, 2026",
 },
 
+];
+
 // Western Adventure - section 1 of 2: checklist parks
 (() => {
   const defaults = {
