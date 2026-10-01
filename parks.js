@@ -2410,7 +2410,7 @@ const parks = [
 
     fieldTestTrip: "Western Adventure 2026",
     fieldTestPriority: "COMPLETED",
-    fieldVerified: true
+    fieldVerified: true,
     coordinateSource: "Mapped location; Google Maps directions field verified accurate October 1, 2026",
 },
 
