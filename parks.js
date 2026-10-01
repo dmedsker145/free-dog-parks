@@ -4,32 +4,6 @@ const parks = [
 // ================================================================================================================
 
 // ---------------------------- PUBLIC / COMMUNITY -----------------------------
-    {
-        name: "Buth Field Dog Park",
-        parkType: "Public Dog Park",
-        lat: 43.1608,
-        lng: -85.7076,
-        status: "free",
-        statusLabel: "🟢 CONFIRMED FREE",
-        offleash: true,
-        fenced: true,
-        lighted: null,
-        separated: true,
-        rv: true,
-            parkingVanClassB: "Verified",
-            parkingClassC: "Likely suitable",
-            parkingClassA: "Unknown",
-            parkingPullBehind: "May be difficult",
-        water: "Seasonal dog drinking fountain",
-        wasteBags: "Waste station available",
-        parking: "Free parking behind 476 E Division",
-        info: "Off-leash • Fully fenced • Separate small & large dog areas • Waste station • Seasonal water",
-        location: "Sparta, Michigan",
-        lastVerified: "September 2026",
-        verificationMethod: "Official source",
-        source: "Village of Sparta",
-        sourceUrl: "https://spartami.org/parks-playgrounds.php"
-    },
 
     {
         name: "Crump's Canine Corral",
@@ -800,7 +774,34 @@ const parks = [
 
 // ---------------------------- PUBLIC / COMMUNITY -----------------------------
 
-{
+     {
+        name: "Buth Field Dog Park",
+        parkType: "Public Dog Park",
+        lat: 43.1608,
+        lng: -85.7076,
+        status: "free",
+        statusLabel: "🟢 CONFIRMED FREE",
+        offleash: true,
+        fenced: true,
+        lighted: null,
+        separated: true,
+        rv: true,
+            parkingVanClassB: "Verified",
+            parkingClassC: "Likely suitable",
+            parkingClassA: "Unknown",
+            parkingPullBehind: "May be difficult",
+        water: "Seasonal dog drinking fountain",
+        wasteBags: "Waste station available",
+        parking: "Free parking behind 476 E Division",
+        info: "Off-leash • Fully fenced • Separate small & large dog areas • Waste station • Seasonal water",
+        location: "Sparta, Michigan",
+        lastVerified: "September 2026",
+        verificationMethod: "Official source",
+        source: "Village of Sparta",
+        sourceUrl: "https://spartami.org/parks-playgrounds.php"
+    },
+    
+    {
     name: "Algonac Dog Park",
     parkType: "Public Dog Park",
 
@@ -1819,6 +1820,46 @@ const parks = [
     sourceUrl: "https://www.facebook.com/marletteparkandpool/posts/another-wonderful-morning-in-our-beautiful-park-to-celebrate-the-grand-opening-o/1109980881259118/"
 },
 
+{
+    name: "Iron King Dog Park",
+    parkType: "Public Dog Park",
+    lat: 46.45813,
+    lng: -90.13823,
+
+    status: "free",
+    statusLabel: "🟢 FIELD VERIFIED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: false,
+    separated: false,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Water bowl available; no faucet/spigot",
+    wasteBags: "Poop bags available",
+    parking: "No dedicated parking lot; roadside parking with room for vehicles up to semi size",
+
+    info: "FIELD VERIFIED • FREE • Fully fenced • One shared dog area • Double-gated entry • No lights • No toys/agility equipment • Water bowl available but no faucet/spigot • Poop bags • No restroom • Good cell service • Secure, well-maintained fencing with no observed gaps",
+
+    location: "E Ayer St & Bonnie St, Ironwood, Michigan",
+
+    lastVerified: "October 1, 2026",
+    verificationMethod: "Field verified in person",
+    source: "Free Dog Park App field verification",
+
+    accessNote: "Double-gated entry. Gate may accommodate a small wheelchair base; wider wheelchair access was not confirmed.",
+
+    fieldTestTrip: "Western Adventure 2026",
+    fieldTestPriority: "COMPLETED",
+    fieldVerified: true
+},
+
 // --------------------------------- MICHIGAN TRAVEL STOPS -----------------------------------
 
 {
@@ -2283,6 +2324,94 @@ const parks = [
 }
     
 ];
+
+// ================================================================================================================
+// WISCONSIN
+// ================================================================================================================
+
+// ---------------------------- PUBLIC / COMMUNITY -----------------------------
+
+{
+    name: "Ashland Dog Park",
+    parkType: "Public Dog Park",
+    lat: 46.592667,
+    lng: -90.861458,
+
+    status: "free",
+    statusLabel: "🟢 FIELD VERIFIED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: false,
+    separated: false,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+    parkingSemi: "Verified",
+
+    water: "Water bowls/containers available; no faucet or spigot",
+    wasteBags: "Poop bags available",
+    parking: "Gravel access lane with parking suitable for vehicles up to semi size",
+
+    info: "FIELD VERIFIED • FREE • Fully fenced • One shared dog area • Two double-gated entrances • No lights • One agility feature • Water bowls/containers available but no faucet/spigot • Poop bags • No restroom • Good cell service • Wheelchair accessible • Mixed grass/dirt surface • Shade • Picnic tables • Trash can • Large running area • Well maintained",
+
+    location: "Ashland, Wisconsin",
+
+    lastVerified: "October 1, 2026",
+    verificationMethod: "Field verified in person",
+    source: "Free Dog Park App field verification",
+
+    accessNote: "IMPORTANT NAVIGATION NOTE: Google Maps directs drivers to turn too early. Continue past the road indicated by Google Maps and take the first right after the 25 MPH sign. There is no dog park sign at the entrance. Gravel access lane leads to the park. Two double-gated entrances. Wheelchair access field verified.",
+
+    fieldTestTrip: "Western Adventure 2026",
+    fieldTestPriority: "COMPLETED",
+    coordinateSource: "Field-verified entrance pin, October 1, 2026",
+    fieldVerified: true
+},
+
+{
+    name: "Superior Dog Park",
+    parkType: "Public Dog Park",
+
+    status: "free",
+    statusLabel: "🟢 FIELD VERIFIED FREE",
+
+    offleash: true,
+    fenced: true,
+    lighted: false,
+    separated: false,
+
+    rv: true,
+    parkingVanClassB: "Verified",
+    parkingClassC: "Verified",
+    parkingClassA: "Verified",
+    parkingPullBehind: "Verified",
+
+    water: "Water bowls available; water filler located at entrance",
+    wasteBags: "Available",
+
+    parking: "Large parking area at Millennium Trailhead; field verified",
+
+    hours: "5:30 AM - 10:30 PM",
+
+    info: "FIELD VERIFIED • FREE • Fully fenced • One shared dog area • No small/large dog separation • No lights • No toys/agility equipment • Water bowls available • Water filler at entrance • No restroom observed during field visit • Good cell service • Wheelchair can fit through gates • No observed gaps in fencing • Felt safe during field visit",
+
+    location: "Millennium Trailhead, N 28th St & Wyoming Ave, Superior, Wisconsin",
+
+    lastVerified: "October 1, 2026",
+    verificationMethod: "Field verified in person + official city source",
+    source: "City of Superior Parks, Recreation and Forestry",
+    sourceUrl: "https://www.superiorwi.gov/839/Dog-Park",
+
+    accessNote: "Google Maps directions were field verified as accurate. Wheelchair access through the gates was field verified.",
+
+    fieldTestTrip: "Western Adventure 2026",
+    fieldTestPriority: "COMPLETED",
+    fieldVerified: true
+},
 
 // Western Adventure - section 1 of 2: checklist parks
 (() => {
