@@ -602,6 +602,20 @@ header { position: relative; }
     }
 }
 
+
+.visit-notes, .visit-warning, .pin-note { line-height:1.5; }
+.visit-warning { background:#fff5d9; padding:10px; border-left:4px solid #ac7500; }
+.pin-note { font-size:12px; color:#555; }
+.park-photos summary { cursor:pointer; font-weight:bold; padding:8px 0; }
+.park-photos img { display:block; width:100%; height:auto; margin-top:10px; border-radius:6px; }
+.park-photos a { display:block; font-size:12px; }
+.pet-services { padding:24px 18px; background:#fff; border-top:1px solid #ddd; }
+.service-card { max-width:650px; padding:18px; border:1px solid #ccd9cd; border-radius:12px; line-height:1.6; }
+.service-card h3 { margin-top:0; color:#217a32; }
+/* Open park details stay above zoom/key/legend controls. */
+.map-wrap:has(.leaflet-popup) .mobile-key-toggle,
+.map-wrap:has(.leaflet-popup) .legend { visibility:hidden; }
+.leaflet-popup-pane { z-index:1100; }
 </style>
 </head>
 
@@ -721,7 +735,7 @@ header { position: relative; }
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="parks.js?v=20261001-1"></script>
+<script src="parks.js?v=20261007-1"></script>
 
 <script>
 
@@ -998,6 +1012,11 @@ function renderMarkers(fitMap = true) {
                 </div>
 
                 ${rvSection}
+                ${park.info ? `<p class="visit-notes"><strong>Park notes:</strong> ${park.info}</p>` : ""}
+                ${park.warning ? `<p class="visit-warning"><strong>Visit caution:</strong> ${park.warning}</p>` : ""}
+                ${park.visitorRating ? `<p><strong>Deb’s visit rating:</strong> ${park.visitorRating}/5 — ${park.lastVerified} (individual visit, not a public average)</p>` : ""}
+                ${park.coordinateSource ? `<p class="pin-note"><strong>Map pin:</strong> ${park.coordinateSource}</p>` : ""}
+                ${park.photos?.length ? `<details class="park-photos"><summary>Visit photos (${park.photos.length})</summary>${park.photos.map(photo => `<a href="${photo.src}" target="_blank" rel="noopener"><img src="${photo.src}" alt="${photo.alt}" loading="lazy"><span>${photo.alt}</span></a>`).join("")}</details>` : ""}
 
                 <div style="
                     margin-top: 9px;
@@ -1088,7 +1107,7 @@ Other notes:`
             { icon: createParkIcon(park.status) }
         )
         .addTo(map)
-        .bindPopup(popup);
+        .bindPopup(popup, { maxHeight: 420, maxWidth: 330 });
 
         markers.push(marker);
     });
@@ -1455,6 +1474,16 @@ mobileKeyToggle.addEventListener("click", function() {
     
 </script>
 
+<section class="pet-services" id="pet-services" aria-labelledby="services-title">
+<h2 id="services-title">Pet Services</h2>
+<p>Useful stops for traveling pets. These services may charge a fee.</p>
+<article class="service-card">
+<h3>The sPaw — Self-Service Pet Wash</h3>
+<p>2144 Jackson Blvd, Suite 3, Rapid City, SD</p>
+<p><strong>Visited by Deb and Sunnie:</strong> October 2026. All wash supplies included. <strong>$15 paid at our visit</strong>; check with the business for current pricing.</p>
+<p><strong>Parking:</strong> Cars and Class B verified. Parking for larger rigs not verified.</p>
+<p><a href="https://thespawrc.com/" target="_blank" rel="noopener">Business website</a> · <a href="https://thespawrc.com/?page_id=685" target="_blank" rel="noopener">Official photo tour</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=The+sPaw+2144+Jackson+Blvd+Rapid+City+SD" target="_blank" rel="noopener">Directions</a></p>
+</article></section>
 <footer style="padding:24px 16px; text-align:center; background:#f5f8f5; border-top:1px solid #ddd;">
   <h2 style="margin:0 0 8px; color:#237a35;">Contact Us</h2>
   <p>Have a park to suggest, a correction, or feedback?</p>

@@ -2562,3 +2562,329 @@ for (const park of parks) {
       ""
     );
 }
+
+// October 7, 2026: field visits, grouped by state.
+(() => {
+const visits = [
+  {
+    "status": "free",
+    "statusLabel": "🟢 FIELD VERIFIED FREE",
+    "offleash": true,
+    "fenced": true,
+    "lighted": false,
+    "separated": true,
+    "rv": true,
+    "parkingVanClassB": "Verified",
+    "parkingClassC": "Verified",
+    "parkingClassA": "Unknown",
+    "parkingPullBehind": "Unknown",
+    "parkingSemi": "Verified",
+    "hours": "Sunrise to sunset (city listing)",
+    "water": "Unknown",
+    "wasteBags": "Available",
+    "fieldVerified": true,
+    "verificationMethod": "Visited in person by Deb and Sunnie",
+    "source": "FreeDogParks field notes",
+    "fieldTestTrip": "Western Adventure 2026",
+    "name": "Detroit Lakes Dog Park",
+    "lat": 46.81664,
+    "lng": -95.83165,
+    "state": "Minnesota",
+    "parkType": "Public Dog Park",
+    "lastVerified": "October 2, 2026",
+    "coordinateSource": "Mapped park or address location; exact entrance pin not field verified",
+    "location": "1023 10th Ave SE, Detroit Lakes, Minnesota",
+    "parking": "Roadside parking; traveler reports room for vehicles up to semi size.",
+    "info": "Separate small/large areas; small dogs under 25 lb. Double- and single-gate entrances. Wheelchair accessible. Pavilion with picnic tables, porta-potty, poop bags and trash bins. Great cell service. No toys/agility. No observed fence gaps. Very well maintained; visitor felt safe.",
+    "photos": []
+  },
+  {
+    "status": "free",
+    "statusLabel": "🟢 FIELD VERIFIED FREE",
+    "offleash": true,
+    "fenced": true,
+    "lighted": false,
+    "separated": true,
+    "rv": true,
+    "parkingVanClassB": "Verified",
+    "parkingClassC": "Verified",
+    "parkingClassA": "Unknown",
+    "parkingPullBehind": "Unknown",
+    "parkingSemi": "Verified",
+    "hours": "Unknown",
+    "water": "None observed",
+    "wasteBags": "Available",
+    "fieldVerified": true,
+    "verificationMethod": "Visited in person by Deb and Sunnie",
+    "source": "FreeDogParks field notes",
+    "fieldTestTrip": "Western Adventure 2026",
+    "name": "Breckenridge Dog Park",
+    "lat": 46.26834,
+    "lng": -96.587,
+    "state": "Minnesota",
+    "parkType": "Public Dog Park",
+    "lastVerified": "October 2, 2026",
+    "coordinateSource": "Mapped park or address location; exact entrance pin not field verified",
+    "location": "504 Beede Ave, Breckenridge, Minnesota",
+    "parking": "Side-street parking; traveler reports room for vehicles up to semi size.",
+    "info": "Double-gated; wheelchair accessible. Some shade, grass and concrete. Good cell service. No restroom, toys or agility equipment. Well kept with running room; visitor felt safe. Small trash cans are for dog-waste bags only. Visit photo confirms a designated small dog area for dogs under 30 pounds.",
+    "warning": "A gap between fences was observed; its purpose was not confirmed. Check containment before letting your dog off leash.",
+    "photos": [
+      {
+        "src": "photos/breckenridge-fence.jpg",
+        "alt": "Fenced play area"
+      },
+      {
+        "src": "photos/breckenridge-small-dogs.jpg",
+        "alt": "Posted small dog area: under 30 pounds"
+      },
+      {
+        "src": "photos/breckenridge-seating.jpg",
+        "alt": "Picnic table and shade"
+      }
+    ]
+  },
+  {
+    "status": "free",
+    "statusLabel": "🟢 FIELD VERIFIED FREE",
+    "offleash": true,
+    "fenced": true,
+    "lighted": true,
+    "separated": false,
+    "rv": true,
+    "parkingVanClassB": "Verified",
+    "parkingClassC": "Verified",
+    "parkingClassA": "Unknown",
+    "parkingPullBehind": "Unknown",
+    "parkingSemi": "Verified",
+    "hours": "Unknown",
+    "water": "Bowls available; no water supply observed",
+    "wasteBags": "Available",
+    "fieldVerified": true,
+    "verificationMethod": "Visited in person by Deb and Sunnie",
+    "source": "FreeDogParks field notes",
+    "fieldTestTrip": "Western Adventure 2026",
+    "name": "TA Express Summit Dog Park",
+    "lat": 45.311216,
+    "lng": -97.046297,
+    "state": "South Dakota",
+    "parkType": "Travel Stop Dog Park",
+    "lastVerified": "October 3, 2026",
+    "coordinateSource": "Mapped park or address location; exact entrance pin not field verified",
+    "location": "45789 US Hwy 12, Summit, South Dakota",
+    "parking": "Travel-center parking up to semi size.",
+    "info": "Double-gated; shared area without size separation. Wheelchair accessible. Good cell service. No seating inside, shade, toys or agility. Poop bags and trash can; restrooms in travel center.",
+    "warning": "Fence repairs needed at the October 3 visit. Visitor considered the enclosure safe only once repaired; inspect before off-leash use.",
+    "accessNote": "Some lighting observed. Pin marks travel-center address, not dog-park gate.",
+    "photos": [
+      {
+        "src": "photos/summit-overview.jpg",
+        "alt": "Fenced pet area"
+      },
+      {
+        "src": "photos/summit-sign.jpg",
+        "alt": "Coffee Cup Bark Park sign at the Summit stop"
+      }
+    ]
+  },
+  {
+    "status": "free",
+    "statusLabel": "🟢 FIELD VERIFIED FREE",
+    "offleash": true,
+    "fenced": true,
+    "lighted": false,
+    "separated": false,
+    "rv": true,
+    "parkingVanClassB": "Verified",
+    "parkingClassC": "Verified",
+    "parkingClassA": "Unknown",
+    "parkingPullBehind": "Unknown",
+    "parkingSemi": "Verified",
+    "hours": "Unknown",
+    "water": "Fixture and bowl visible in visit photo; operation not verified",
+    "wasteBags": "Dispenser and trash bin visible",
+    "fieldVerified": true,
+    "verificationMethod": "Visited in person by Deb and Sunnie",
+    "source": "FreeDogParks field notes",
+    "fieldTestTrip": "Western Adventure 2026",
+    "name": "Watertown Dog Park",
+    "lat": 44.91294,
+    "lng": -97.10169,
+    "state": "South Dakota",
+    "parkType": "Public Dog Park",
+    "lastVerified": "October 3, 2026",
+    "coordinateSource": "Mapped park or address location; exact entrance pin not field verified",
+    "location": "10th Ave NE, Watertown, South Dakota",
+    "parking": "Parking up to semi size reported; residential neighborhood setting.",
+    "info": "Separate fenced areas, but no small/large designation observed. Not wheelchair accessible. Good cell service. No observed fence gaps. Mostly grass; well maintained; visitor felt safe. Porta-potty available. Ramp equipment, picnic seating and shade visible in visit photos.",
+    "accessNote": "Multiple areas are present, but size separation was not verified during this visit.",
+    "photos": [
+      {
+        "src": "photos/watertown-overview.jpg",
+        "alt": "Grass play area and picnic seating"
+      },
+      {
+        "src": "photos/watertown-water.jpg",
+        "alt": "Water fixture and bowl; operation not verified"
+      },
+      {
+        "src": "photos/watertown-equipment.jpg",
+        "alt": "Ramp, seating and shade"
+      },
+      {
+        "src": "photos/watertown-gate.jpg",
+        "alt": "Entrance with waste station"
+      }
+    ]
+  },
+  {
+    "status": "free",
+    "statusLabel": "🟢 FIELD VERIFIED FREE",
+    "offleash": false,
+    "fenced": false,
+    "lighted": null,
+    "separated": false,
+    "rv": true,
+    "parkingVanClassB": "Verified",
+    "parkingClassC": "Verified",
+    "parkingClassA": "Unknown",
+    "parkingPullBehind": "Unknown",
+    "parkingSemi": "Unknown",
+    "hours": "Unknown",
+    "water": "Unknown",
+    "wasteBags": "Unknown",
+    "fieldVerified": true,
+    "verificationMethod": "Visited in person by Deb and Sunnie",
+    "source": "FreeDogParks field notes",
+    "fieldTestTrip": "Western Adventure 2026",
+    "name": "Chamberlain Scenic Pet Stop — Dignity",
+    "lat": 43.786953,
+    "lng": -99.338234,
+    "state": "South Dakota",
+    "parkType": "Scenic Leashed Pet Stop",
+    "lastVerified": "October 3, 2026",
+    "coordinateSource": "Mapped park or address location; exact entrance pin not field verified",
+    "location": "Dignity of Earth and Sky rest area, Chamberlain, South Dakota",
+    "parking": "Visitor confirmed cars, Class B and Class C.",
+    "info": "Scenic view praised by visitor. Unfenced pet stretch stop with limited amenities; not an enclosed dog park. Sunnie picked up burrs.",
+    "warning": "Unfenced; keep dogs leashed. Burrs observed.",
+    "accessNote": "Pin marks the Dignity landmark grounds, not a verified pet-area entrance.",
+    "photos": [
+      {
+        "src": "photos/chamberlain-overlook.jpg",
+        "alt": "Scenic overlook and walking path"
+      }
+    ]
+  },
+  {
+    "status": "free",
+    "statusLabel": "🟢 FIELD VERIFIED FREE",
+    "offleash": true,
+    "fenced": true,
+    "lighted": false,
+    "separated": false,
+    "rv": true,
+    "parkingVanClassB": "Verified",
+    "parkingClassC": "Verified",
+    "parkingClassA": "Unknown",
+    "parkingPullBehind": "Unknown",
+    "parkingSemi": "Verified",
+    "hours": "Unknown",
+    "water": "Spigot working October 7, 2026; bowls available. Sign locates winter water on west side.",
+    "wasteBags": "Available; trash receptacles present",
+    "fieldVerified": true,
+    "verificationMethod": "Visited in person by Deb and Sunnie",
+    "source": "FreeDogParks field notes",
+    "fieldTestTrip": "Western Adventure 2026",
+    "name": "Lake McKenzie Dog Park",
+    "lat": 42.86945,
+    "lng": -106.295671,
+    "state": "Wyoming",
+    "parkType": "Public Dog Park",
+    "lastVerified": "October 7, 2026",
+    "coordinateSource": "Mapped park or address location; exact entrance pin not field verified",
+    "location": "1691 Bryan Stock Trail, Casper, Wyoming",
+    "parking": "South lot: cars, Class B and Class C. North lot: vehicles up to semi size. Continue along gravel road for north lot.",
+    "info": "Two double-gated parking-lot entrances plus a lakeside entrance; lakeside gate configuration not confirmed. No size separation. Wheelchair accessible with paved walking path. Sand/stone surface. Good cell service; no noticeable fence gaps. Good cleanliness and maintenance; visitor felt safe in the play area. Benches, tree shade and covered seating shelter. Porta-potty at north entrance. No toys/agility. Deb said this may be her favorite park yet.",
+    "warning": "Cyanobacteria hazard sign posted by the lake: blooms are known to occur. This records a posted warning, not confirmation of an active bloom. Check current lake advisories at WyoHCBs.org.",
+    "accessNote": "From Bryan Stock Trail, turn into the access road before the Google Maps arrival point reported during our visit. First lot is the south entrance; continue on gravel road to north entrance. Pin is an address location, not a corrected entrance pin.",
+    "photos": [
+      {
+        "src": "photos/mckenzie-overview.jpg",
+        "alt": "Open play area and covered seating"
+      },
+      {
+        "src": "photos/mckenzie-path.jpg",
+        "alt": "Paved walking path"
+      },
+      {
+        "src": "photos/mckenzie-gate.jpg",
+        "alt": "Entrance and lakeside surroundings"
+      },
+      {
+        "src": "photos/mckenzie-water.jpg",
+        "alt": "Water spigot and bowl"
+      },
+      {
+        "src": "photos/mckenzie-warning.jpg",
+        "alt": "Posted lake cyanobacteria warning"
+      }
+    ]
+  },
+  {
+    "status": "free",
+    "statusLabel": "🟢 FIELD VERIFIED FREE",
+    "offleash": true,
+    "fenced": true,
+    "lighted": false,
+    "separated": false,
+    "rv": true,
+    "parkingVanClassB": "Verified",
+    "parkingClassC": "Verified",
+    "parkingClassA": "Unknown",
+    "parkingPullBehind": "Unknown",
+    "parkingSemi": "Unknown",
+    "hours": "Unknown",
+    "water": "None observed at dog park",
+    "wasteBags": "Available; trash can visible",
+    "fieldVerified": true,
+    "verificationMethod": "Visited in person by Deb and Sunnie",
+    "source": "FreeDogParks field notes",
+    "fieldTestTrip": "Western Adventure 2026",
+    "name": "Dylan’s Dog Park",
+    "lat": 42.845447,
+    "lng": -106.348478,
+    "state": "Wyoming",
+    "parkType": "Public Dog Park",
+    "lastVerified": "October 7, 2026",
+    "coordinateSource": "Mapped park or address location; exact entrance pin not field verified",
+    "location": "Tate Pumphouse, 1775 W First Street, Casper, Wyoming",
+    "parking": "Cars, Class B and SMALL Class C verified; larger rigs not verified.",
+    "info": "Small, fully fenced park with double-gated entry and no size separation. Wheelchair accessible; paved path, gravel and grass. One bench in shade. Cell service available. Visitor felt safe but found maintenance poor. No water or bathrooms observed at the dog park. Operator separately lists restrooms at Tate Pumphouse; access was not field checked.",
+    "accessNote": "On entering the park parking area, take an immediate right. Dog park is at the end of the parking lot. Pin marks the Pumphouse address; follow these directions to the dog park.",
+    "visitorRating": 2,
+    "photos": [
+      {
+        "src": "photos/dylans-overview.jpg",
+        "alt": "Paved path and shaded bench"
+      },
+      {
+        "src": "photos/dylans-gate.jpg",
+        "alt": "Double-gated entrance"
+      },
+      {
+        "src": "photos/dylans-rules.jpg",
+        "alt": "Park name and posted rules"
+      },
+      {
+        "src": "photos/dylans-bags.jpg",
+        "alt": "Waste bag dispenser"
+      }
+    ]
+  }
+];
+for (const visit of visits) {
+ const existing = parks.find(p => p.name === visit.name);
+ if (existing) Object.assign(existing, visit); else parks.push(visit);
+}
+})();
