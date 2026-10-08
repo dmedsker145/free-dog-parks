@@ -609,7 +609,12 @@ header { position: relative; }
 .park-photos summary { cursor:pointer; font-weight:bold; padding:8px 0; }
 .park-photos img { display:block; width:100%; height:auto; margin-top:10px; border-radius:6px; }
 .park-photos a { display:block; font-size:12px; }
-.pet-services { padding:24px 18px; background:#fff; border-top:1px solid #ddd; }
+.pet-services { box-sizing:border-box; width:calc(100% - 24px); max-width:700px; max-height:85dvh; overflow-y:auto; padding:20px; background:#fff; color:#222; border:1px solid #ccd9cd; border-radius:14px; }
+.pet-services::backdrop { background:rgba(0,0,0,.5); }
+.pet-services-button { margin-left:8px; background:#217a32; color:white; border-color:#217a32; }
+.services-close { display:flex; justify-content:flex-end; margin:0; }
+.services-close button { min-height:44px; padding:8px 14px; border:1px solid #999; border-radius:8px; background:white; color:#222; cursor:pointer; font:inherit; }
+body:has(#pet-services[open]) { overflow:hidden; }
 .service-card { max-width:650px; padding:18px; border:1px solid #ccd9cd; border-radius:12px; line-height:1.6; }
 .service-card h3 { margin-top:0; color:#217a32; }
 /* Open park details stay above zoom/key/legend controls. */
@@ -705,9 +710,12 @@ header { position: relative; }
     </select>
 </div>
 
+</div><!-- end filter-section; keep toggle outside the hidden controls -->
+
 <button id="toggleControls" class="toggle-controls">
     HIDE CONTROLS
 </button>
+<button id="petServicesButton" class="toggle-controls pet-services-button" type="button" aria-haspopup="dialog" aria-controls="pet-services">PET SERVICES</button>
 
 </header>
 
@@ -1474,7 +1482,8 @@ mobileKeyToggle.addEventListener("click", function() {
     
 </script>
 
-<section class="pet-services" id="pet-services" aria-labelledby="services-title">
+<dialog class="pet-services" id="pet-services" aria-labelledby="services-title">
+<form method="dialog" class="services-close"><button type="submit" autofocus aria-label="Close Pet Services">Close ✕</button></form>
 <h2 id="services-title">Pet Services</h2>
 <p>Useful stops for traveling pets. These services may charge a fee.</p>
 <article class="service-card">
@@ -1483,7 +1492,7 @@ mobileKeyToggle.addEventListener("click", function() {
 <p><strong>Visited by Deb and Sunnie:</strong> October 2026. All wash supplies included. <strong>$15 paid at our visit</strong>; check with the business for current pricing.</p>
 <p><strong>Parking:</strong> Cars and Class B verified. Parking for larger rigs not verified.</p>
 <p><a href="https://thespawrc.com/" target="_blank" rel="noopener">Business website</a> · <a href="https://thespawrc.com/?page_id=685" target="_blank" rel="noopener">Official photo tour</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=The+sPaw+2144+Jackson+Blvd+Rapid+City+SD" target="_blank" rel="noopener">Directions</a></p>
-</article></section>
+</article></dialog>
 <footer style="padding:24px 16px; text-align:center; background:#f5f8f5; border-top:1px solid #ddd;">
   <h2 style="margin:0 0 8px; color:#237a35;">Contact Us</h2>
   <p>Have a park to suggest, a correction, or feedback?</p>
@@ -1493,6 +1502,12 @@ mobileKeyToggle.addEventListener("click", function() {
   </a>
 </footer>
 
+<script>
+const petServicesButton = document.getElementById('petServicesButton');
+const petServicesDialog = document.getElementById('pet-services');
+petServicesButton.addEventListener('click', () => petServicesDialog.showModal());
+petServicesDialog.addEventListener('close', () => petServicesButton.focus());
+</script>
 </body>
 </html>
 
