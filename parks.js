@@ -2888,3 +2888,121 @@ for (const visit of visits) {
  if (existing) Object.assign(existing, visit); else parks.push(visit);
 }
 })();
+
+// Earlier field-visit photo galleries, added October 7, 2026.
+(() => {
+const galleries = {
+  "Iron King Dog Park": [
+    {
+      "src": "photos/ironwood-visit-01.jpg",
+      "alt": "Park name and history sign"
+    },
+    {
+      "src": "photos/ironwood-visit-02.jpg",
+      "alt": "Entrance and roadside parking"
+    },
+    {
+      "src": "photos/ironwood-visit-03.jpg",
+      "alt": "Roadside parking approach"
+    },
+    {
+      "src": "photos/ironwood-visit-04.jpg",
+      "alt": "Posted park rules"
+    },
+    {
+      "src": "photos/ironwood-visit-05.jpg",
+      "alt": "Shaded play area"
+    },
+    {
+      "src": "photos/ironwood-visit-06.jpg",
+      "alt": "Waste bag station"
+    },
+    {
+      "src": "photos/ironwood-visit-07.jpg",
+      "alt": "Open play area"
+    },
+    {
+      "src": "photos/ironwood-visit-08.jpg",
+      "alt": "Gated entrance"
+    }
+  ],
+  "Ashland Dog Park": [
+    {
+      "src": "photos/ashland-visit-01.jpg",
+      "alt": "Grass and dirt play area"
+    },
+    {
+      "src": "photos/ashland-visit-02.jpg",
+      "alt": "Water containers and waste station"
+    },
+    {
+      "src": "photos/ashland-visit-03.jpg",
+      "alt": "Access road approaching the park"
+    },
+    {
+      "src": "photos/ashland-visit-04.jpg",
+      "alt": "Double-gated entrance"
+    }
+  ],
+  "Superior Dog Park": [
+    {
+      "src": "photos/superior-visit-01.jpg",
+      "alt": "Double-gated entrance and posted rules"
+    },
+    {
+      "src": "photos/superior-visit-02.jpg",
+      "alt": "Parking area with Liberty"
+    },
+    {
+      "src": "photos/superior-visit-03.jpg",
+      "alt": "Shaded fenced play area"
+    },
+    {
+      "src": "photos/superior-visit-04.jpg",
+      "alt": "Parking spaces beside the entrance"
+    },
+    {
+      "src": "photos/superior-visit-05.jpg",
+      "alt": "Superior Dog Park rules"
+    },
+    {
+      "src": "photos/superior-visit-06.jpg",
+      "alt": "Picnic seating and water bowl"
+    },
+    {
+      "src": "photos/superior-visit-07.jpg",
+      "alt": "Trees and open play space"
+    },
+    {
+      "src": "photos/superior-visit-08.jpg",
+      "alt": "Water filler at the entrance"
+    }
+  ],
+  "Detroit Lakes Dog Park": [
+    {
+      "src": "photos/detroit-lakes-visit-01.jpg",
+      "alt": "Grass play area"
+    },
+    {
+      "src": "photos/detroit-lakes-visit-02.jpg",
+      "alt": "Water fixture beside the entrance"
+    },
+    {
+      "src": "photos/detroit-lakes-visit-03.jpg",
+      "alt": "Water fixture and dog bowl; operation not verified"
+    },
+    {
+      "src": "photos/detroit-lakes-visit-04.jpg",
+      "alt": "Posted dog park rules"
+    },
+    {
+      "src": "photos/detroit-lakes-visit-05.jpg",
+      "alt": "Detroit Lakes Dog Park sign"
+    }
+  ]
+};
+for (const [name, photos] of Object.entries(galleries)) {
+ const park = parks.find(p => p.name === name);
+ if (park) park.photos = photos;
+}
+})();
