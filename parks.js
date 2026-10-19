@@ -3310,3 +3310,44 @@ for (const item of inspections) {
 // Inspect pendingParkLocations while reconciling remaining map coordinates.
 if (typeof window !== "undefined") window.pendingParkLocations = pendingParkLocations;
 })();
+
+
+// Photo galleries selected from October 15 field inspection uploads.
+(() => {
+  const galleries = {
+    "Cherry Hill Dog Park": [
+      { src: "photos/cherry-hill-overview.jpg", alt: "Cherry Hill dog play area" },
+      { src: "photos/cherry-hill-entrance.jpg", alt: "Separate fenced dog enclosure and entrance" },
+      { src: "photos/cherry-hill-rules.jpg", alt: "Posted Cherry Hill park rules" }
+    ],
+    "Valley Mission Dog Park": [
+      { src: "photos/valley-mission-overview.jpg", alt: "Gravel dog play area and agility obstacles" },
+      { src: "photos/valley-mission-park.jpg", alt: "Valley Mission public park and parking area" },
+      { src: "photos/valley-mission-hours.jpg", alt: "Posted seasonal public park hours" }
+    ]
+  };
+  for (const [name, gallery] of Object.entries(galleries)) {
+    const park = parks.find(p => p.name === name);
+    if (park) park.photos = gallery;
+  }
+})();
+
+
+// October 16, 2026: Benton Dog Park — preserve mapped coordinates and original source metadata.
+(() => {
+  const park = parks.find(p => p.name === 'Benton Dog Park');
+  if (!park) return;
+  Object.assign(park, {
+    status: 'free', statusLabel: '🟢 FIELD VERIFIED FREE',
+    fieldVerified: true, verificationMethod: 'Visited in person by Deb and Sunnie',
+    fieldTestTrip: 'Western Adventure 2026', lastVerified: 'October 16, 2026',
+    offleash: true, fenced: true, separated: true, lighted: true,
+    rv: true, parkingVanClassB: 'Verified', parkingClassC: 'Verified',
+    parkingClassA: 'Unknown', parkingPullBehind: 'Unknown', parkingSemi: 'Verified',
+    water: 'Fresh drinking water available; bowls verified',
+    wasteBags: 'Poop bags and trash cans verified',
+    parking: 'Dedicated lot, plenty of spaces, room for semi; at parking area',
+    visitorRating: 4.5,
+    info: 'FREE • Fully fenced • Separate small/large areas • Double-gated • Safe • Mixed surface • Poop bags and trash • Fresh drinking water and bowls • Benches • Shade • LIGHTED • NO RESTROOM facilities • Wheelchair accessible, dog park at parking area • Excellent cell service • Good maintenance • Field inspector recommends.'
+  });
+})();
