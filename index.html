@@ -743,7 +743,7 @@ body:has(#pet-services[open]) { overflow:hidden; }
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="parks.js?v=20261018-fullupdate1"></script>
+<script src="parks.js?v=20261022-henderson1"></script>
 
 <script>
 
@@ -847,7 +847,15 @@ function createParkIcon(status) {
 let markers = [];
     let userMarker = null;
 
+const FAVORITES_KEY = "freeDogParksFavoritesV1";
+function favoriteId(park) { return (park.name + "|" + (park.location || "")).toLowerCase(); }
+function readFavorites() { try { const a=JSON.parse(localStorage.getItem(FAVORITES_KEY)||"[]"); return Array.isArray(a)?a:[]; } catch { return []; } }
+let favoriteIds = new Set(readFavorites());
+let favoritesOnly = false;
+function saveFavorites() { try { localStorage.setItem(FAVORITES_KEY,JSON.stringify([...favoriteIds])); } catch(e) { console.warn("Favorites could not be saved",e); } }
+
 function parkMatchesFilters(park) {
+    if (favoritesOnly && !favoriteIds.has(favoriteId(park))) return false;
     if (activeFilters.free && park.status !== "free") return false;
     if (activeFilters.offleash && !park.offleash) return false;
     if (activeFilters.lighted && !park.lighted) return false;
@@ -909,6 +917,8 @@ function renderMarkers(fitMap = true) {
         if (!parkMatchesFilters(park)) return;
         if (!parkIsNearRoute(park)) return;
 
+        const favoriteKey = favoriteId(park);
+        const isFavorite = favoriteIds.has(favoriteKey);
         const directions =
             "https://www.google.com/maps/search/?api=1&query=" +
             encodeURIComponent(park.name + " " + park.location);
@@ -1081,6 +1091,7 @@ function renderMarkers(fitMap = true) {
                 </div>
 
                 <div style="margin-top: 9px;">
+                    <button type="button" class="favorite-toggle" data-favorite-id="${encodeURIComponent(favoriteKey)}" aria-pressed="${isFavorite}" style="padding:9px 12px;border:1px solid #217a32;border-radius:8px;background:#fff;color:#217a32;font-weight:bold;cursor:pointer;margin:0 4px 8px 0;">${isFavorite ? "♥ Saved" : "♡ Save Favorite"}</button>
                     <a class="directions"
                        href="${directions}"
                        target="_blank">
@@ -1143,6 +1154,30 @@ Other notes:`
     }
 }
 
+// Favorites stay on this device; no account or server upload.
+const favoritesFilterButton = document.createElement("button");
+favoritesFilterButton.type = "button";
+favoritesFilterButton.className = "filter";
+favoritesFilterButton.textContent = "♡ FAVORITES";
+favoritesFilterButton.setAttribute("aria-pressed","false");
+document.getElementById("filterOptions").appendChild(favoritesFilterButton);
+favoritesFilterButton.addEventListener("click", () => {
+    favoritesOnly = !favoritesOnly;
+    favoritesFilterButton.classList.toggle("active", favoritesOnly);
+    favoritesFilterButton.setAttribute("aria-pressed",String(favoritesOnly));
+    favoritesFilterButton.textContent = favoritesOnly ? "♥ FAVORITES" : "♡ FAVORITES";
+    renderMarkers(false);
+});
+document.getElementById("map").addEventListener("click",event=>{
+    const button=event.target.closest(".favorite-toggle");
+    if(!button)return;
+    const id=decodeURIComponent(button.dataset.favoriteId);
+    if(favoriteIds.has(id))favoriteIds.delete(id); else favoriteIds.add(id);
+    saveFavorites();
+    button.textContent=favoriteIds.has(id)?"♥ Saved":"♡ Save Favorite";
+    button.setAttribute("aria-pressed",String(favoriteIds.has(id)));
+    if(favoritesOnly)renderMarkers(false);
+});
 document.querySelectorAll(".filter").forEach(function(button) {
     button.addEventListener("click", function() {
 
