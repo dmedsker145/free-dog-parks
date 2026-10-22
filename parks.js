@@ -3387,3 +3387,31 @@ for(const visit of visits){
  const union=parks.find(p=>p.name==='Union Village Park Dog Park');
  if(union) Object.assign(union,{parkType:'Residential Dog Park',status:'free',statusLabel:'🟡 FREE — PARTIALLY VERIFIED',fenced:true,offleash:true,fieldVerified:false,inspectionStatus:'Drive-by observations only; full inspection pending',neighborhoodScale:true,parking:'Street parking only; very limited spaces',info:'FREE, fully fenced neighborhood-scale dog area in a residential setting. NOT a large public park. Drive-by observations only; amenities, safety, gate configuration and suitability unverified.',accessNote:'Residential street parking is very limited; exact dog-park gate and map coordinates unverified.'});
 })();
+
+// Union Village: completed firsthand field inspection, October 22, 2026. No photos.
+(() => {
+ const record={
+ name:'Union Village Residential Dog Park',parkType:'Residential Dog Park',
+ location:'1060 Wellness Place, Henderson, NV 89011',address:'1060 Wellness Place, Henderson, NV 89011',
+ lat:36.07657,lng:-115.03372,coordinatesSource:'OpenStreetMap dog park way 1308910286 via Mapcarta; approximate mapped park center',
+ status:'free',statusLabel:'🟢 FIELD VERIFIED FREE',offleash:true,fenced:true,separated:true,doubleGated:true,safe:true,
+ lighted:true,water:'Verified',wasteBags:'Verified',trashCans:true,
+ surface:'Mixed',amenitiesVerified:['Poop bags','Trash cans','Fresh drinking water','Lighting'],
+ amenitiesUnverifiedPolicy:'All other amenities unknown, not absent',
+ parking:'Street parking only — very limited spaces; passenger cars/SUVs only. No RV parking verified.',
+ parkingType:'Residential street parking',parkingAvailability:'Very limited',
+ largestVehicle:'Passenger car / SUV',rv:'Not suitable',rvParkingSuitable:false,
+ wheelchairAccessible:true,distanceFromParking:'Short walk',cellService:'Fair',
+ maintenance:'Excellent',rating:3,recommend:false,recommendation:'No',
+ recommendationReason:'Not recommended because the fenced dog area is small and street parking is very limited, not because of poor maintenance.',
+ neighborhoodScale:true,fieldVerified:true,verificationMethod:'Firsthand field inspection by Deb and Sunnie',
+ inspectionStatus:'Completed inspection',lastVerified:'October 22, 2026',
+ source:'Free Dog Parks field inspection',sourceUrl:'https://www.cityofhenderson.com/Home/Components/FacilityDirectory/FacilityDirectory/355/771',
+ hours:'6:00 AM–10:00 PM (city park hours; check posted dog-area signage)',
+ photos:[],photoStatus:'No photos available',
+ info:'FREE • Fully fenced residential neighborhood dog area with separate small/large runs and double-gated entry. Excellent maintenance, but SMALL and NOT recommended for travelers because parking is very limited. Street parking for passenger cars/SUVs only; unsuitable for RVs. Verified: poop bags, trash, drinking water, lighting. Other amenities unknown.',
+ accessNote:'Neighborhood-scale dog area, NOT a large destination park. Very limited residential street parking; short accessible walk from street to entrance.'
+ };
+ const existing=parks.find(p=>/union village/i.test(p.name||''));
+ if(existing) Object.assign(existing,record); else parks.push(record);
+})();
