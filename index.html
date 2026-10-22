@@ -743,7 +743,7 @@ body:has(#pet-services[open]) { overflow:hidden; }
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="parks.js?v=20261022-henderson1"></script>
+<script src="parks.js?v=20261022-union-final"></script>
 
 <script>
 
@@ -1178,7 +1178,7 @@ document.getElementById("map").addEventListener("click",event=>{
     button.setAttribute("aria-pressed",String(favoriteIds.has(id)));
     if(favoritesOnly)renderMarkers(false);
 });
-document.querySelectorAll(".filter").forEach(function(button) {
+document.querySelectorAll(".filter[data-filter]").forEach(function(button) {
     button.addEventListener("click", function() {
 
         const filterName = button.dataset.filter;
