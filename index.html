@@ -692,6 +692,7 @@ body:has(#pet-services[open]) { overflow:hidden; }
 
     <div class="filters" id="filterOptions">
         <div class="filter active" data-filter="free">FREE</div>
+        <div class="filter" id="ownersFavoriteFilter">⭐ OWNER’S FAVORITES</div>
         <div class="filter" data-filter="offleash">OFF-LEASH</div>
         <div class="filter" data-filter="lighted">LIGHTED</div>
         <div class="filter" data-filter="separated">SMALL/LARGE</div>
@@ -1191,11 +1192,8 @@ document.getElementById("map").addEventListener("click",event=>{
     button.setAttribute("aria-pressed",String(favoriteIds.has(id)));
     if(favoritesOnly)renderMarkers(false);
 });
-const ownersFavoriteFilter = document.createElement("div");
-ownersFavoriteFilter.className = "filter";
-ownersFavoriteFilter.textContent = "⭐ OWNER’S FAVORITES";
+const ownersFavoriteFilter = document.getElementById("ownersFavoriteFilter");
 ownersFavoriteFilter.title = "Parks personally rated at least 4.5 out of 5 by the site owner";
-document.getElementById("filterOptions").appendChild(ownersFavoriteFilter);
 ownersFavoriteFilter.addEventListener("click", () => {
     ownersFavoritesOnly = !ownersFavoritesOnly;
     ownersFavoriteFilter.classList.toggle("active", ownersFavoritesOnly);
