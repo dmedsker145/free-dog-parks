@@ -3379,3 +3379,11 @@ for(const visit of visits){
  const union=parks.find(p=>p.name==='Union Village Park Dog Park');
  if(union) Object.assign(union,{parkType:'Residential Dog Park',fieldVerified:false,inspectionStatus:'Drive-by only — needs full inspection',parking:'Street parking only; very limited spaces',fenced:null,separated:null,offleash:null,lighted:null,rv:null,water:'Unknown',wasteBags:'Unknown',visitorRating:null});
 })();
+
+// October 22: clarify neighborhood-scale fenced dog areas (not large destination parks).
+(() => {
+ const weston=parks.find(p=>p.name==='Weston Hills Dog Park');
+ if(weston) Object.assign(weston,{parkType:'Residential Dog Park',status:'free',statusLabel:'🟢 FIELD VERIFIED FREE',fenced:true,offleash:true,neighborhoodScale:true,accessNote:(weston.accessNote||'')+' Neighborhood-scale fenced dog runs in a residential setting, not a large regional park.',info:(weston.info||'')+' Small neighborhood dog-park setting; not a large destination park.'});
+ const union=parks.find(p=>p.name==='Union Village Park Dog Park');
+ if(union) Object.assign(union,{parkType:'Residential Dog Park',status:'free',statusLabel:'🟡 FREE — PARTIALLY VERIFIED',fenced:true,offleash:true,fieldVerified:false,inspectionStatus:'Drive-by observations only; full inspection pending',neighborhoodScale:true,parking:'Street parking only; very limited spaces',info:'FREE, fully fenced neighborhood-scale dog area in a residential setting. NOT a large public park. Drive-by observations only; amenities, safety, gate configuration and suitability unverified.',accessNote:'Residential street parking is very limited; exact dog-park gate and map coordinates unverified.'});
+})();
