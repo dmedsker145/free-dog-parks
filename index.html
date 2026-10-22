@@ -1172,14 +1172,14 @@ Other notes:`
 const favoritesFilterButton = document.createElement("button");
 favoritesFilterButton.type = "button";
 favoritesFilterButton.className = "filter";
-favoritesFilterButton.textContent = "♡ FAVORITES";
+favoritesFilterButton.textContent = "♡ MY FAVORITES";
 favoritesFilterButton.setAttribute("aria-pressed","false");
 document.getElementById("filterOptions").appendChild(favoritesFilterButton);
 favoritesFilterButton.addEventListener("click", () => {
     favoritesOnly = !favoritesOnly;
     favoritesFilterButton.classList.toggle("active", favoritesOnly);
     favoritesFilterButton.setAttribute("aria-pressed",String(favoritesOnly));
-    favoritesFilterButton.textContent = favoritesOnly ? "♥ FAVORITES" : "♡ FAVORITES";
+    favoritesFilterButton.textContent = favoritesOnly ? "♥ MY FAVORITES" : "♡ MY FAVORITES";
     renderMarkers(false);
 });
 document.getElementById("map").addEventListener("click",event=>{
