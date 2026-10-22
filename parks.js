@@ -3370,3 +3370,12 @@ for(const visit of visits){
  else parks.push({...{"parkType":"Public Dog Park","status":"free","statusLabel":"🟢 FIELD VERIFIED FREE","offleash":true,"fenced":true,"doubleGated":true,"safe":true,"fieldVerified":true,"verificationMethod":"Visited in person by Deb and Sunnie","fieldTestTrip":"Western Adventure 2026","lastVerified":"October 22, 2026","source":"FreeDogParks field inspection","wheelchairAccessible":true,"surface":"Mixed","amenitiesUnverifiedPolicy":"Unlisted amenities unknown, not absent","photos":[],"photoStatus":"Inspection photos shared in chat, not yet uploaded to website","parkingPullBehind":"Unknown"},...visit});
 }
 })();
+
+// October 22: residential-neighborhood classification. Union Village remains a drive-by only.
+(() => {
+ const weston=parks.find(p=>p.name==='Weston Hills Dog Park');
+ if(weston) weston.parkType='Residential Dog Park';
+ // No verified entrance coordinate: do not create a potentially misleading map marker.
+ const union=parks.find(p=>p.name==='Union Village Park Dog Park');
+ if(union) Object.assign(union,{parkType:'Residential Dog Park',fieldVerified:false,inspectionStatus:'Drive-by only — needs full inspection',parking:'Street parking only; very limited spaces',fenced:null,separated:null,offleash:null,lighted:null,rv:null,water:'Unknown',wasteBags:'Unknown',visitorRating:null});
+})();
