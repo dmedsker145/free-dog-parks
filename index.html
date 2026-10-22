@@ -801,7 +801,7 @@ document.querySelectorAll(".route-distance button").forEach(button => {
 
         routeMiles = Number(this.dataset.miles);
 
-        if (activeRouteCoordinates) {
+        if (activeRouteCoordinates || nearMeOnly) {
     renderMarkers();
 }
 
@@ -859,8 +859,12 @@ function isOwnersFavorite(park) {
     return park.fieldVerified === true && Number.isFinite(score) && score >= 4.5;
 }
 let ownersFavoritesOnly = false;
+let nearMeOnly = false;
+let nearMePosition = null;
+const NEAR_ME_MILES = 10;
 
 function parkMatchesFilters(park) {
+    if (nearMeOnly && (!nearMePosition || !Number.isFinite(Number(park.lat)) || !Number.isFinite(Number(park.lng)) || map.distance(nearMePosition,[Number(park.lat),Number(park.lng)]) > NEAR_ME_MILES * 1609.344)) return false;
     if (ownersFavoritesOnly && !isOwnersFavorite(park)) return false;
     if (favoritesOnly && !favoriteIds.has(favoriteId(park))) return false;
     if (activeFilters.free && park.status !== "free") return false;
@@ -1427,6 +1431,9 @@ document.getElementById("nearMeBtn").addEventListener("click", function() {
             const userLat = position.coords.latitude;
             const userLng = position.coords.longitude;
 
+            nearMeOnly = true;
+            nearMePosition = [userLat,userLng];
+            document.getElementById("nearMeBtn").classList.add("active");
             activeRouteCoordinates = null;
 
             if (routeLine) {
@@ -1434,7 +1441,7 @@ document.getElementById("nearMeBtn").addEventListener("click", function() {
                 routeLine = null;
             }
 
-            renderMarkers();
+            renderMarkers(false);
 
             if (userMarker) {
                 map.removeLayer(userMarker);
@@ -1495,13 +1502,13 @@ document.getElementById("nearMeBtn").addEventListener("click", function() {
 
                 map.fitBounds(bounds, {
                     padding: [60, 60],
-                    maxZoom: 11
+                    maxZoom: 12
                 });
 
                 const miles = nearestDistance / 1609.344;
 
                 alert(
-                    "Nearest matching park: " +
+                    "Nearest matching park within 10 miles: " +
                     nearestPark.name +
                     "\nApproximately " +
                     miles.toFixed(1) +
@@ -1509,7 +1516,8 @@ document.getElementById("nearMeBtn").addEventListener("click", function() {
                 );
 
             } else {
-                alert("No parks match your current filters.");
+                map.setView([userLat,userLng],12);
+                alert("No matching parks within 10 miles of your location.");
             }
         },
 
