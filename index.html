@@ -854,7 +854,14 @@ let favoriteIds = new Set(readFavorites());
 let favoritesOnly = false;
 function saveFavorites() { try { localStorage.setItem(FAVORITES_KEY,JSON.stringify([...favoriteIds])); } catch(e) { console.warn("Favorites could not be saved",e); } }
 
+function isOwnersFavorite(park) {
+    const score = Number(park.visitorRating ?? park.rating);
+    return park.fieldVerified === true && Number.isFinite(score) && score >= 4.5;
+}
+let ownersFavoritesOnly = false;
+
 function parkMatchesFilters(park) {
+    if (ownersFavoritesOnly && !isOwnersFavorite(park)) return false;
     if (favoritesOnly && !favoriteIds.has(favoriteId(park))) return false;
     if (activeFilters.free && park.status !== "free") return false;
     if (activeFilters.offleash && !park.offleash) return false;
@@ -917,6 +924,7 @@ function renderMarkers(fitMap = true) {
         if (!parkMatchesFilters(park)) return;
         if (!parkIsNearRoute(park)) return;
 
+        const ownerFavorite = isOwnersFavorite(park);
         const favoriteKey = favoriteId(park);
         const isFavorite = favoriteIds.has(favoriteKey);
         const directions =
@@ -1030,6 +1038,7 @@ function renderMarkers(fitMap = true) {
                 </div>
 
                 ${rvSection}
+                ${ownerFavorite ? '<p style="font-weight:bold;color:#9a5b00">⭐ OWNER’S FAVORITE — rated 4.5/5 or higher by the site owner</p>' : ''}
                 ${park.info ? `<p class="visit-notes"><strong>Park notes:</strong> ${park.info}</p>` : ""}
                 ${park.warning ? `<p class="visit-warning"><strong>Visit caution:</strong> ${park.warning}</p>` : ""}
                 ${park.visitorRating ? `<p><strong>Deb’s visit rating:</strong> ${park.visitorRating}/5 — ${park.lastVerified} (individual visit, not a public average)</p>` : ""}
@@ -1178,6 +1187,17 @@ document.getElementById("map").addEventListener("click",event=>{
     button.setAttribute("aria-pressed",String(favoriteIds.has(id)));
     if(favoritesOnly)renderMarkers(false);
 });
+const ownersFavoriteFilter = document.createElement("div");
+ownersFavoriteFilter.className = "filter";
+ownersFavoriteFilter.textContent = "⭐ OWNER’S FAVORITES";
+ownersFavoriteFilter.title = "Parks personally rated at least 4.5 out of 5 by the site owner";
+document.getElementById("filterOptions").appendChild(ownersFavoriteFilter);
+ownersFavoriteFilter.addEventListener("click", () => {
+    ownersFavoritesOnly = !ownersFavoritesOnly;
+    ownersFavoriteFilter.classList.toggle("active", ownersFavoritesOnly);
+    renderMarkers();
+});
+
 document.querySelectorAll(".filter[data-filter]").forEach(function(button) {
     button.addEventListener("click", function() {
 
