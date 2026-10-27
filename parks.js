@@ -3415,3 +3415,39 @@ for(const visit of visits){
  const existing=parks.find(p=>/union village/i.test(p.name||''));
  if(existing) Object.assign(existing,record); else parks.push(record);
 })();
+
+
+// October 27, 2026 — Dodge City Dog Park firsthand field inspection.
+(()=>{
+ const existing=parks.find(p=>/wright park dog park/i.test(p.name||''));
+ const record={
+ name:'Dodge City Dog Park (Wright Park)',parkType:'Public Dog Park',
+ lat:37.7473,lng:-100.02291,
+ location:'Dodge City, Kansas | PXWG+WR (visitor-provided map plus code)',
+ coordinateSource:'Previously geocoded Wright Park dog park position; precise gate not independently verified',
+ status:'free',statusLabel:'🟢 FIELD VERIFIED FREE',offleash:true,
+ fenced:true,separated:false,doubleGated:true,safe:true,fenceCondition:'No gaps or damage observed',
+ dogAreas:'One shared area',smallDogWeightLimit:'Unknown',surface:'Grass',
+ lighted:false,water:'Not available',waterWorking:false,waterSeasonalStatus:'Unknown',
+ wasteBags:'Verified',trashCans:true,waterBowls:false,benches:true,shade:true,
+ picnicTables:false,restrooms:false,restroomNearby:true,restroomLocation:'Nearby in public park',
+ toys:false,agilityEquipment:false,dogRinseArea:false,
+ amenitiesVerified:['Poop bags','Trash cans','Benches / seating','Shade'],
+ amenitiesAbsent:['Fresh drinking water','Water bowls','Picnic tables','Restrooms inside dog area','Lighting','Toys','Agility equipment','Dog rinse area'],
+ parking:'Dedicated lot; limited spaces; semi accommodated (visitor verified)',
+ parkingType:'Dedicated lot',parkingAvailability:'Limited spaces',
+ largestVehicle:'Semi',rv:true,parkingVanClassB:'Verified',wheelchairAccessible:true,
+ distanceFromParking:'At entrance',cellService:'Excellent',
+ maintenance:'Good',rating:3.5,visitorRating:3.5,recommend:true,
+ fieldVerified:true,verificationMethod:'Firsthand field inspection by Deb and Sunnie',
+ inspectionStatus:'Completed inspection',lastVerified:'October 27, 2026',
+ source:'Free Dog Parks field inspection',
+ hours:'Closes at sunset (posted park rules; opening time not verified)',
+ photoStatus:'Three field photographs received in ChatGPT; not yet uploaded to website',photos:[],
+ constructionNotice:'Construction notice posted at entrance during inspection',
+ info:'FREE • Fully fenced, one shared grassy dog area with double-gated entrance. Good maintenance; Sunnie rating 3.5/5, recommended. Poop bags, trash cans, benches and shade. NO drinking water, bowls, lighting, agility equipment or picnic tables. Dedicated parking lot with limited spaces, reportedly accommodates a semi. Wheelchair accessible; entrance at parking. Restrooms nearby in public park. Posted rules say park closes at sunset; construction notice observed.',
+ accessNote:'Parking spaces limited even though a semi can fit. Construction notice posted during October 2026 inspection. Gate coordinates not separately confirmed.',
+ amenitiesUnverifiedPolicy:'Unverified items remain unknown, not absent'
+ };
+ if(existing) Object.assign(existing,record); else parks.push(record);
+})();
