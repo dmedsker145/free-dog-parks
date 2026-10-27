@@ -3445,8 +3445,9 @@ for(const visit of visits){
  hours:'Closes at sunset (posted park rules; opening time not verified)',
  photoStatus:'Three field photographs received in ChatGPT; not yet uploaded to website',photos:[],
  constructionNotice:'Construction notice posted at entrance during inspection',
+ entrances:2,entranceAccess:'Two entrances: one from the public park and one from the adjacent KOA campground (visitor verified)',
  info:'FREE • Fully fenced, one shared grassy dog area with double-gated entrance. Good maintenance; Sunnie rating 3.5/5, recommended. Poop bags, trash cans, benches and shade. NO drinking water, bowls, lighting, agility equipment or picnic tables. Dedicated parking lot with limited spaces, reportedly accommodates a semi. Wheelchair accessible; entrance at parking. Restrooms nearby in public park. Posted rules say park closes at sunset; construction notice observed.',
- accessNote:'Parking spaces limited even though a semi can fit. Construction notice posted during October 2026 inspection. Gate coordinates not separately confirmed.',
+ accessNote:'Parking spaces limited even though a semi can fit. Construction notice posted during October 2026 inspection. Two access points: public park entrance and KOA campground entrance. Gate coordinates not separately confirmed.',
  amenitiesUnverifiedPolicy:'Unverified items remain unknown, not absent'
  };
  if(existing) Object.assign(existing,record); else parks.push(record);
