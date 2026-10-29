@@ -3470,7 +3470,7 @@ for(const visit of visits){
  wheelchairAccessible:true,distanceFromParking:'Short walk',cellService:'Excellent',
  water:'Working fresh drinking water and water bowls',waterWorking:true,waterSeasonal:'Unknown',
  wasteBags:'Yes',trashCans:true,waterBowls:true,benches:true,shade:true,picnicTables:true,
- restrooms:false,lighting:true,toys:false,agilityEquipment:false,dogRinseArea:false,
+ restrooms:false,portaPotties:true,restroomLocation:'Portable toilets in dedicated parking lot',lighting:true,toys:false,agilityEquipment:false,dogRinseArea:false,
  hours:'7:00 AM – 10:00 PM daily; Wednesday 7:00 AM – 3:00 PM maintenance closure (posted)',
  maintenance:'Excellent',rating:4.8,visitorRating:4.8,recommend:true,
  sunniesFavorite:true,ownersFavorite:true,
@@ -3478,7 +3478,7 @@ for(const visit of visits){
  inspectionStatus:'Completed inspection',lastVerified:'October 29, 2026',
  source:'Firsthand field inspection; City of Denton',sourceUrl:'https://www.cityofdenton.com/facilities/facility/details/North-Lakes-Dog-Park-1',
  photoStatus:'Four inspection photos supplied in ChatGPT; website image upload pending',photos:[],
- info:'FREE • ⭐ Sunnie’s Favorite 4.8/5 • Four fully fenced grassy areas with small dogs under 30 lbs separated from large dogs 30 lbs and over; one large-dog section is used for rotational maintenance and may be unavailable; double-gated and safe. Working drinking water, bowls, waste bags, trash, seating, shade, picnic tables and lighting. No dog-park restrooms, toys, agility equipment or rinse area. Excellent maintenance. Dedicated parking with plenty of spaces, accommodates semi-trucks. Wheelchair accessible, short walk, excellent cell service. Open 7 AM–10 PM; large-dog area sign indicates Wednesday 7 AM–3 PM maintenance closure.',
+ info:'FREE • ⭐ Sunnie’s Favorite 4.8/5 • Four fully fenced grassy areas with small dogs under 30 lbs separated from large dogs 30 lbs and over; one large-dog section is used for rotational maintenance and may be unavailable; double-gated and safe. Working drinking water, bowls, waste bags, trash, seating, shade, picnic tables and lighting. Portable toilets in parking lot (no permanent restrooms); no toys, agility equipment or rinse area. Excellent maintenance. Dedicated parking with plenty of spaces, accommodates semi-trucks. Wheelchair accessible, short walk, excellent cell service. Open 7 AM–10 PM; large-dog area sign indicates Wednesday 7 AM–3 PM maintenance closure.',
  accessNote:'City dog park address 808 W Windsor Dr; parking behind recycling center. Dogs must be at least four months old. Children under 10 prohibited; ages 11–16 require adult supervision. No food or treats in dog play areas.',
  amenitiesUnverifiedPolicy:'Seasonal drinking water status unknown'
  };
