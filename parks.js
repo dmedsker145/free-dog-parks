@@ -3485,3 +3485,36 @@ for(const visit of visits){
  const existing=parks.find(p=>p.name===record.name && /Denton/i.test(p.location||''));
  if(existing)Object.assign(existing,record);else parks.push(record);
 })();
+
+/* Clay Terrace Dog Park — firsthand inspection, November 3, 2026; photos pending */
+(()=>{
+ const record={
+ name:'Clay Terrace Dog Park',parkType:'Shopping Center Dog Park',
+ lat:39.997,lng:-86.129,location:'14390 Clay Terrace Blvd, Carmel, IN 46032',
+ coordinatesNote:'Approximate Clay Terrace shopping center pin; dog park entrance across from Old Navy, east side facing US-31',
+ status:'free',statusLabel:'🟢 FIELD VERIFIED FREE',offleash:true,fenced:true,
+ separated:false,dogAreas:1,entranceGates:'Double-gated',fenceCondition:'Excellent; no gaps or damage',
+ safeForDogs:true,smallDogLimit:'No posted weight limit',surface:'Artificial turf and wood chips',
+ lighted:true,lighting:'Limited',rv:true,parkingVanClassB:'Verified',parkingClassC:'Verified',parkingClassA:'Verified',
+ parking:'Dedicated dog park lot; moderate spaces; Class A RV maximum (field verified)',
+ parkingType:'Dedicated lot',parkingAvailability:'Moderate',largestVehicle:'Class A RV',
+ wheelchairAccessible:true,distanceFromParking:'At entrance',cellService:'Excellent',
+ water:'No fresh drinking water; bowls provided — bring your own water',waterWorking:false,
+ waterBowls:true,wasteBags:'Yes — stocked',trashCans:true,benches:true,shade:false,
+ picnicTables:false,restrooms:false,portaPotties:false,toys:false,
+ agilityEquipment:true,agilityFeatures:['Ramps','Climbing structures'],
+ hours:'Dawn to dusk (closed on major holidays when shopping center is closed)',
+ maintenance:'Excellent',rating:4.0,visitorRating:4.0,recommend:true,
+ sunniesFavorite:false,ownersFavorite:false,
+ fieldVerified:true,verificationMethod:'Firsthand field inspection by Deb and Sunnie',
+ inspectionStatus:'Completed inspection',lastVerified:'November 3, 2026',
+ source:'Free Dog Parks firsthand field inspection; Clay Terrace official website',
+ sourceUrl:'https://www.clayterrace.com/shop/clay-terrace-dog-park',
+ photoStatus:'Four original inspection photos supplied in ChatGPT; website image upload pending',photos:[],
+ info:'FREE • 4.0/5, recommended. Clean, excellently maintained dog park in Clay Terrace shopping center. One shared, fully fenced off-leash area, double-gated, no posted dog weight limit. Artificial turf and wood chips with agility ramps and structures. Stocked waste bags, trash cans, water bowls and benches. NO fresh drinking water, shade, picnic tables, restrooms or toys; limited lighting. Bring drinking water and use caution on hot days. Dedicated parking with moderate spaces, Class A RV maximum. Wheelchair accessible; entrance directly at parking; excellent cell service. Dawn to dusk.',
+ accessNote:'Across from Old Navy; entrance on east side facing US-31. No shade and no drinking water. Map pin approximate to shopping center until precise dog park gate coordinates verified.',
+ amenitiesUnverifiedPolicy:'Findings reflect firsthand inspection on November 3, 2026'
+ };
+ const existing=parks.find(p=>p.name===record.name && /Carmel/i.test(p.location||''));
+ if(existing)Object.assign(existing,record);else parks.push(record);
+})();
