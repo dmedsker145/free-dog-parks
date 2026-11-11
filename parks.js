@@ -3648,3 +3648,82 @@ for(const record of records){const existing=parks.find(p=>p.name===record.name);
 
 /* Original inspection photos, November 11, 2026. */
 (()=>{const photos={"ferguson": [{"src": "photos/ferguson/01-original.jpeg", "alt": "Ferguson Dog Park rules sign"}, {"src": "photos/ferguson/02-original.jpeg", "alt": "Ferguson Dog Park rinse stations; running water not tested"}, {"src": "photos/ferguson/03-original.jpeg", "alt": "Ferguson Dog Park shaded seating and grounds"}], "jimmy-nash": [{"src": "photos/jimmy-nash/01-original.jpeg", "alt": "Jimmy Nash Dog Park fenced play area"}, {"src": "photos/jimmy-nash/02-original.jpeg", "alt": "Jimmy Nash Dog Park rules sign"}, {"src": "photos/jimmy-nash/03-original.jpeg", "alt": "Jimmy Nash Dog Park mandatory free registration notice"}], "clay-terrace": [{"src": "photos/clay-terrace/01-original.jpeg", "alt": "Clay Terrace Dog Park welcome and rules sign"}, {"src": "photos/clay-terrace/02-original.jpeg", "alt": "Clay Terrace Dog Park play area and agility equipment"}, {"src": "photos/clay-terrace/03-original.jpeg", "alt": "Clay Terrace Dog Park rules and guidelines"}, {"src": "photos/clay-terrace/04-original.jpeg", "alt": "Clay Terrace Dog Park entrance and waste station"}]};for(const [slug,items] of Object.entries(photos)){const match={"ferguson":"Ferguson Dog Park","jimmy-nash":"Jimmy Nash Dog Park (The Ulti-Mutt Dog Park)","clay-terrace":"Clay Terrace Dog Park"}[slug];const park=parks.find(p=>p.name===match);if(park){park.photos=items;park.photoStatus="Original inspection photographs published";}}})();
+
+/* Pawadise inspection approved for publication November 11, 2026. */
+(()=>{const record={
+  "name": "Pawadise Park",
+  "alternateName": "Sweetser Switch Trail Dog Park",
+  "parkType": "Public Dog Park",
+  "lat": 40.568018,
+  "lng": -85.771356,
+  "location": "Sweetser Switch Trail, Sweetser, Indiana",
+  "coordinateSource": "Approximate pin near the reported Greenburg Street access; exact dog park gate coordinates not field verified. Follow signs for Pawadise Park along Sweetser Switch Trail.",
+  "status": "free",
+  "statusLabel": "🟢 FIELD VERIFIED FREE",
+  "offleash": true,
+  "fenced": true,
+  "separated": null,
+  "dogAreas": "Multiple areas; size designations not verified",
+  "smallDogLimit": "No posted weight limit",
+  "entranceGates": "Double-gated",
+  "fenceCondition": "Excellent",
+  "safeForDogs": true,
+  "surface": "Grass",
+  "lighted": false,
+  "rv": true,
+  "parkingVanClassB": "Verified",
+  "parkingClassC": "Small Class C only",
+  "parkingClassA": "Not suitable",
+  "parking": "Dedicated dog park lot; limited spaces; small Class C RV maximum",
+  "parkingType": "Dedicated lot",
+  "parkingAvailability": "Limited",
+  "largestVehicle": "Small Class C RV",
+  "wheelchairAccessible": true,
+  "distanceFromParking": "At entrance",
+  "cellService": "Fair",
+  "water": "Fresh drinking water and bowls available",
+  "waterBowls": true,
+  "wasteBags": "Yes",
+  "trashCans": true,
+  "benches": true,
+  "shade": true,
+  "picnicTables": true,
+  "restrooms": false,
+  "portaPotties": false,
+  "toys": false,
+  "agilityEquipment": true,
+  "hours": "Sunrise to sunset (posted)",
+  "maintenance": "Excellent",
+  "rating": 4,
+  "visitorRating": 4,
+  "recommend": true,
+  "sunniesFavorite": false,
+  "ownersFavorite": false,
+  "fieldVerified": true,
+  "lastVerified": "November 8, 2026",
+  "verificationMethod": "Firsthand field inspection by Deb and Sunnie",
+  "source": "Free Dog Parks firsthand inspection and original posted rules photograph",
+  "inspectionStatus": "Completed inspection",
+  "photoStatus": "Four original inspection photographs published",
+  "photos": [
+    {
+      "src": "photos/pawadise/01-original.jpeg",
+      "alt": "Pawadise Park grass play area and agility equipment"
+    },
+    {
+      "src": "photos/pawadise/02-original.jpeg",
+      "alt": "Pawadise Park fenced grounds and shelter"
+    },
+    {
+      "src": "photos/pawadise/03-original.jpeg",
+      "alt": "Sweetser Switch Trail Dog Park posted rules and licensing notice"
+    },
+    {
+      "src": "photos/pawadise/04-original.jpeg",
+      "alt": "Pawadise Park shelter name sign"
+    }
+  ],
+  "accessNote": "Limited parking; small Class C RV maximum. Posted rules require licensed, fully immunized dogs with current rabies tags; handlers must be over 18 and may bring at most two dogs. Leash dogs when entering or leaving; no feeding inside the dog park.",
+  "info": "FREE • 4.0/5 • Recommended • Not a Sunnie’s Favorite. Fully fenced grass dog park with multiple areas (small/large designations not verified), excellent fencing and double gates; inspected as safe. No posted small-dog weight limit. Waste bags, trash cans, fresh drinking water, bowls, benches, shade, picnic tables and agility equipment available. No restrooms, lighting or toys. Dedicated parking is limited; small Class C RV maximum. Wheelchair accessible, entrance directly at parking, fair cell service. Maintenance excellent. Posted hours sunrise to sunset.",
+  "warning": "Limited parking; small Class C RV maximum. No restrooms or lighting."
+};const existing=parks.find(p=>p.name===record.name);if(existing)Object.assign(existing,record);else parks.push(record);})();
