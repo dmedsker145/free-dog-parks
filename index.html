@@ -617,6 +617,13 @@ header { position: relative; }
 body:has(#pet-services[open]) { overflow:hidden; }
 .service-card { max-width:650px; padding:18px; border:1px solid #ccd9cd; border-radius:12px; line-height:1.6; }
 .service-card h3 { margin-top:0; color:#217a32; }
+
+/* Private review shortcut: hidden until an authenticated reviewer is verified. */
+.admin-review-link[hidden]{display:none!important}
+.admin-review-link{display:inline-flex;align-items:center;max-width:100%;margin-top:9px;padding:7px 12px;border:1px solid #217a32;border-radius:999px;background:#edf7ef;color:#176b35;font-size:13px;font-weight:700;line-height:1.35;text-decoration:none;overflow-wrap:anywhere}
+.admin-review-link.has-pending{background:#fff1bc;border-color:#b78612;color:#684600}
+.admin-review-link:focus-visible{outline:3px solid #b78612;outline-offset:3px}
+
 /* Open park details stay above zoom/key/legend controls. */
 .map-wrap:has(.leaflet-popup) .mobile-key-toggle,
 .map-wrap:has(.leaflet-popup) .legend { visibility:hidden; }
@@ -630,6 +637,7 @@ body:has(#pet-services[open]) { overflow:hidden; }
     <div class="site-brand">
         <h1>🐾 FREE DOG PARKS <span class="beta-badge">BETA</span></h1>
         <div class="subtitle">Find free dog parks along your route.</div>
+        <a id="adminReviewLink" class="admin-review-link" href="admin.html" hidden aria-label="Open your private review inbox"></a>
     </div>
     
     <img class="header-art"
@@ -1572,6 +1580,8 @@ petServicesButton.addEventListener('click', () => petServicesDialog.showModal())
 petServicesDialog.addEventListener('close', () => petServicesButton.focus());
 </script>
 <script src="site-updates.js?v=20261018-fullupdate1" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js" defer></script>
+<script src="admin-notifications.js?v=20261113" defer></script>
 </body>
 </html>
 
