@@ -618,6 +618,13 @@ body:has(#pet-services[open]) { overflow:hidden; }
 .service-card { max-width:650px; padding:18px; border:1px solid #ccd9cd; border-radius:12px; line-height:1.6; }
 .service-card h3 { margin-top:0; color:#217a32; }
 
+/* The official Sunnie-inspired tagline stays directly below the banner on phones. */
+.site-tagline { margin: 8px 0 12px; color: #176b35; font-size: clamp(14px, 1.65vw, 19px); font-weight: 700; letter-spacing: .15px; line-height: 1.35; }
+.site-tagline strong { color: #217a32; font-weight: 900; }
+@media (max-width: 700px) {
+  .site-tagline { order: -1; text-align: center; margin: 0 auto 13px; padding: 0 8px; font-size: clamp(16px, 4.3vw, 21px); }
+}
+
 /* Private review shortcut: hidden until an authenticated reviewer is verified. */
 .admin-review-link[hidden]{display:none!important}
 .admin-review-link{display:inline-flex;align-items:center;max-width:100%;margin-top:9px;padding:7px 12px;border:1px solid #217a32;border-radius:999px;background:#edf7ef;color:#176b35;font-size:13px;font-weight:700;line-height:1.35;text-decoration:none;overflow-wrap:anywhere}
@@ -644,6 +651,8 @@ body:has(#pet-services[open]) { overflow:hidden; }
      src="free-dog-parks-banner.png"
      width="2048" height="752"
      alt="Free Dog Parks">
+
+    <p class="site-tagline">Powered by Paws, Fueled by <strong>ZOOMIES!!</strong></p>
 
     <div class="desktop-control-grid">
         
