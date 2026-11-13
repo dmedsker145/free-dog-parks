@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Private Review Inbox | Free Dog Parks</title>
+<style>
+:root{--green:#176b4b;--ink:#183b30;--muted:#526c60;--line:#cadbd0;--bg:#f2f6f0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,sans-serif}
+header{background:var(--green);color:#fff;padding:20px max(16px,calc((100% - 960px)/2))}
+header a{color:white}header h1{margin:8px 0 0;font-size:clamp(25px,4vw,33px)}
+main{max-width:980px;margin:auto;padding:20px 16px 50px}
+section,.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin:0 0 18px}
+h2{font-size:22px;margin:0 0 12px}h3{font-size:19px;margin:0 0 8px}
+p{margin:8px 0 12px}.muted,small{color:var(--muted)}
+input,textarea,select{font:inherit;border:1px solid #8da698;border-radius:9px;padding:11px;width:100%;background:#fff;color:var(--ink)}
+label{display:block;font-weight:650;margin:12px 0 5px}
+textarea{min-height:100px;resize:vertical}
+button{min-height:44px;padding:10px 16px;border:2px solid var(--green);border-radius:10px;background:var(--green);color:white;font:inherit;font-weight:650;cursor:pointer}
+button.secondary{background:#fff;color:var(--green)}
+button:disabled{opacity:.55;cursor:wait}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #b96d00;outline-offset:3px}
+.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.pills button{background:#fff;color:var(--green);font-size:14px;padding:8px 12px}
+.pills button[aria-pressed=true]{background:var(--green);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.metric{border:1px solid var(--line);border-radius:12px;padding:14px;background:#f9fcf9}
+.metric strong{font-size:26px;display:block}
+.entry{display:block;width:100%;text-align:left;background:#fff;color:var(--ink);border:1px solid var(--line);margin:8px 0;padding:14px}
+.entry:hover{background:#eef7ef}
+.entry .tag{font-size:13px;color:var(--muted)}
+.detail{white-space:pre-wrap;overflow-wrap:anywhere;background:#f6f8f6;border:1px solid var(--line);padding:14px;border-radius:10px;max-height:460px;overflow:auto}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.photo{border:1px solid var(--line);padding:10px;border-radius:12px;overflow-wrap:anywhere}
+.photo img{max-width:100%;height:140px;object-fit:contain;display:block}
+#message{min-height:22px}#message.error{color:#a12d2d;font-weight:600}
+[hidden]{display:none!important}@media(max-width:620px){.grid{grid-template-columns:1fr}section,.card{padding:16px}}
+</style></head><body>
+<header><a href="index.html">← Free Dog Parks map</a><h1>🐾 Private Review Inbox</h1><p>Only authorized reviewers can view submissions or original photographs.</p></header>
+<main>
+<section id="loginPanel"><h2>Administrator sign in</h2>
+<p class="muted">Use the administrator account registered for Free Dog Parks. Supabase account access alone does not grant permission to view submissions.</p>
+<form id="loginForm"><label for="email">Administrator email</label><input id="email" type="email" autocomplete="username" required>
+<label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required>
+<div class="actions"><button type="submit">Sign in</button></div></form></section>
+<section id="notAuthorized" hidden><h2>Account not yet authorized</h2><p>You're signed in, but this account isn't on the Free Dog Parks reviewer list. Ask the site owner to authorize this account in Supabase.</p><button id="unauthSignout" class="secondary">Sign out</button></section>
+<div id="dashboard" hidden>
+<div class="actions"><strong id="signedIn"></strong><button id="refresh" class="secondary">Refresh inbox</button><button id="signout" class="secondary">Sign out</button></div>
+<section><h2>Review overview</h2><div class="grid"><div class="metric">Awaiting review<strong id="pendingCount">0</strong></div><div class="metric">Needs information<strong id="needsCount">0</strong></div><div class="metric">Approved (not published)<strong id="approvedCount">0</strong></div></div>
+<div class="pills" id="filters" role="group" aria-label="Filter submissions"></div><div id="entries" aria-live="polite"></div></section>
+<section id="detailPanel" hidden><h2 id="detailTitle"></h2><p id="detailMeta" class="muted"></p><h3>Inspection / suggestion details</h3><div id="detailReport" class="detail"></div>
+<h3>Original photographs</h3><p class="muted">Photos are private. Download original files before using them for publication; they may contain location metadata.</p><div id="detailPhotos" class="photos"></div>
+<label for="notes">Private reviewer notes</label><textarea id="notes" maxlength="4000"></textarea>
+<label for="decision">Review decision</label><select id="decision"><option value="pending">Pending</option><option value="needs_review">Needs more information</option><option value="approved">Approved — not published</option><option value="rejected">Rejected</option></select>
+<div class="actions"><button id="saveDecision">Save review</button><button id="closeDetail" class="secondary">Close</button></div>
+<p class="muted">Approval never publishes a park. Public park listings are managed separately.</p></section>
+</div>
+<p id="message" role="status" aria-live="polite"></p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
+<script>
+'use strict';
+const PROJECT_URL='https://dqkbblmyrjmwmepjlenj.supabase.co';
+const PUBLIC_KEY='sb_publishable_7ea7DsisRyGvq0xGp5VFTw_ISwmj6iQ';
+const $=id=>document.getElementById(id);
+const statuses=['pending','needs_review','approved','rejected'];
+const labels={pending:'Pending',needs_review:'Needs information',approved:'Approved (not published)',rejected:'Rejected'};
+let db=null,entries=[],filter='pending',selected=null,loadSeq=0,photoUrls=[];
+function message(text,error=false){$('message').textContent=text;$('message').classList.toggle('error',error);}
+function view(name){['loginPanel','notAuthorized','dashboard'].forEach(id=>$(id).hidden=id!==name);}
+function clearPhotos(){photoUrls.forEach(u=>URL.revokeObjectURL(u));photoUrls=[];$('detailPhotos').replaceChildren();}
+function safeText(tag,value){const node=document.createElement(tag);node.textContent=value==null?'':String(value);return node;}
+async function signedOut(){selected=null;entries=[];clearPhotos();$('detailPanel').hidden=true;view('loginPanel');}
+async function init(){
+ if(!window.supabase?.createClient){message('The secure login library could not load. Check your connection and reload.',true);return;}
+ db=window.supabase.createClient(PROJECT_URL,PUBLIC_KEY,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:false}});
+ const {data:{session}}=await db.auth.getSession();
+ if(session)await verifyAccess(session.user);
+ else view('loginPanel');
+ db.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_OUT')signedOut();});
+}
+async function verifyAccess(user){
+ if(!user){await signedOut();return;}
+ const {data,error}=await db.from('fdp_reviewers').select('user_id').eq('user_id',user.id).maybeSingle();
+ if(error){message('Unable to verify administrator access: '+error.message,true);view('notAuthorized');return;}
+ if(!data){view('notAuthorized');return;}
+ $('signedIn').textContent=user.email||'Administrator';
+ view('dashboard');await load();
+}
+$('loginForm').addEventListener('submit',async e=>{
+ e.preventDefault();message('Signing in…');const btn=e.submitter;btn.disabled=true;
+ try{const {data,error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});
+ if(error)throw error;$('password').value='';message('');await verifyAccess(data.user);}
+ catch(err){message('Sign in failed: '+err.message,true);}
+ finally{btn.disabled=false;}
+});
+async function logout(){if(db)await db.auth.signOut();await signedOut();message('Signed out.');}
+$('signout').onclick=logout;$('unauthSignout').onclick=logout;$('refresh').onclick=load;
+function render(){
+ $('pendingCount').textContent=entries.filter(x=>x.status==='pending').length;
+ $('needsCount').textContent=entries.filter(x=>x.status==='needs_review').length;
+ $('approvedCount').textContent=entries.filter(x=>x.status==='approved').length;
+ const filters=$('filters');filters.replaceChildren();
+ for(const status of statuses){const button=safeText('button',labels[status]+' ('+entries.filter(x=>x.status===status).length+')');button.type='button';button.setAttribute('aria-pressed',String(filter===status));button.onclick=()=>{filter=status;render();};filters.append(button);}
+ const root=$('entries');root.replaceChildren();
+ const shown=entries.filter(x=>x.status===filter);
+ if(!shown.length)root.append(safeText('p','No '+labels[filter].toLowerCase()+' submissions.'));
+ for(const item of shown){const btn=document.createElement('button');btn.type='button';btn.className='entry';btn.append(safeText('strong',item.park_name+' — '+[item.city,item.state].filter(Boolean).join(', ')));
+ const info=safeText('div',new Date(item.created_at).toLocaleString()+' · '+item.source+' · '+labels[item.status]);info.className='tag';btn.append(info);btn.onclick=()=>openDetail(item);root.append(btn);}
+}
+async function load(){
+ const seq=++loadSeq;message('Loading private submissions…');
+ const {data,error}=await db.from('fdp_submissions').select('id,source,park_name,city,state,submitter_email,report,status,reviewer_notes,created_at,reviewed_at').order('created_at',{ascending:false}).limit(500);
+ if(seq!==loadSeq)return;
+ if(error){message('Could not load the private inbox: '+error.message,true);return;}
+ entries=data||[];render();message(entries.length+' submission'+(entries.length===1?'':'s')+' in the private inbox.');
+ if(selected){const fresh=entries.find(x=>x.id===selected.id);if(fresh)await openDetail(fresh);else{$('detailPanel').hidden=true;selected=null;}}
+}
+async function openDetail(item){
+ selected=item;clearPhotos();$('detailPanel').hidden=false;
+ $('detailTitle').textContent=item.park_name;
+ $('detailMeta').textContent=[item.city,item.state,new Date(item.created_at).toLocaleString(),item.submitter_email||'No contact email'].filter(Boolean).join(' · ');
+ $('detailReport').textContent=item.report;$('notes').value=item.reviewer_notes||'';$('decision').value=item.status;
+ const root=$('detailPhotos');root.append(safeText('p','Loading private photos…'));
+ const {data,error}=await db.from('fdp_submission_photos').select('id,original_name,storage_path,mime_type,byte_size').eq('submission_id',item.id);
+ if(selected?.id!==item.id)return;
+ root.replaceChildren();
+ if(error){root.append(safeText('p','Could not load photo metadata.'));return;}
+ if(!data?.length){root.append(safeText('p','No photos attached.'));return;}
+ for(const p of data){
+  const card=document.createElement('div');card.className='photo';card.append(safeText('p',p.original_name));
+  const {data:link,error:linkError}=await db.storage.from('fdp-originals').createSignedUrl(p.storage_path,120);
+  if(selected?.id!==item.id)return;
+  if(linkError||!link?.signedUrl){card.append(safeText('p','Photo access unavailable.'));}
+  else{
+   if(p.mime_type.startsWith('image/')&&!/heic|heif/.test(p.mime_type)){const img=document.createElement('img');img.alt='Private photo: '+p.original_name;img.src=link.signedUrl;card.append(img);}
+   const a=document.createElement('a');a.href=link.signedUrl;a.target='_blank';a.rel='noopener noreferrer';a.textContent='View or save original';card.append(a);
+  }root.append(card);
+ }
+}
+$('closeDetail').onclick=()=>{$('detailPanel').hidden=true;selected=null;clearPhotos();};
+$('saveDecision').onclick=async()=>{
+ if(!selected)return;const btn=$('saveDecision');btn.disabled=true;message('Saving review…');
+ try{
+  const status=$('decision').value;
+  if(!statuses.includes(status))throw Error('Invalid decision');
+  const {error}=await db.from('fdp_submissions').update({status,reviewer_notes:$('notes').value.trim(),reviewed_at:new Date().toISOString()}).eq('id',selected.id);
+  if(error)throw error;message('Review saved. This park has NOT been published.');await load();
+ }catch(err){message('Could not save review: '+err.message,true);}
+ finally{btn.disabled=false;}
+};
+init();
+</script></body></html>
