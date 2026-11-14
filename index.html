@@ -618,6 +618,15 @@ body:has(#pet-services[open]) { overflow:hidden; }
 .service-card { max-width:650px; padding:18px; border:1px solid #ccd9cd; border-radius:12px; line-height:1.6; }
 .service-card h3 { margin-top:0; color:#217a32; }
 
+/* Clear controls are visible and touch-friendly on mobile without dominating the search. */
+.search-row button.clear-action, .route-box button.clear-action {
+  background: #fff; color: #217a32; border: 1px solid #217a32;
+}
+.route-box button.clear-action { margin-top: 7px; }
+.search-row { flex-wrap: wrap; }
+.search-row input { min-width: 125px; }
+.search-row button { flex-shrink: 0; }
+
 /* The official Sunnie-inspired tagline stays directly below the banner on phones. */
 .site-tagline { margin: 8px 0 12px; color: #176b35; font-size: clamp(14px, 1.65vw, 19px); font-weight: 700; letter-spacing: .15px; line-height: 1.35; }
 .site-tagline strong { color: #217a32; font-weight: 900; }
@@ -662,7 +671,8 @@ body:has(#pet-services[open]) { overflow:hidden; }
 
             <div class="search-row">
                 <input id="destinationInput" type="text" placeholder="Search city or destination">
-                <button id="destinationBtn">SEARCH</button>
+                <button id="destinationBtn" type="button">SEARCH</button>
+                <button id="clearDestinationBtn" type="button" class="clear-action" aria-label="Clear destination search and return to park map">CLEAR</button>
             </div>
             
     </div>
@@ -688,6 +698,7 @@ body:has(#pet-services[open]) { overflow:hidden; }
     <button class="route-button" id="findRouteBtn">
         FIND PARKS ALONG ROUTE
     </button>
+    <button class="route-button clear-action" id="clearRouteBtn" type="button">CLEAR ROUTE</button>
 
 </div>
 
@@ -1255,6 +1266,17 @@ document.getElementById("rvTypeSelect")
 document.getElementById("destinationBtn")
     .addEventListener("click", searchDestination);
 
+// Clear the destination search and restore the matching park map.
+document.getElementById("clearDestinationBtn").addEventListener("click", function() {
+    document.getElementById("destinationInput").value = "";
+    map.closePopup();
+    if (activeRouteCoordinates && routeLine) {
+        map.fitBounds(routeLine.getBounds(), { padding: [30, 30] });
+    } else {
+        renderMarkers(true);
+    }
+});
+
 document.getElementById("destinationInput")
     .addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
@@ -1291,6 +1313,18 @@ async function geocodePlace(place) {
         formatted: data.results[0].formatted
     };
 }
+
+document.getElementById("clearRouteBtn").addEventListener("click", function() {
+    document.getElementById("routeFrom").value = "";
+    document.getElementById("routeTo").value = "";
+    activeRouteCoordinates = null;
+    if (routeLine) {
+        map.removeLayer(routeLine);
+        routeLine = null;
+    }
+    map.closePopup();
+    renderMarkers(true);
+});
 
 document.getElementById("findRouteBtn")
     .addEventListener("click", async function() {
