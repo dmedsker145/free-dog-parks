@@ -618,6 +618,21 @@ body:has(#pet-services[open]) { overflow:hidden; }
 .service-card { max-width:650px; padding:18px; border:1px solid #ccd9cd; border-radius:12px; line-height:1.6; }
 .service-card h3 { margin-top:0; color:#217a32; }
 
+/* City suggestions for all three location fields. */
+header { position: relative; z-index: 1001; }
+.place-input-wrap { position: relative; flex: 1 1 170px; min-width: 0; }
+.place-input-wrap > input { width: 100%; min-width: 0; }
+.place-suggestions { position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 2000;
+  max-height: 250px; overflow-y: auto; background: #fff; border: 1px solid #b8cdbb;
+  border-radius: 10px; box-shadow: 0 5px 18px rgba(0,0,0,.18); }
+.place-suggestions[hidden] { display: none !important; }
+.place-suggestion { display: block; width: 100%; padding: 11px 12px; text-align: left;
+  border: 0; border-bottom: 1px solid #e8eee9; background: #fff; color: #223d28;
+  font: inherit; font-size: 14px; cursor: pointer; }
+.place-suggestion:last-child { border-bottom: 0; }
+.place-suggestion:hover, .place-suggestion.is-selected { background: #eaf5ec; }
+.place-suggestion:focus-visible { outline: 2px solid #217a32; outline-offset: -2px; }
+
 /* Clear controls are visible and touch-friendly on mobile without dominating the search. */
 .search-row button.clear-action, .route-box button.clear-action {
   background: #fff; color: #217a32; border: 1px solid #217a32;
@@ -670,7 +685,10 @@ body:has(#pet-services[open]) { overflow:hidden; }
             <div class="route-heading">FIND A DESTINATION</div>
 
             <div class="search-row">
-                <input id="destinationInput" type="text" placeholder="Search city or destination">
+                <div class="place-input-wrap">
+                    <input id="destinationInput" type="text" placeholder="Search city or destination" autocomplete="off" aria-label="Destination city" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="destinationSuggestions">
+                    <div id="destinationSuggestions" class="place-suggestions" role="listbox" hidden></div>
+                </div>
                 <button id="destinationBtn" type="button">SEARCH</button>
                 <button id="clearDestinationBtn" type="button" class="clear-action" aria-label="Clear destination search and return to park map">CLEAR</button>
             </div>
@@ -682,11 +700,17 @@ body:has(#pet-services[open]) { overflow:hidden; }
     <div class="route-heading">PLAN YOUR ROUTE</div>
 
     <div class="route-row">
-        <input id="routeFrom" type="text" placeholder="From">
+        <div class="place-input-wrap">
+            <input id="routeFrom" type="text" placeholder="From" autocomplete="off" aria-label="Starting city" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="routeFromSuggestions">
+            <div id="routeFromSuggestions" class="place-suggestions" role="listbox" hidden></div>
+        </div>
     </div>
 
     <div class="route-row">
-        <input id="routeTo" type="text" placeholder="To">
+        <div class="place-input-wrap">
+            <input id="routeTo" type="text" placeholder="To" autocomplete="off" aria-label="Destination city for route" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="routeToSuggestions">
+            <div id="routeToSuggestions" class="place-suggestions" role="listbox" hidden></div>
+        </div>
     </div>
 
     <div class="route-distance">
@@ -1269,6 +1293,7 @@ document.getElementById("destinationBtn")
 // Clear the destination search and restore the matching park map.
 document.getElementById("clearDestinationBtn").addEventListener("click", function() {
     document.getElementById("destinationInput").value = "";
+    document.getElementById("destinationInput").dispatchEvent(new Event("input"));
     map.closePopup();
     if (activeRouteCoordinates && routeLine) {
         map.fitBounds(routeLine.getBounds(), { padding: [30, 30] });
@@ -1277,16 +1302,126 @@ document.getElementById("clearDestinationBtn").addEventListener("click", functio
     }
 });
 
-document.getElementById("destinationInput")
-    .addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-            searchDestination();
-        }
-    });
-
 const GEOAPIFY_API_KEY = "72d1172eb18745f7b874b60fa7e7aa8c";
 
 let routeLine = null;
+
+// Geoapify city autocomplete, shared by Destination, From, and To.
+// Visitors can also type freely and use SEARCH / FIND PARKS ALONG ROUTE as before.
+function enableCitySuggestions(inputId, suggestionsId) {
+    const input = document.getElementById(inputId);
+    const list = document.getElementById(suggestionsId);
+    let timer = null;
+    let controller = null;
+    let sequence = 0;
+    let options = [];
+    let selected = -1;
+
+    function hide() {
+        list.hidden = true;
+        list.replaceChildren();
+        options = [];
+        selected = -1;
+        input.setAttribute("aria-expanded", "false");
+        input.removeAttribute("aria-activedescendant");
+    }
+    function invalidate() {
+        clearTimeout(timer);
+        if (controller) controller.abort();
+        controller = null;
+        sequence++;
+        hide();
+    }
+    function choose(item) {
+        input.value = item.formatted || [item.city, item.state, item.country].filter(Boolean).join(", ");
+        invalidate();
+        input.focus();
+    }
+    function highlight(index) {
+        selected = index;
+        Array.from(list.children).forEach((button, i) => {
+            button.classList.toggle("is-selected", i === index);
+            button.setAttribute("aria-selected", String(i === index));
+        });
+        if (index >= 0) {
+            input.setAttribute("aria-activedescendant", list.children[index].id);
+            list.children[index].scrollIntoView({block:"nearest"});
+        } else {
+            input.removeAttribute("aria-activedescendant");
+        }
+    }
+    async function lookup(query) {
+        const current = ++sequence;
+        if (controller) controller.abort();
+        controller = new AbortController();
+        try {
+            const url = "https://api.geoapify.com/v1/geocode/autocomplete?text=" +
+                encodeURIComponent(query) + "&type=city&format=json&limit=6&apiKey=" + GEOAPIFY_API_KEY;
+            const response = await fetch(url, { signal: controller.signal });
+            if (!response.ok) throw new Error("Autocomplete unavailable");
+            const data = await response.json();
+            if (current !== sequence || input.value.trim() !== query) return;
+            hide();
+            options = (data.results || []).filter(item => item.formatted || item.city);
+            if (!options.length) return;
+            options.forEach((item, i) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.id = suggestionsId + "-option-" + i;
+                button.className = "place-suggestion";
+                button.setAttribute("role", "option");
+                button.setAttribute("aria-selected", "false");
+                button.textContent = item.formatted || [item.city, item.state, item.country].filter(Boolean).join(", ");
+                button.addEventListener("pointerdown", event => event.preventDefault());
+                button.addEventListener("click", () => choose(item));
+                list.appendChild(button);
+            });
+            list.hidden = false;
+            input.setAttribute("aria-expanded", "true");
+        } catch (error) {
+            if (error.name !== "AbortError" && current === sequence) hide();
+        }
+    }
+    input.addEventListener("input", () => {
+        invalidate();
+        const query = input.value.trim();
+        if (query.length >= 2) timer = setTimeout(() => lookup(query), 275);
+    });
+    input.addEventListener("focus", () => {
+        const query = input.value.trim();
+        if (query.length >= 2 && list.hidden) {
+            clearTimeout(timer);
+            timer = setTimeout(() => lookup(query), 275);
+        }
+    });
+    input.addEventListener("keydown", event => {
+        if (event.key === "Escape") { invalidate(); return; }
+        if (event.key === "ArrowDown" && options.length) {
+            event.preventDefault();
+            highlight((selected + 1) % options.length);
+        } else if (event.key === "ArrowUp" && options.length) {
+            event.preventDefault();
+            highlight((selected + options.length - 1) % options.length);
+        } else if (event.key === "Enter") {
+            if (!list.hidden && options.length) {
+                event.preventDefault();
+                choose(options[selected >= 0 ? selected : 0]);
+            } else if (inputId === "destinationInput") {
+                event.preventDefault();
+                searchDestination();
+            }
+        }
+    });
+    document.addEventListener("pointerdown", event => {
+        if (!input.parentElement.contains(event.target)) invalidate();
+    });
+    input.addEventListener("blur", () => setTimeout(() => {
+        if (document.activeElement !== input && !list.contains(document.activeElement)) invalidate();
+    }, 150));
+}
+enableCitySuggestions("destinationInput", "destinationSuggestions");
+enableCitySuggestions("routeFrom", "routeFromSuggestions");
+enableCitySuggestions("routeTo", "routeToSuggestions");
 
 async function geocodePlace(place) {
 
@@ -1317,6 +1452,8 @@ async function geocodePlace(place) {
 document.getElementById("clearRouteBtn").addEventListener("click", function() {
     document.getElementById("routeFrom").value = "";
     document.getElementById("routeTo").value = "";
+    document.getElementById("routeFrom").dispatchEvent(new Event("input"));
+    document.getElementById("routeTo").dispatchEvent(new Event("input"));
     activeRouteCoordinates = null;
     if (routeLine) {
         map.removeLayer(routeLine);
