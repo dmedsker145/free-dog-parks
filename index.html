@@ -662,6 +662,16 @@ header { position: relative; z-index: 1001; }
 .admin-review-link.has-pending{background:#fff1bc;border-color:#b78612;color:#684600}
 .admin-review-link:focus-visible{outline:3px solid #b78612;outline-offset:3px}
 
+/* On phones, leave a finger-width page-scrolling gutter on both sides of the interactive map. */
+@media (max-width: 700px) {
+  .map-wrap {
+    margin: 0 28px 12px;
+    border: 1px solid #d5e1d7;
+    border-radius: 12px;
+  }
+  #map { border-radius: 11px; }
+}
+
 /* Open park details stay above zoom/key/legend controls. */
 .map-wrap:has(.leaflet-popup) .mobile-key-toggle,
 .map-wrap:has(.leaflet-popup) .legend { visibility:hidden; }
