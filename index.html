@@ -633,14 +633,21 @@ header { position: relative; z-index: 1001; }
 .place-suggestion:hover, .place-suggestion.is-selected { background: #eaf5ec; }
 .place-suggestion:focus-visible { outline: 2px solid #217a32; outline-offset: -2px; }
 
-/* Clear controls are visible and touch-friendly on mobile without dominating the search. */
-.search-row button.clear-action, .route-box button.clear-action {
-  background: #fff; color: #217a32; border: 1px solid #217a32;
+/* An unobtrusive clear x appears inside each location field only when filled. */
+.place-input-wrap > input { padding-right: 42px; }
+.place-input-wrap .place-clear, .search-row .place-clear {
+  display: none; position: absolute; right: 5px; top: 50%; transform: translateY(-50%);
+  align-items: center; justify-content: center; width: 34px; height: 34px;
+  padding: 0; border: 0; border-radius: 50%; background: transparent;
+  color: #64746a; font: 25px/1 Arial, sans-serif; font-weight: 400; cursor: pointer;
 }
-.route-box button.clear-action { margin-top: 7px; }
+.place-input-wrap:has(> input:not(:placeholder-shown)) > .place-clear { display: inline-flex; }
+.place-input-wrap .place-clear:hover, .place-input-wrap .place-clear:focus-visible { background: #e9f1eb; color: #176b35; }
+.search-row .place-suggestion { background: white; color: #223d28; border: 0; border-bottom: 1px solid #e8eee9; border-radius: 0; padding: 11px 12px; font-weight: 400; }
+.search-row .place-suggestion:hover, .search-row .place-suggestion.is-selected { background: #eaf5ec; }
 .search-row { flex-wrap: wrap; }
 .search-row input { min-width: 125px; }
-.search-row button { flex-shrink: 0; }
+.search-row > button { flex-shrink: 0; }
 
 /* The official Sunnie-inspired tagline stays directly below the banner on phones. */
 .site-tagline { margin: 8px 0 12px; color: #176b35; font-size: clamp(14px, 1.65vw, 19px); font-weight: 700; letter-spacing: .15px; line-height: 1.35; }
@@ -687,10 +694,10 @@ header { position: relative; z-index: 1001; }
             <div class="search-row">
                 <div class="place-input-wrap">
                     <input id="destinationInput" type="text" placeholder="Search city or destination" autocomplete="off" aria-label="Destination city" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="destinationSuggestions">
+                    <button type="button" class="place-clear" data-clear-input="destinationInput" aria-label="Clear destination" title="Clear destination">×</button>
                     <div id="destinationSuggestions" class="place-suggestions" role="listbox" hidden></div>
                 </div>
                 <button id="destinationBtn" type="button">SEARCH</button>
-                <button id="clearDestinationBtn" type="button" class="clear-action" aria-label="Clear destination search and return to park map">CLEAR</button>
             </div>
             
     </div>
@@ -702,6 +709,7 @@ header { position: relative; z-index: 1001; }
     <div class="route-row">
         <div class="place-input-wrap">
             <input id="routeFrom" type="text" placeholder="From" autocomplete="off" aria-label="Starting city" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="routeFromSuggestions">
+                    <button type="button" class="place-clear" data-clear-input="routeFrom" aria-label="Clear starting city" title="Clear starting city">×</button>
             <div id="routeFromSuggestions" class="place-suggestions" role="listbox" hidden></div>
         </div>
     </div>
@@ -709,6 +717,7 @@ header { position: relative; z-index: 1001; }
     <div class="route-row">
         <div class="place-input-wrap">
             <input id="routeTo" type="text" placeholder="To" autocomplete="off" aria-label="Destination city for route" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="routeToSuggestions">
+                    <button type="button" class="place-clear" data-clear-input="routeTo" aria-label="Clear route destination" title="Clear route destination">×</button>
             <div id="routeToSuggestions" class="place-suggestions" role="listbox" hidden></div>
         </div>
     </div>
@@ -722,7 +731,6 @@ header { position: relative; z-index: 1001; }
     <button class="route-button" id="findRouteBtn">
         FIND PARKS ALONG ROUTE
     </button>
-    <button class="route-button clear-action" id="clearRouteBtn" type="button">CLEAR ROUTE</button>
 
 </div>
 
@@ -1291,16 +1299,7 @@ document.getElementById("destinationBtn")
     .addEventListener("click", searchDestination);
 
 // Clear the destination search and restore the matching park map.
-document.getElementById("clearDestinationBtn").addEventListener("click", function() {
-    document.getElementById("destinationInput").value = "";
-    document.getElementById("destinationInput").dispatchEvent(new Event("input"));
-    map.closePopup();
-    if (activeRouteCoordinates && routeLine) {
-        map.fitBounds(routeLine.getBounds(), { padding: [30, 30] });
-    } else {
-        renderMarkers(true);
-    }
-});
+
 
 const GEOAPIFY_API_KEY = "72d1172eb18745f7b874b60fa7e7aa8c";
 
@@ -1449,18 +1448,30 @@ async function geocodePlace(place) {
     };
 }
 
-document.getElementById("clearRouteBtn").addEventListener("click", function() {
-    document.getElementById("routeFrom").value = "";
-    document.getElementById("routeTo").value = "";
-    document.getElementById("routeFrom").dispatchEvent(new Event("input"));
-    document.getElementById("routeTo").dispatchEvent(new Event("input"));
-    activeRouteCoordinates = null;
-    if (routeLine) {
-        map.removeLayer(routeLine);
-        routeLine = null;
-    }
-    map.closePopup();
-    renderMarkers(true);
+// Each location field has its own in-field x, without adding separate controls.
+document.querySelectorAll(".place-clear").forEach(button => {
+    button.addEventListener("click", () => {
+        const input = document.getElementById(button.dataset.clearInput);
+        input.value = "";
+        input.dispatchEvent(new Event("input"));
+        map.closePopup();
+        if (input.id === "destinationInput") {
+            if (activeRouteCoordinates && routeLine) {
+                map.fitBounds(routeLine.getBounds(), { padding: [30, 30] });
+            } else {
+                renderMarkers(true);
+            }
+        } else {
+            // Clearing either route endpoint also removes the old route from the map.
+            activeRouteCoordinates = null;
+            if (routeLine) {
+                map.removeLayer(routeLine);
+                routeLine = null;
+            }
+            renderMarkers(true);
+        }
+        input.focus();
+    });
 });
 
 document.getElementById("findRouteBtn")
