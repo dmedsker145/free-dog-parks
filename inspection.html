@@ -159,7 +159,7 @@ async function backupCloud(){
    const bytes=await p.blob.arrayBuffer();
    if(!bytes.byteLength||bytes.byteLength!==p.size)throw Error('Original photo size check failed: '+p.name);
    const original=new File([bytes],p.name,{type:p.type||'application/octet-stream',lastModified:p.lastModified||Date.now()});
-   const upload=await client.storage.from('fdp-owner-inspections').upload(path,original,{contentType:original.type,upsert:false,cacheControl:'3600'});
+   const upload=await client.storage.from('fdp-owner-inspections').upload(path,new Uint8Array(bytes),{contentType:original.type,upsert:false,cacheControl:'3600'});
    if(upload.error){
     if(String(upload.error.statusCode||upload.error.status)!=='409')throw Error('Photo '+p.name+': '+upload.error.message);
     const existing=await client.storage.from('fdp-owner-inspections').info(path);
