@@ -5,7 +5,7 @@
 .city-wrap{position:relative}.city-suggestions{position:absolute;top:100%;left:0;right:0;z-index:20;max-height:300px;overflow-y:auto;background:white;border:1px solid #8da698;border-radius:10px;box-shadow:0 5px 16px #183b3026}.city-option{display:block;width:100%;border:0;border-radius:0;text-align:left;background:white;color:var(--ink);font-weight:500;padding:13px 15px;min-height:48px}.city-option:hover,.city-option[aria-selected=true]{background:#e2f2df}.city-hint{font-size:14px;margin:6px 0 0}.city-wrap input[type=text]{margin-bottom:0}.photo-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:14px}.photo-card{border:1px solid var(--line);border-radius:12px;padding:10px;overflow-wrap:anywhere}.photo-card img{width:100%;height:120px;object-fit:contain;background:#f4f6f4;border-radius:7px}.photo-card p{font-size:14px;margin:6px 0}.photo-card button{min-height:40px;padding:7px 10px;font-size:14px;margin:4px 4px 0 0}.photo-status{font-size:15px;margin:10px 0;color:var(--muted)}.photo-status.error{color:#a13512;font-weight:600}#photoInput{width:100%;max-width:100%;padding:12px 0;font:inherit}
 </style></head><body>
 <header><a href="./">← Free Dog Parks map</a><h1>🐾 Sunnie’s park inspection</h1><p>Four easy sections. Tap what you verified; leave anything else unanswered.</p></header>
-<main><section aria-label="Inspection drafts"><div class="draftbar"><div style="flex:1;min-width:180px"><label for="draftSelect">Your inspections on this device</label><select id="draftSelect"></select></div><button id="newDraft" class="secondary" type="button">＋ New inspection</button></div><p id="saveStatus" role="status" aria-live="polite">Loading saved drafts…</p><p class="muted"><small>Drafts save in this browser on this device. They are not published or synced to another device. Download a backup before clearing browser data. Once this page is loaded, choices and saving work without cell service.</small></p><div class="actions"><button id="downloadTop" class="secondary" type="button">Download backup</button><button id="reviewTop" type="button">Review inspection</button></div></section>
+<main><section aria-label="Inspection drafts"><div class="draftbar"><div style="flex:1;min-width:180px"><label for="draftSelect">Your inspections on this device</label><select id="draftSelect"></select></div><button id="newDraft" class="secondary" type="button">＋ New inspection</button></div><p id="saveStatus" role="status" aria-live="polite">Loading saved drafts…</p><p class="muted"><small>Drafts save in this browser on this device. They are not published or synced to another device. Download a backup before clearing browser data. Once this page is loaded, choices and saving work without cell service.</small></p><div class="actions"><button id="downloadTop" class="secondary" type="button">Download backup</button><button id="reviewTop" type="button">Review inspection</button><button id="cloudSave" type="button" class="secondary">☁ Back up inspection + original photos</button></div></section>
 <nav aria-label="Inspection sections" id="sectionNav"></nav>
 <section id="identity"><label for="park">Park name</label><input id="park" type="text" placeholder="e.g. Pawadise Park" autocomplete="off"><label for="location">Town, state or street address</label><div class="city-wrap"><input id="location" type="text" placeholder="Start typing a city, e.g. Fort Wayne" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="citySuggestions" aria-describedby="cityHint"><div id="citySuggestions" class="city-suggestions" role="listbox" aria-label="US city suggestions" hidden></div></div><p id="cityHint" class="city-hint muted" role="status" aria-live="polite">Type at least 2 letters for US city suggestions, or enter a location manually. City lookup uses Geoapify.</p></section>
 <div id="sections"></div>
@@ -13,6 +13,7 @@
 <section id="review" hidden><h2 tabindex="-1" id="reviewHeading">Review your inspection</h2><p id="reviewSummary"></p><p class="notice">Review only — this form does not publish to the public map. Unanswered items are shown below so they cannot be mistaken for verified findings.</p><div id="reviewContent"></div><label class="choice"><input id="reviewed" type="checkbox">I have reviewed this inspection</label><div class="actions tools"><button id="download" type="button">Download inspection</button><button id="share" class="secondary" type="button">Share inspection + photos</button><button id="copy" class="secondary" type="button">Copy record</button></div><p id="message" role="status"></p></section>
 <div class="section-footer"><button id="back" type="button" class="secondary">← Back</button><button id="next" type="button">Continue →</button></div>
 </main><footer>Published park listings and photographs are separate from these private inspection drafts.</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
 <script src="inspection-state.js?v=20261111-1"></script>
 <script src="inspection-photos.js?v=20261113-1"></script>
 <script>
@@ -130,6 +131,51 @@ el('photoInput').addEventListener('change',async()=>{
  finally{el('photoInput').disabled=false;}
 });
 try{photoStore=InspectionPhotos.create(window.indexedDB);}catch(e){photoStatus('Photo storage is not supported by this browser. Inspection drafts remain available.',true);}
+/* Explicit owner-only cloud backup. Local drafts and original bytes remain untouched. */
+const CLOUD_URL='https://dqkbblmyrjmwmepjlenj.supabase.co';
+const CLOUD_KEY='sb_publishable_7ea7DsisRyGvq0xGp5VFTw_ISwmj6iQ';
+async function backupCloud(){
+ const button=el('cloudSave');button.disabled=true;
+ try{
+  if(!window.supabase?.createClient)throw Error('Cloud library unavailable. Reload when connected.');
+  const client=window.supabase.createClient(CLOUD_URL,CLOUD_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+  let {data:{user},error:authError}=await client.auth.getUser();
+  if(authError||!user){
+   const email=prompt('Owner account email for private photo backup:');if(!email)return;
+   const password=prompt('Owner account password (not stored in inspection):');if(!password)return;
+   const signIn=await client.auth.signInWithPassword({email,password});
+   if(signIn.error)throw signIn.error;
+   user=signIn.data.user;
+  }
+  if(!user)throw Error('Owner sign-in required.');
+  const membership=await client.from('fdp_reviewers').select('user_id').eq('user_id',user.id).maybeSingle();
+  if(membership.error||!membership.data)throw Error('This account is not authorized for owner inspections.');
+  if(!current().park.trim())throw Error('Enter a park name before backing up.');
+  if(!save())throw Error('Please resolve the local draft saving warning first.');
+  const draftId=current().id;
+  const originals=await loadPhotos();
+  if(originals===null)throw Error('Original photos could not be read. Nothing was marked backed up.');
+  const manifest=[];
+  for(let i=0;i<originals.length;i++){
+   const p=originals[i],path=user.id+'/'+draftId+'/'+p.id;
+   photoStatus('Uploading original '+(i+1)+' of '+originals.length+' to private storage…');
+   const upload=await client.storage.from('fdp-owner-inspections').upload(path,p.blob,{contentType:p.type||'application/octet-stream',upsert:false,cacheControl:'3600'});
+   if(upload.error){
+    if(String(upload.error.statusCode||upload.error.status)!=='409')throw Error('Photo '+p.name+': '+upload.error.message);
+    const existing=await client.storage.from('fdp-owner-inspections').info(path);
+    if(existing.error||Number(existing.data?.metadata?.size)!==p.size)throw Error('Existing photo needs verification: '+p.name);
+   }
+   manifest.push({id:p.id,name:p.name,type:p.type,size:p.size,path});
+  }
+  const row={id:draftId,owner_id:user.id,park_name:current().park.trim(),location:current().location,inspection:record(),photo_manifest:manifest,status:'draft',updated_at:new Date().toISOString()};
+  const result=await client.from('fdp_owner_inspections').upsert(row,{onConflict:'id'}).select('id').single();
+  if(result.error)throw result.error;
+  status('✓ Cloud backup complete: inspection and '+manifest.length+' original photo(s) privately saved. Not published.');
+  photoStatus('✓ '+manifest.length+' originals safely backed up to private cloud storage. Local copies preserved.');
+ }catch(e){status('Cloud backup not completed: '+(e.message||String(e))+'. Your local inspection and photos remain unchanged.',true);}
+ finally{button.disabled=false;}
+}
+el('cloudSave').onclick=backupCloud;
 build();fill();if(loaded.error){failed=true;status(loaded.error,true);}else if(loaded.migrated){save();if(!failed)status('✓ Previous inspection restored and saved. The original saved record is also preserved.');}else status(current().updated?'✓ Restored your saved inspection on this device.':'Ready. Your first change will save automatically.');
 </script></body></html>
 
