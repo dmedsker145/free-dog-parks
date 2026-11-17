@@ -153,7 +153,13 @@ async function backupCloud(){
   for(let i=0;i<originals.length;i++){
    const p=originals[i],path=user.id+'/'+draftId+'/'+p.id;
    photoStatus('Uploading original '+(i+1)+' of '+originals.length+' to private storage…');
-   const upload=await client.storage.from('fdp-owner-inspections').upload(path,p.blob,{contentType:p.type||'application/octet-stream',upsert:false,cacheControl:'3600'});
+   // Convert the IndexedDB original into an explicit File; mobile browsers can
+   // otherwise pass a Blob without a usable multipart body to Storage.
+   if(!(p.blob instanceof Blob))throw Error('Original photo data unavailable on this device: '+p.name);
+   const bytes=await p.blob.arrayBuffer();
+   if(!bytes.byteLength||bytes.byteLength!==p.size)throw Error('Original photo size check failed: '+p.name);
+   const original=new File([bytes],p.name,{type:p.type||'application/octet-stream',lastModified:p.lastModified||Date.now()});
+   const upload=await client.storage.from('fdp-owner-inspections').upload(path,original,{contentType:original.type,upsert:false,cacheControl:'3600'});
    if(upload.error){
     if(String(upload.error.statusCode||upload.error.status)!=='409')throw Error('Photo '+p.name+': '+upload.error.message);
     const existing=await client.storage.from('fdp-owner-inspections').info(path);
