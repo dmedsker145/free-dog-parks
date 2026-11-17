@@ -140,13 +140,7 @@ async function backupCloud(){
   if(!window.supabase?.createClient)throw Error('Cloud library unavailable. Reload when connected.');
   const client=window.supabase.createClient(CLOUD_URL,CLOUD_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
   let {data:{user},error:authError}=await client.auth.getUser();
-  if(authError||!user){
-   const email=prompt('Owner account email for private photo backup:');if(!email)return;
-   const password=prompt('Owner account password (not stored in inspection):');if(!password)return;
-   const signIn=await client.auth.signInWithPassword({email,password});
-   if(signIn.error)throw signIn.error;
-   user=signIn.data.user;
-  }
+  if(authError||!user)throw Error('Sign in at Private Review Inbox (admin.html), then return here and tap cloud backup again');
   if(!user)throw Error('Owner sign-in required.');
   const membership=await client.from('fdp_reviewers').select('user_id').eq('user_id',user.id).maybeSingle();
   if(membership.error||!membership.data)throw Error('This account is not authorized for owner inspections.');
